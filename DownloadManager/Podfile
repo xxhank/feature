@@ -6,6 +6,7 @@ use_frameworks!
 target 'DownloadManager' do
     pod 'Alamofire'
     pod 'SQLite.swift'
+    pod 'GRDB.swift'
 end
 
 target 'DownloadManagerTests' do

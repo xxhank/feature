@@ -46,7 +46,7 @@ public class DownloadTask {
         }
     }
 
-    public var total: Int = 0 {
+    public var total: Int64 = 0 {
         didSet {
             if let obsever = progressObserver {
                 obsever(progress: progress)
@@ -54,7 +54,7 @@ public class DownloadTask {
         }
     }
 
-    public var received: Int = 0 {
+    public var received: Int64 = 0 {
         didSet {
             if let obsever = progressObserver {
                 obsever(progress: progress)
@@ -124,6 +124,8 @@ public class DownloadTask {
         if let downloader = delegate?.downloader() {
             request = downloader.download(.GET, self.url, destination: downloadFileDestination())
                 .progress({ [weak self](_, all, total) in
+                    self?.received = (all);
+                    self?.total = (total)
                     self?.progress = Float(all) / Float(total)
             }).response(completionHandler: { [weak self](request, response, data, error) in
                     guard let wself = self else { return }

@@ -227,6 +227,7 @@
 				615950ED1CFD9BD900B24287 /* Resources */,
 				02D09BB074D4CCBFD4F20023 /* Embed Pods Frameworks */,
 				81060539210ABC3A94E3A330 /* Copy Pods Resources */,
+				524653271D03B3790067A02F /* Track App Size */,
 			);
 			buildRules = (
 			);
@@ -358,6 +359,20 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DownloadManager/Pods-DownloadManager-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		524653271D03B3790067A02F /* Track App Size */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Track App Size";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "APP=${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.${WRAPPER_EXTENSION}\nSIZE=`find $APP -type f -exec ls -l {} \\; | awk '{sum += $5} END {print sum}'`\nOUT=\"$SRCROOT/$CONFIGURATION-$PLATFORM_NAME.txt\"\n#echo \"$OUT\"\necho $SIZE >> $OUT";
 		};
 		81060539210ABC3A94E3A330 /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
