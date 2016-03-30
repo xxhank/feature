@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		52B3C59D1CAB416F00523535 /* FeedListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B3C59C1CAB416F00523535 /* FeedListCell.swift */; };
 		52B6B1941CAB3B7000492391 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B6B1931CAB3B7000492391 /* AppDelegate.swift */; };
 		52B6B1961CAB3B7000492391 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B6B1951CAB3B7000492391 /* ViewController.swift */; };
 		52B6B1991CAB3B7000492391 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52B6B1971CAB3B7000492391 /* Main.storyboard */; };
@@ -34,6 +35,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		52B3C59C1CAB416F00523535 /* FeedListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedListCell.swift; sourceTree = "<group>"; };
 		52B6B1901CAB3B7000492391 /* TableViewDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TableViewDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		52B6B1931CAB3B7000492391 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		52B6B1951CAB3B7000492391 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -103,6 +105,7 @@
 				52B6B19A1CAB3B7000492391 /* Assets.xcassets */,
 				52B6B19C1CAB3B7000492391 /* LaunchScreen.storyboard */,
 				52B6B19F1CAB3B7000492391 /* Info.plist */,
+				52B3C59C1CAB416F00523535 /* FeedListCell.swift */,
 			);
 			path = TableViewDemo;
 			sourceTree = "<group>";
@@ -256,6 +259,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52B3C59D1CAB416F00523535 /* FeedListCell.swift in Sources */,
 				52B6B1961CAB3B7000492391 /* ViewController.swift in Sources */,
 				52B6B1941CAB3B7000492391 /* AppDelegate.swift in Sources */,
 			);
@@ -482,6 +486,7 @@
 				52B6B1BA1CAB3B7000492391 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		52B6B1BB1CAB3B7000492391 /* Build configuration list for PBXNativeTarget "TableViewDemoTests" */ = {
 			isa = XCConfigurationList;
@@ -490,6 +495,7 @@
 				52B6B1BD1CAB3B7000492391 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		52B6B1BE1CAB3B7000492391 /* Build configuration list for PBXNativeTarget "TableViewDemoUITests" */ = {
 			isa = XCConfigurationList;
@@ -498,6 +504,7 @@
 				52B6B1C01CAB3B7000492391 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
