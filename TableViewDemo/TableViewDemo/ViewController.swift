@@ -65,7 +65,7 @@ extension ViewController {
         SSLogInfo("")
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)) {
             var feedViewModels = [FeedViewModel]()
-            for _ in 0 ... 0 {
+            for _ in 0 ... 10000 {
                 let title = self.randomText(min: 3, max: 20) // "Title"
                 let summary = self.randomText(min: 3, max: 200) // "Summary"
                 let photo = self.randomImage()

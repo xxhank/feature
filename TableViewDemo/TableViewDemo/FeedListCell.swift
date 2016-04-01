@@ -25,7 +25,7 @@ class ImageResizer: NSObject, SDWebImageManagerDelegate {
     var value = 5
     @objc func imageManager(imageManager: SDWebImageManager!, transformDownloadedImage image: UIImage!, withURL imageURL: NSURL!) -> UIImage! {
         let components = NSURLComponents(URL: imageURL, resolvingAgainstBaseURL: true)
-        SSLogInfo("\(components?.queryItems)")
+        // SSLogInfo("\(components?.queryItems)")
         var queryItemsMap = [String: String]()
         guard let queryItems = components?.queryItems else { return image }
         for queryItem in queryItems {
