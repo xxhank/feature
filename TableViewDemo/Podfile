@@ -5,6 +5,7 @@ use_frameworks!
 
 target 'TableViewDemo' do
     pod "SDWebImage"
+    pod "UITableView+FDTemplateLayoutCell"
 end
 
 target 'TableViewDemoTests' do
