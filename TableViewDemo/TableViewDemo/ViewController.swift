@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import UITableView_FDTemplateLayoutCell
 
 func SSLogInfo(message: String, fileName: String = __FILE__, lineNumber: Int = __LINE__, functionName: String = __FUNCTION__) {
     print("[\((fileName as NSString).lastPathComponent as String):\(lineNumber) \(functionName)] \(message)")
@@ -119,10 +120,16 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         // SSLogInfo("")
         let viewModel = feedViewModels[indexPath.row]
-        if heights[indexPath.row] == nil {
-            heights[indexPath.row] = heightForCellWithIdentifier("FeedListCell", viewModel: viewModel)
+        return tableView.fd_heightForCellWithIdentifier("FeedListCell") { (cell) -> Void in
+            if var supportViewModelCell = cell as? SupportViewModel {
+                supportViewModelCell.viewModel = viewModel
+            }
         }
-        return heights[indexPath.row]!
+//
+//        if heights[indexPath.row] == nil {
+//            heights[indexPath.row] = heightForCellWithIdentifier("FeedListCell", viewModel: viewModel)
+//        }
+//        return heights[indexPath.row]!
     }
 
     func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
