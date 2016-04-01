@@ -51,7 +51,7 @@
                                                         <action selector="unlike:" destination="k2G-Ay-pud" eventType="touchUpInside" id="q8q-b1-AsP"/>
                                                     </connections>
                                                 </button>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="B4S-Kd-igX">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="B4S-Kd-igX">
                                                     <rect key="frame" x="10" y="10" width="80" height="100"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="100" id="EOQ-FB-vUU"/>
