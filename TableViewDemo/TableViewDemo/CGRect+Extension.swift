@@ -63,8 +63,8 @@ extension CGRect {
 
     func aspectFit(forFrame to: CGRect) -> CGRect {
         let from = self
-        let widthRatio = from.width / to.width
-        let heightRatio = from.height / to.height
+        let widthRatio = to.width / from.width
+        let heightRatio = to.height / from.height
 
         let resizeRatio = min(widthRatio, heightRatio) // Aspect Fit
 
@@ -76,8 +76,8 @@ extension CGRect {
 
     func aspectFill(forFrame to: CGRect) -> CGRect {
         let from = self
-        let widthRatio = from.width / to.width
-        let heightRatio = from.height / to.height
+        let widthRatio = to.width / from.width
+        let heightRatio = to.height / from.height
 
         let resizeRatio = max(widthRatio, heightRatio) ; // Aspect Fill
 
