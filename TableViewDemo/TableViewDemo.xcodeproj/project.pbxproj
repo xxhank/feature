@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		527042061CADDCD200439ED3 /* CGRect+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527042051CADDCD200439ED3 /* CGRect+Extension.swift */; };
 		52B3C59D1CAB416F00523535 /* FeedListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B3C59C1CAB416F00523535 /* FeedListCell.swift */; };
 		52B6B1941CAB3B7000492391 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B6B1931CAB3B7000492391 /* AppDelegate.swift */; };
 		52B6B1961CAB3B7000492391 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B6B1951CAB3B7000492391 /* ViewController.swift */; };
@@ -38,6 +39,7 @@
 /* Begin PBXFileReference section */
 		225BBBE81BA78A618AC768CE /* Pods-TableViewDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TableViewDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TableViewDemo/Pods-TableViewDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		31931A543AF19A74EF114E2B /* Pods-TableViewDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TableViewDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-TableViewDemo/Pods-TableViewDemo.release.xcconfig"; sourceTree = "<group>"; };
+		527042051CADDCD200439ED3 /* CGRect+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGRect+Extension.swift"; sourceTree = "<group>"; };
 		52B3C59C1CAB416F00523535 /* FeedListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedListCell.swift; sourceTree = "<group>"; };
 		52B6B1901CAB3B7000492391 /* TableViewDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TableViewDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		52B6B1931CAB3B7000492391 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -121,6 +123,7 @@
 				52B6B19C1CAB3B7000492391 /* LaunchScreen.storyboard */,
 				52B6B19F1CAB3B7000492391 /* Info.plist */,
 				52B3C59C1CAB416F00523535 /* FeedListCell.swift */,
+				527042051CADDCD200439ED3 /* CGRect+Extension.swift */,
 			);
 			path = TableViewDemo;
 			sourceTree = "<group>";
@@ -335,6 +338,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				52B3C59D1CAB416F00523535 /* FeedListCell.swift in Sources */,
+				527042061CADDCD200439ED3 /* CGRect+Extension.swift in Sources */,
 				52B6B1961CAB3B7000492391 /* ViewController.swift in Sources */,
 				52B6B1941CAB3B7000492391 /* AppDelegate.swift in Sources */,
 			);
