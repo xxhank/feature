@@ -30,27 +30,52 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XDs-UV-Con">
-                                                    <rect key="frame" x="98" y="10" width="209" height="17"/>
+                                                    <rect key="frame" x="98" y="10" width="267" height="17"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Brief" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DKe-li-g0F">
-                                                    <rect key="frame" x="98" y="35" width="209" height="15"/>
+                                                    <rect key="frame" x="98" y="35" width="267" height="15"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VYD-y9-V8E">
-                                                    <rect key="frame" x="315" y="45" width="45" height="30"/>
+                                                <stackView opaque="NO" contentMode="scaleToFill" semanticContentAttribute="playback" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="qlc-qa-3r0">
+                                                    <rect key="frame" x="304" y="0.0" width="71" height="120"/>
+                                                    <subviews>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fQi-tt-SzZ">
+                                                            <rect key="frame" x="8" y="0.0" width="55" height="40"/>
+                                                            <state key="normal" title="Favorite"/>
+                                                            <connections>
+                                                                <action selector="unlike:" destination="k2G-Ay-pud" eventType="touchUpInside" id="6q3-bm-qPU"/>
+                                                            </connections>
+                                                        </button>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VYD-y9-V8E">
+                                                            <rect key="frame" x="8" y="40" width="55" height="40"/>
+                                                            <state key="normal" title="Share"/>
+                                                            <connections>
+                                                                <action selector="unlike:" destination="k2G-Ay-pud" eventType="touchUpInside" id="q8q-b1-AsP"/>
+                                                            </connections>
+                                                        </button>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oAG-nV-4A4">
+                                                            <rect key="frame" x="8" y="80" width="55" height="40"/>
+                                                            <state key="normal" title="Unlike"/>
+                                                            <connections>
+                                                                <action selector="unlike:" destination="k2G-Ay-pud" eventType="touchUpInside" id="uCb-bI-jo9"/>
+                                                            </connections>
+                                                        </button>
+                                                    </subviews>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="45" id="snQ-ca-1gP"/>
+                                                        <constraint firstAttribute="width" constant="60" id="1ou-2I-X5Y"/>
                                                     </constraints>
-                                                    <state key="normal" title="Unlike"/>
-                                                    <connections>
-                                                        <action selector="unlike:" destination="k2G-Ay-pud" eventType="touchUpInside" id="q8q-b1-AsP"/>
-                                                    </connections>
-                                                </button>
+                                                    <edgeInsets key="layoutMargins" top="0.0" left="8" bottom="0.0" right="8"/>
+                                                    <variation key="default">
+                                                        <mask key="constraints">
+                                                            <exclude reference="1ou-2I-X5Y"/>
+                                                        </mask>
+                                                    </variation>
+                                                </stackView>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="B4S-Kd-igX">
                                                     <rect key="frame" x="10" y="10" width="80" height="100"/>
                                                     <constraints>
@@ -61,36 +86,22 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="B4S-Kd-igX" secondAttribute="bottom" constant="10" id="0YP-OX-0YI"/>
-                                                <constraint firstItem="VYD-y9-V8E" firstAttribute="leading" secondItem="DKe-li-g0F" secondAttribute="trailing" constant="8" id="1DW-SU-QDS"/>
                                                 <constraint firstItem="B4S-Kd-igX" firstAttribute="top" secondItem="Df7-hx-Tac" secondAttribute="top" constant="10" id="1dE-bX-UNd"/>
-                                                <constraint firstAttribute="bottom" secondItem="XDs-UV-Con" secondAttribute="bottom" constant="10" id="5wp-hk-mwd"/>
                                                 <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="DKe-li-g0F" secondAttribute="bottom" constant="10" id="FZg-0r-e3f"/>
-                                                <constraint firstItem="XDs-UV-Con" firstAttribute="top" secondItem="Df7-hx-Tac" secondAttribute="top" constant="10" id="H5b-ol-nVQ"/>
-                                                <constraint firstAttribute="trailing" secondItem="VYD-y9-V8E" secondAttribute="trailing" constant="15" id="Ht2-1a-VhF"/>
+                                                <constraint firstAttribute="trailing" secondItem="DKe-li-g0F" secondAttribute="trailing" constant="10" id="Fn7-Zk-T1L"/>
                                                 <constraint firstItem="DKe-li-g0F" firstAttribute="top" secondItem="XDs-UV-Con" secondAttribute="bottom" constant="8" id="M1h-1D-DiW"/>
-                                                <constraint firstItem="DKe-li-g0F" firstAttribute="leading" secondItem="XDs-UV-Con" secondAttribute="trailing" constant="10" id="ORG-Ya-9Na"/>
+                                                <constraint firstAttribute="trailing" secondItem="qlc-qa-3r0" secondAttribute="trailing" id="MdV-OP-oaV"/>
+                                                <constraint firstItem="qlc-qa-3r0" firstAttribute="top" secondItem="Df7-hx-Tac" secondAttribute="top" id="MvC-Bk-f2e"/>
                                                 <constraint firstItem="DKe-li-g0F" firstAttribute="leading" secondItem="B4S-Kd-igX" secondAttribute="trailing" constant="8" id="X0L-6c-beM"/>
-                                                <constraint firstItem="VYD-y9-V8E" firstAttribute="leading" secondItem="XDs-UV-Con" secondAttribute="trailing" constant="8" id="YWE-5H-CVx"/>
-                                                <constraint firstItem="XDs-UV-Con" firstAttribute="leading" secondItem="Df7-hx-Tac" secondAttribute="leading" constant="10" id="boa-xU-lqp"/>
+                                                <constraint firstAttribute="trailing" secondItem="XDs-UV-Con" secondAttribute="trailing" constant="10" id="gPX-ib-gcX"/>
                                                 <constraint firstItem="XDs-UV-Con" firstAttribute="leading" secondItem="B4S-Kd-igX" secondAttribute="trailing" constant="8" id="htE-pB-4uf"/>
                                                 <constraint firstItem="XDs-UV-Con" firstAttribute="top" secondItem="Df7-hx-Tac" secondAttribute="top" constant="10" id="ml6-UU-13y"/>
-                                                <constraint firstItem="VYD-y9-V8E" firstAttribute="centerY" secondItem="Df7-hx-Tac" secondAttribute="centerY" id="nNA-zz-pW6"/>
-                                                <constraint firstItem="DKe-li-g0F" firstAttribute="leading" secondItem="Df7-hx-Tac" secondAttribute="leading" constant="10" id="pXm-SB-Ko4"/>
+                                                <constraint firstAttribute="bottom" secondItem="qlc-qa-3r0" secondAttribute="bottom" id="qou-y1-2Wp"/>
                                                 <constraint firstItem="B4S-Kd-igX" firstAttribute="leading" secondItem="Df7-hx-Tac" secondAttribute="leading" constant="10" id="ucT-y8-wbu"/>
-                                                <constraint firstItem="DKe-li-g0F" firstAttribute="top" secondItem="XDs-UV-Con" secondAttribute="bottom" constant="8" id="zHZ-Cd-i2Q"/>
                                             </constraints>
-                                            <variation key="default">
-                                                <mask key="constraints">
-                                                    <exclude reference="5wp-hk-mwd"/>
-                                                    <exclude reference="H5b-ol-nVQ"/>
-                                                    <exclude reference="boa-xU-lqp"/>
-                                                    <exclude reference="ORG-Ya-9Na"/>
-                                                    <exclude reference="pXm-SB-Ko4"/>
-                                                    <exclude reference="zHZ-Cd-i2Q"/>
-                                                </mask>
-                                            </variation>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="actionView" destination="qlc-qa-3r0" id="Fi7-Kd-guc"/>
                                             <outlet property="photoView" destination="B4S-Kd-igX" id="nQ4-hA-y3L"/>
                                             <outlet property="summaryLabel" destination="DKe-li-g0F" id="EVG-ht-A7I"/>
                                             <outlet property="titleLabel" destination="XDs-UV-Con" id="cCN-Ik-bri"/>
@@ -132,7 +143,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="751" y="1087"/>
+            <point key="canvasLocation" x="750" y="1086"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="wyG-uO-Uqu">
