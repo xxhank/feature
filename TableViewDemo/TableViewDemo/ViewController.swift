@@ -36,6 +36,11 @@ extension ViewController {
 // MARK: - IBAction
 extension ViewController {
     @IBAction func add1Item(sender: AnyObject) {
+        let indexPath = NSIndexPath(forRow: 0, inSection: 0)
+        feedViewModels.append(generateViewModel())
+        feedListView.beginUpdates()
+        feedListView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+        feedListView.endUpdates()
     }
     @IBAction func add10Items(sender: AnyObject) {
     }
@@ -65,12 +70,8 @@ extension ViewController {
         SSLogInfo("")
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)) {
             var feedViewModels = [FeedViewModel]()
-            for _ in 0 ... 10000 {
-                let title = self.randomText(min: 3, max: 20) // "Title"
-                let summary = self.randomText(min: 3, max: 200) // "Summary"
-                let photo = self.randomImage()
-                let viewModel = FeedViewModel(title: title, summary: summary, photo: photo)
-                feedViewModels.append(viewModel)
+            for _ in 0 ... 100 {
+                feedViewModels.append(self.generateViewModel())
             }
 
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(0.2 * Double(NSEC_PER_SEC))), dispatch_get_main_queue()) { [weak self] in
@@ -79,6 +80,14 @@ extension ViewController {
                 context.feedListView.reloadData()
             }
         }
+    }
+
+    func generateViewModel() -> FeedViewModel {
+        let title = self.randomText(min: 3, max: 20) // "Title"
+        let summary = self.randomText(min: 3, max: 200) // "Summary"
+        let photo = self.randomImage()
+        let viewModel = FeedViewModel(title: title, summary: summary, photo: photo)
+        return viewModel
     }
 
     private func randomImage() -> NSURL {
@@ -120,21 +129,17 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         // SSLogInfo("")
         let viewModel = feedViewModels[indexPath.row]
-        return tableView.fd_heightForCellWithIdentifier("FeedListCell") { (cell) -> Void in
+        heights[indexPath.row] = tableView.fd_heightForCellWithIdentifier("FeedListCell") { (cell) -> Void in
             if var supportViewModelCell = cell as? SupportViewModel {
                 supportViewModelCell.viewModel = viewModel
             }
         }
-//
-//        if heights[indexPath.row] == nil {
-//            heights[indexPath.row] = heightForCellWithIdentifier("FeedListCell", viewModel: viewModel)
-//        }
-//        return heights[indexPath.row]!
+        return heights[indexPath.row]!
     }
 
     func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         if heights[indexPath.row] == nil {
-            return 100
+            return 120
         } else {
             SSLogInfo("use actual row height")
             return heights[indexPath.row]!
