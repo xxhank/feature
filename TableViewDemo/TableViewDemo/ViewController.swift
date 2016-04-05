@@ -70,7 +70,7 @@ extension ViewController {
         SSLogInfo("")
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)) {
             var feedViewModels = [FeedViewModel]()
-            for _ in 0 ... 100 {
+            for _ in 0 ... 10 {
                 feedViewModels.append(self.generateViewModel())
             }
 
