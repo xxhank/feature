@@ -1,0 +1,27 @@
+# OS X temporary files that should never be committed
+
+.DS_Store
+*.swp
+*.lock
+profile
+
+#####
+# NPM local modules
+
+node_modules/
+
+#####
+# Testing
+
+*.trace/*
+
+####
+# vim floaties
+*.un~
+*.swp
+
+####
+# ignore private apps
+sample-code/apps/ios/device/Private1.app
+sample-code/apps/ios/sim/Private1.app
+sample-code/apps/android/Private1-debug.apk
