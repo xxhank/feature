@@ -1,0 +1,7 @@
+{
+    "JavaScript": {
+        "javascriptExtraPaths": [
+        "/Applications/Appium.app/Contents/Resources/node_modules/appium/node_modules"
+        ]
+    }
+}
