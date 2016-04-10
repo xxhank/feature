@@ -1,0 +1,179 @@
+{
+    "scope": "source.js",
+    "version": "0.10",
+    "completions": [
+        {
+            "trigger": "hitpoint()->Point",
+            "contents": "hitpoint()"
+        },
+        {
+            "trigger": "rect()->Rect",
+            "contents": "rect()"
+        },
+        {
+            "trigger": "activityIndicators()->UIAElementArray",
+            "contents": "activityIndicators()"
+        },
+        {
+            "trigger": "activityView()->UIAActivityView",
+            "contents": "activityView()"
+        },
+        {
+            "trigger": "ancestry()->UIAElementArray",
+            "contents": "ancestry()"
+        },
+        {
+            "trigger": "buttons()->UIAElementArray",
+            "contents": "buttons()"
+        },
+        {
+            "trigger": "collectionViews()->UIAElementArray",
+            "contents": "collectionViews()"
+        },
+        {
+            "trigger": "elements()->UIAElementArray",
+            "contents": "elements()"
+        }, {
+            "trigger": "images()->UIAElementArray",
+            "contents": "images()"
+        }, {
+            "trigger": "links()->UIAElementArray",
+            "contents": "links()"
+        }, {
+            "trigger": "navigationBar()->UIAElement",
+            "contents": "navigationBar()"
+        }, {
+            "trigger": "navigationBars()->UIAElementArray",
+            "contents": "navigationBars()"
+        }, {
+            "trigger": "pageIndicators()->UIAElementArray",
+            "contents": "pageIndicators()"
+        }, {
+            "trigger": "parent()->UIAElement",
+            "contents": "parent()"
+        }, {
+            "trigger": "pickers()->UIAElementArray",
+            "contents": "pickers()"
+        }, {
+            "trigger": "popover()->UIAPopover",
+            "contents": "popover()"
+        }, {
+            "trigger": "progressIndicators()->UIAElementArray",
+            "contents": "progressIndicators()"
+        }, {
+            "trigger": "scrollViews()->UIAElementArray",
+            "contents": "scrollViews()"
+        }, {
+            "trigger": "searchBars()->UIAElementArray",
+            "contents": "searchBars()"
+        }, {
+            "trigger": "secureTextFields()->UIAElementArray",
+            "contents": "secureTextFields()"
+        }, {
+            "trigger": "segmentedControls()->UIAElementArray",
+            "contents": "segmentedControls()"
+        }, {
+            "trigger": "sliders()->UIAElementArray",
+            "contents": "sliders()"
+        }, {
+            "trigger": "staticTexts()->UIAElementArray",
+            "contents": "staticTexts()"
+        }, {
+            "trigger": "switches()->UIAElementArray",
+            "contents": "switches()"
+        }, {
+            "trigger": "tabBar()->UIAElement",
+            "contents": "tabBar()"
+        }, {
+            "trigger": "tabBars()->UIAElementArray",
+            "contents": "tabBars()"
+        }, {
+            "trigger": "tableViews()->UIAElementArray",
+            "contents": "tableViews()"
+        }, {
+            "trigger": "textFields()->UIAElementArray",
+            "contents": "textFields()"
+        }, {
+            "trigger": "textViews()->UIAElementArray",
+            "contents": "textViews()"
+        }, {
+            "trigger": "toolbar()->UIAElement",
+            "contents": "toolbar()"
+        }, {
+            "trigger": "toolbars()->UIAElementArray",
+            "contents": "toolbars()"
+        }, {
+            "trigger": "webViews()->UIAElementArray",
+            "contents": "webViews()"
+        }, {
+            "trigger": "doubleTap()",
+            "contents": "doubleTap()"
+        }, {
+            "trigger": "dragInsideWithOptions(options Object)",
+            "contents": "dragInsideWithOptions(${1:options Object}$0)"
+        }, {
+            "trigger": "flickInsideWithOptions(options Object)",
+            "contents": "flickInsideWithOptions(${1:options Object}$0)"
+        }, {
+            "trigger": "rotateWithOptions(options Object)",
+            "contents": "rotateWithOptions(${1:options Object}$0)"
+        }, {
+            "trigger": "scrollToVisible()",
+            "contents": "scrollToVisible()"
+        }, {
+            "trigger": "tap()",
+            "contents": "tap()"
+        }, {
+            "trigger": "tapWithOptions(options Object)",
+            "contents": "tapWithOptions(${1:options Object}$0)"
+        }, {
+            "trigger": "touchAndHold(duration Number)",
+            "contents": "touchAndHold(${1:duration Number}$0)"
+        }, {
+            "trigger": "twoFingerTap()",
+            "contents": "twoFingerTap()"
+        }, {
+            "trigger": "checkIsValid()->Boolean",
+            "contents": "checkIsValid()"
+        }, {
+            "trigger": "hasKeyboardFocus()->Number",
+            "contents": "hasKeyboardFocus()"
+        }, {
+            "trigger": "isEnabled()->Number",
+            "contents": "isEnabled()"
+        }, {
+            "trigger": "isValid()->Boolean",
+            "contents": "isValid()"
+        }, {
+            "trigger": "isVisible()->Number",
+            "contents": "isVisible()"
+        }, {
+            "trigger": "waitForInvalid()->Boolean",
+            "contents": "waitForInvalid()"
+        }, {
+            "trigger": "label()->String",
+            "contents": "label()"
+        }, {
+            "trigger": "name()->String",
+            "contents": "name()"
+        }, {
+            "trigger": "value()->String",
+            "contents": "value()"
+        }, {
+            "trigger": "withName(name String)->UIAElement",
+            "contents": "withName(${1:\"name\"}$0)"
+        }, {
+            "trigger": "withPredicate(PredicateString predicateString)->UIAElement",
+            "contents": "withPredicate(${1:PredicateString predicateString}$0)"
+        }, {
+            "trigger": "withValueForKey(value NotTyped, key String)->UIAElement",
+            "contents": "withValueForKey(${1:value NotTyped},${2: key String}$0)"
+        }, {
+            "trigger": "logElement()",
+            "contents": "logElement()"
+        }, {
+            "trigger": "logElementTree()",
+            "contents": "logElementTree()"
+        }
+    ]
+}

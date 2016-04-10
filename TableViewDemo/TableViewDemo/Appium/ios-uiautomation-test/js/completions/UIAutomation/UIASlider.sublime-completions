@@ -1,0 +1,8 @@
+{
+    "scope": "source.js",
+    "version": "0.10",
+    "completions": [{
+        "trigger": "dragToValue(Number value)",
+        "contents": "dragToValue(${1:Number value}$0)"
+    }]
+}

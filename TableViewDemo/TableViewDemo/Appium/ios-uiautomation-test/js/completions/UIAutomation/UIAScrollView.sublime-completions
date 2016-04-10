@@ -1,0 +1,33 @@
+{
+    "scope": "source.js",
+    "version": "0.10",
+    "completions": [{
+            "trigger": "scrollUp()",
+            "contents": "scrollUp()"
+        },
+        {
+            "trigger": "scrollDown()",
+            "contents": "scrollDown()"
+        },
+        {
+            "trigger": "scrollLeft()",
+            "contents": "scrollLeft()"
+        },
+        {
+            "trigger": "scrollRight()",
+            "contents": "scrollRight()"
+        },
+        {
+            "trigger": "scrollToElementWithName(name String)->UIAElement",
+            "contents": "scrollToElementWithName(${1:\"name\"}$0)"
+        },
+        {
+            "trigger": "scrollToElementWithPredicate(PredicateString predicateString)->UIAElement",
+            "contents": "scrollToElementWithPredicate(${1:PredicateString predicateString}$0)"
+        },
+        {
+            "trigger": "scrollToElementWithValueForKey(value NotTyped, key String)->UIAElement",
+            "contents": "scrollToElementWithValueForKey(${1:value NotTyped},${2: key String}$0)"
+        }
+    ]
+}

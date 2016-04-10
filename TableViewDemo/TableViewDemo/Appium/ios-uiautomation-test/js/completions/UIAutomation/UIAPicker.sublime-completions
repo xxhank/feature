@@ -1,0 +1,8 @@
+{
+    "scope": "source.js",
+    "version": "0.10",
+    "completions": [{
+        "trigger": "wheels()->UIAElementArray",
+        "contents": "wheels()"
+    }]
+}

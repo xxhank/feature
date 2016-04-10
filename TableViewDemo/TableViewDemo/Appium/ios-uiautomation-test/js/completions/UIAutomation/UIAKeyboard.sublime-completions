@@ -1,0 +1,14 @@
+{
+    "scope": "source.js",
+    "version": "0.10",
+    "completions": [
+        {
+            "trigger": "keys()->UIAElementArray",
+            "contents": "keys()"
+        },
+        {
+            "trigger": "typeString(string String)",
+            "contents": "typeString(${1:\"string\"}$0)"
+        }
+    ]
+}

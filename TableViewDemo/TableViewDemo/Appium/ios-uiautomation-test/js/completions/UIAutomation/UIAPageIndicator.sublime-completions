@@ -1,0 +1,25 @@
+{
+    "scope": "source.js",
+    "version": "0.10",
+    "completions": [{
+            "trigger": "goToNextPage()",
+            "contents": "goToNextPage()"
+        },
+        {
+            "trigger": "goToPreviousPage()",
+            "contents": "goToPreviousPage()"
+        },
+        {
+            "trigger": "pageCount()->Number",
+            "contents": "pageCount()"
+        },
+        {
+            "trigger": "pageIndex()->Number",
+            "contents": "pageIndex()"
+        },
+        {
+            "trigger": "selectPage(index Number)",
+            "contents": "selectPage(${1:index Number}$0)"
+        }
+    ]
+}

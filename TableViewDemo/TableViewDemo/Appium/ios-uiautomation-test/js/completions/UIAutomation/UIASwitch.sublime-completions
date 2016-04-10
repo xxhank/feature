@@ -1,0 +1,8 @@
+{
+    "scope": "source.js",
+    "version": "0.10",
+    "completions": [{
+        "trigger": "setValue(value Boolean)",
+        "contents": "setValue(${1:value Boolean}$0)"
+    }]
+}

@@ -1,0 +1,13 @@
+{
+    "scope": "source.js",
+    "version": "0.10",
+    "completions": [{
+            "trigger": "selectValue()",
+            "contents": "selectValue()"
+        },
+        {
+            "trigger": "values()->Array",
+            "contents": "values()"
+        }
+    ]
+}

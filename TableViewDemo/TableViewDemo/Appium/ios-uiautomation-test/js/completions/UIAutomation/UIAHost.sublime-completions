@@ -1,0 +1,10 @@
+{
+    "scope": "source.js",
+    "version": "0.10",
+    "completions": [
+        {
+            "trigger": "performTaskWithPathArgumentsTimeout(path, args, timeout)->object",
+            "contents": "performTaskWithPathArgumentsTimeout(${1:path},${2: args},${3: timeout}$0)"
+        }
+    ]
+}

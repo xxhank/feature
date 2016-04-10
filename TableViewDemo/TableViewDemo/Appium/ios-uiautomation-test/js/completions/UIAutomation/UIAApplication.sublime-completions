@@ -1,0 +1,65 @@
+{
+    "scope": "source.js",
+    "version": "0.10",
+    "completions": [{
+            "trigger": "actionSheet()->UIAActionSheet",
+            "contents": "actionSheet()"
+        },
+        {
+            "trigger": "alert()->UIAAlert",
+            "contents": "alert()"
+        },
+        {
+            "trigger": "bundleID()->String",
+            "contents": "bundleID()"
+        },
+        {
+            "trigger": "editingMenu()->UIAEditingMenu",
+            "contents": "editingMenu()"
+        },
+        {
+            "trigger": "interfaceOrientation()->Number",
+            "contents": "interfaceOrientation()"
+        },
+        {
+            "trigger": "keyboard()->UIAKeyboard",
+            "contents": "keyboard()"
+        },
+        {
+            "trigger": "mainWindow()->UIAWindow",
+            "contents": "mainWindow()"
+        },
+        {
+            "trigger": "navigationBar())->UIANavigationBar",
+            "contents": "navigationBar(${1:)}$0)"
+        },
+        {
+            "trigger": "preferencesValueForKey(key)->NotTyped",
+            "contents": "preferencesValueForKey(${1:key}$0)"
+        },
+        {
+            "trigger": "setPreferencesValueForKey(value NotTyped, key String)",
+            "contents": "setPreferencesValueForKey(${1:value NotTyped},${2: key String}$0)"
+        },
+        {
+            "trigger": "statusBar()->UIAStatusBar",
+            "contents": "statusBar()"
+        },
+        {
+            "trigger": "tabBar()->UIATabBar",
+            "contents": "tabBar()"
+        },
+        {
+            "trigger": "toolbar()->UIAToolbar",
+            "contents": "toolbar()"
+        },
+        {
+            "trigger": "version()->String",
+            "contents": "version()"
+        },
+        {
+            "trigger": "windows()->UIAElementArray",
+            "contents": "windows()"
+        }
+    ]
+}

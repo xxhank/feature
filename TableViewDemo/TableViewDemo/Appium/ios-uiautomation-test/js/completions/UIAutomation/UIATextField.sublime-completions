@@ -1,0 +1,10 @@
+{
+    "scope": "source.js",
+    "version": "0.10",
+    "completions": [
+        {
+            "trigger": "setValue(value String)",
+            "contents": "setValue(${1:\"value\"}$0)"
+        }
+    ]
+}
