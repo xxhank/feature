@@ -56,6 +56,7 @@
 		52B6B1AF1CAB3B7000492391 /* TableViewDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TableViewDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		52B6B1B31CAB3B7000492391 /* TableViewDemoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewDemoUITests.swift; sourceTree = "<group>"; };
 		52B6B1B51CAB3B7000492391 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		52BE7ECC1CB88284004B98A7 /* Appium */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Appium; sourceTree = "<group>"; };
 		A8531D06B5593936427A04AC /* Pods_TableViewDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TableViewDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -118,6 +119,7 @@
 		52B6B1921CAB3B7000492391 /* TableViewDemo */ = {
 			isa = PBXGroup;
 			children = (
+				52BE7ECC1CB88284004B98A7 /* Appium */,
 				52B6B1931CAB3B7000492391 /* AppDelegate.swift */,
 				52B6B1951CAB3B7000492391 /* ViewController.swift */,
 				52B6B1971CAB3B7000492391 /* Main.storyboard */,
@@ -171,6 +173,7 @@
 				52B6B18E1CAB3B7000492391 /* Resources */,
 				023491A8E27529E3C25B1395 /* Embed Pods Frameworks */,
 				4225B0727A72CEFB6874DF51 /* Copy Pods Resources */,
+				52BE7ECE1CB8AB67004B98A7 /* Copy App */,
 			);
 			buildRules = (
 			);
@@ -332,6 +335,20 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TableViewDemo/Pods-TableViewDemo-resources.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		52BE7ECE1CB8AB67004B98A7 /* Copy App */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy App";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "DEST=\"$SRCROOT/App\"\nif [[ ! -e $DEST ]]; then\n    mkdir $DEST\nfi\nrm -rf $DEST/${PRODUCT_NAME}.${WRAPPER_EXTENSION}\ncp -rf ${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.${WRAPPER_EXTENSION} $DEST/${PRODUCT_NAME}.${WRAPPER_EXTENSION}";
 		};
 /* End PBXShellScriptBuildPhase section */
 

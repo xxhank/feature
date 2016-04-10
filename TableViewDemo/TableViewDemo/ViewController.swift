@@ -9,7 +9,7 @@
 import UIKit
 import UITableView_FDTemplateLayoutCell
 
-func SSLogInfo(message: String, fileName: String = __FILE__, lineNumber: Int = __LINE__, functionName: String = __FUNCTION__) {
+func SSLogInfo(message: String, fileName: String = #file, lineNumber: Int = #line, functionName: String = #function) {
     print("[\((fileName as NSString).lastPathComponent as String):\(lineNumber) \(functionName)] \(message)")
 }
 
@@ -74,7 +74,7 @@ extension ViewController {
                 feedViewModels.append(self.generateViewModel())
             }
 
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(0.2 * Double(NSEC_PER_SEC))), dispatch_get_main_queue()) { [weak self] in
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(0.1 * Double(NSEC_PER_SEC))), dispatch_get_main_queue()) { [weak self] in
                 guard let context = self else { return }
                 context.feedViewModels = feedViewModels
                 context.feedListView.reloadData()
@@ -102,7 +102,7 @@ extension ViewController {
 
         let start: String.Index = sample.startIndex.advancedBy(beginOffset)
         let end: String.Index = sample.startIndex.advancedBy(beginOffset + length)
-        return sample.substringWithRange(Range(start: start, end: end))
+        return sample.substringWithRange(Range(start ..< end))
     }
 }
 
