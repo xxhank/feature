@@ -16,6 +16,10 @@
 		525F8E3C1CC522CF005EF7ED /* ReportEngineTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 525F8E3B1CC522CF005EF7ED /* ReportEngineTests.m */; };
 		525F8E471CC522CF005EF7ED /* ReportEngineUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 525F8E461CC522CF005EF7ED /* ReportEngineUITests.m */; };
 		525F8E561CC5242D005EF7ED /* ReportEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 525F8E551CC5242D005EF7ED /* ReportEngine.m */; };
+		525F8E591CC53670005EF7ED /* ReportManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 525F8E581CC53670005EF7ED /* ReportManager.m */; };
+		525F8E5C1CC53761005EF7ED /* ReportFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 525F8E5B1CC53761005EF7ED /* ReportFetcher.m */; };
+		525F8E5F1CC53E15005EF7ED /* ReportSchedule.m in Sources */ = {isa = PBXBuildFile; fileRef = 525F8E5E1CC53E15005EF7ED /* ReportSchedule.m */; };
+		525F8E621CC53E9C005EF7ED /* SSLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 525F8E611CC53E9C005EF7ED /* SSLogger.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +58,14 @@
 		525F8E481CC522CF005EF7ED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		525F8E541CC5242D005EF7ED /* ReportEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReportEngine.h; sourceTree = "<group>"; };
 		525F8E551CC5242D005EF7ED /* ReportEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReportEngine.m; sourceTree = "<group>"; };
+		525F8E571CC53670005EF7ED /* ReportManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReportManager.h; sourceTree = "<group>"; };
+		525F8E581CC53670005EF7ED /* ReportManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReportManager.m; sourceTree = "<group>"; };
+		525F8E5A1CC53761005EF7ED /* ReportFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReportFetcher.h; sourceTree = "<group>"; };
+		525F8E5B1CC53761005EF7ED /* ReportFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReportFetcher.m; sourceTree = "<group>"; };
+		525F8E5D1CC53E15005EF7ED /* ReportSchedule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReportSchedule.h; sourceTree = "<group>"; };
+		525F8E5E1CC53E15005EF7ED /* ReportSchedule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReportSchedule.m; sourceTree = "<group>"; };
+		525F8E601CC53E9C005EF7ED /* SSLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSLogger.h; sourceTree = "<group>"; };
+		525F8E611CC53E9C005EF7ED /* SSLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSLogger.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +127,14 @@
 				525F8E211CC522CF005EF7ED /* Supporting Files */,
 				525F8E541CC5242D005EF7ED /* ReportEngine.h */,
 				525F8E551CC5242D005EF7ED /* ReportEngine.m */,
+				525F8E5D1CC53E15005EF7ED /* ReportSchedule.h */,
+				525F8E5E1CC53E15005EF7ED /* ReportSchedule.m */,
+				525F8E571CC53670005EF7ED /* ReportManager.h */,
+				525F8E581CC53670005EF7ED /* ReportManager.m */,
+				525F8E5A1CC53761005EF7ED /* ReportFetcher.h */,
+				525F8E5B1CC53761005EF7ED /* ReportFetcher.m */,
+				525F8E601CC53E9C005EF7ED /* SSLogger.h */,
+				525F8E611CC53E9C005EF7ED /* SSLogger.m */,
 			);
 			path = ReportEngine;
 			sourceTree = "<group>";
@@ -276,9 +296,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				525F8E291CC522CF005EF7ED /* ViewController.m in Sources */,
+				525F8E5F1CC53E15005EF7ED /* ReportSchedule.m in Sources */,
+				525F8E591CC53670005EF7ED /* ReportManager.m in Sources */,
+				525F8E621CC53E9C005EF7ED /* SSLogger.m in Sources */,
 				525F8E261CC522CF005EF7ED /* AppDelegate.m in Sources */,
 				525F8E231CC522CF005EF7ED /* main.m in Sources */,
 				525F8E561CC5242D005EF7ED /* ReportEngine.m in Sources */,
+				525F8E5C1CC53761005EF7ED /* ReportFetcher.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

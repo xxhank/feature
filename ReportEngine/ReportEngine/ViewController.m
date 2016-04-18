@@ -11,6 +11,7 @@
 
 @interface ViewController ()
 @property (nonatomic, strong) ReportEngine *engine;
+
 @end
 
 @implementation ViewController
@@ -19,13 +20,25 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.engine = [[ReportEngine alloc] init];
+    self.engine = [[ReportEngine alloc] initWithManager:[[ReportManager alloc] init]
+                                                fetcher:[[ReportFetcher alloc] init]
+                                               schedule:[[ReportSchedule alloc] init]];
+
+    [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(createEvent:) userInfo:nil repeats:YES];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)createEvent:(id)sender
+{
+    if(arc4random() % 10 == 3)
+    {
+        [self.engine traceItem:[ReportItem new]];
+    }
 }
 
 - (IBAction)ToogleReport:(UIButton*)sender
