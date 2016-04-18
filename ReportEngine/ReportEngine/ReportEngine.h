@@ -7,8 +7,16 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "ReportManager.h"
+#import "ReportFetcher.h"
+#import "ReportSchedule.h"
 
 @interface ReportEngine : NSObject
+
+- (instancetype)initWithManager:(ReportManager*)manager
+                        fetcher:(ReportFetcher*)fetcher
+                       schedule:(ReportSchedule*)schedule NS_DESIGNATED_INITIALIZER;
 - (void)start;
 - (void)stop;
+- (void)traceItem:(ReportItem*)item;
 @end

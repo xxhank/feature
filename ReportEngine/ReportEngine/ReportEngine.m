@@ -7,76 +7,88 @@
 //
 
 #import "ReportEngine.h"
+#import "SSLogger.h"
 
-#define RELog(fmt, ...) NSLog(@"<%s:%d %s>" fmt, strrchr(__FILE__, '/') + 1, __LINE__, __FUNCTION__,##__VA_ARGS__)
 @interface ReportEngine ()
-@property (nonatomic, weak) NSThread *checkThread;
-@property (nonatomic, weak) NSTimer  *timer;
+@property (nonatomic, strong) ReportSchedule *schedule;
+@property (nonatomic, strong) ReportManager  *manager;
+@property (nonatomic, strong) ReportFetcher  *fetcher;
+@property (nonatomic, assign) BOOL            reporting;
 @end
 
 @implementation ReportEngine
+- (instancetype)init
+{
+    return [self initWithManager:[[ReportManager alloc] init]
+                         fetcher:[[ReportFetcher alloc] init]
+                        schedule:[[ReportSchedule alloc] init]];
+}
+
+- (instancetype)initWithManager:(ReportManager*)manager
+                        fetcher:(ReportFetcher*)fetcher
+                       schedule:(ReportSchedule*)schedule
+{
+    if (self = [super init])
+    {
+        _manager  = manager;
+        _fetcher  = fetcher;
+        _schedule = schedule;
+
+        __weak typeof(self) wself = self;
+
+        _schedule.schedule = ^{
+            [wself check];
+        };
+    }
+
+    return self;
+} /* initWithManager */
+
 - (void)start
 {
-    if (self.checkThread)
-    {
-        RELog("already runing");
-        return;
-    }
-    NSThread *thread = [[NSThread alloc] initWithTarget:self
-                                               selector:@selector(threadMain:)
-                                                 object:nil];
-
-    self.checkThread      = thread;
-    self.checkThread.name = @"check thread";
-    [self.checkThread start];
-} /* start */
+    [self.schedule start];
+}
 
 - (void)stop
 {
-    if(!self.checkThread)
-    {
-        RELog("thread not exist");
-        return;
-    }
+    [self.schedule stop];
+}
 
-    if ([NSThread currentThread] != self.checkThread)
-    {
-        [self performSelector:@selector(stop)
-                     onThread:self.checkThread
-                   withObject:nil
-                waitUntilDone:false];
-        return;
-    }
-
-    [self.timer invalidate];
-} /* stop */
-
-#pragma mark - thread
-- (void)threadMain:(id)session
+- (void)traceItem:(ReportItem*)item
 {
-    RELog(@"");
-    NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:1
-                                                      target:self
-                                                    selector:@selector(check)
-                                                    userInfo:nil
-                                                     repeats:YES];
+    [self.manager traceItem:item];
+}
 
-    self.timer = timer;
-
-    [[NSRunLoop currentRunLoop] addTimer:timer forMode:NSDefaultRunLoopMode];
-
-    while (timer.valid)
-    {
-        [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate dateWithTimeIntervalSinceNow:0.1]];
-    }
-
-
-    RELog(@"");
-} /* threadMain */
-
+#pragma mark -
 - (void)check
 {
-    RELog(@"%@", [NSThread currentThread]);
-}
+    ReportItem *item = [self.manager item];
+
+    if (!item)
+    {
+        SSLogInfo(@"nothing need report");
+        return;
+    }
+
+    if (self.reporting)
+    {
+        return;
+    }
+    self.reporting = YES;
+    SSLogInfo("report :%@", item);
+    __weak typeof(self) wself = self;
+    [self.fetcher report:item completion:^(id result, NSError *error) {
+        if (error)
+        {
+            [wself.manager processFailedItem:item];
+        }
+        else
+        {
+            [wself.manager processSuccessItem:item];
+        }
+        wself.reporting = NO;
+        SSLogInfo("report :%@ %@", item, error ? : @"sucess");
+    }];
+} /* check */
 
 @end
