@@ -15,11 +15,15 @@
 		525F8E311CC522CF005EF7ED /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 525F8E2F1CC522CF005EF7ED /* LaunchScreen.storyboard */; };
 		525F8E3C1CC522CF005EF7ED /* ReportEngineTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 525F8E3B1CC522CF005EF7ED /* ReportEngineTests.m */; };
 		525F8E471CC522CF005EF7ED /* ReportEngineUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 525F8E461CC522CF005EF7ED /* ReportEngineUITests.m */; };
-		525F8E561CC5242D005EF7ED /* ReportEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 525F8E551CC5242D005EF7ED /* ReportEngine.m */; };
-		525F8E591CC53670005EF7ED /* ReportManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 525F8E581CC53670005EF7ED /* ReportManager.m */; };
-		525F8E5C1CC53761005EF7ED /* ReportFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 525F8E5B1CC53761005EF7ED /* ReportFetcher.m */; };
-		525F8E5F1CC53E15005EF7ED /* ReportSchedule.m in Sources */ = {isa = PBXBuildFile; fileRef = 525F8E5E1CC53E15005EF7ED /* ReportSchedule.m */; };
 		525F8E621CC53E9C005EF7ED /* SSLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 525F8E611CC53E9C005EF7ED /* SSLogger.m */; };
+		5295FE691CC5A8FD00A95E88 /* ReportFetcherImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = 5295FE5D1CC5A8FD00A95E88 /* ReportFetcherImpl.m */; };
+		5295FE6A1CC5A8FD00A95E88 /* ReportQueueImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = 5295FE5F1CC5A8FD00A95E88 /* ReportQueueImpl.m */; };
+		5295FE6B1CC5A8FD00A95E88 /* ReportSchedulerImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = 5295FE611CC5A8FD00A95E88 /* ReportSchedulerImpl.m */; };
+		5295FE6C1CC5A8FD00A95E88 /* ReportEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 5295FE641CC5A8FD00A95E88 /* ReportEngine.m */; };
+		5295FE6E1CC5A98D00A95E88 /* ReportItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 5295FE6D1CC5A98D00A95E88 /* ReportItem.m */; };
+		52B7D76F1CC594E6006EBE9B /* SSPath.m in Sources */ = {isa = PBXBuildFile; fileRef = 52B7D76E1CC594E6006EBE9B /* SSPath.m */; };
+		52B7D7751CC59BE5006EBE9B /* SSStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 52B7D7741CC59BE5006EBE9B /* SSStorage.m */; };
+		B6EADA1A4C9608798996C3A4 /* Pods_ReportEngine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37DB6C96BCE2390FCBFA5ACA /* Pods_ReportEngine.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +44,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		37DB6C96BCE2390FCBFA5ACA /* Pods_ReportEngine.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ReportEngine.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		428A34D7D4587FE908D2974F /* Pods-ReportEngine.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReportEngine.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ReportEngine/Pods-ReportEngine.debug.xcconfig"; sourceTree = "<group>"; };
 		525F8E1E1CC522CE005EF7ED /* ReportEngine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ReportEngine.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		525F8E221CC522CF005EF7ED /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		525F8E241CC522CF005EF7ED /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -56,16 +62,27 @@
 		525F8E421CC522CF005EF7ED /* ReportEngineUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ReportEngineUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		525F8E461CC522CF005EF7ED /* ReportEngineUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReportEngineUITests.m; sourceTree = "<group>"; };
 		525F8E481CC522CF005EF7ED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		525F8E541CC5242D005EF7ED /* ReportEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReportEngine.h; sourceTree = "<group>"; };
-		525F8E551CC5242D005EF7ED /* ReportEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReportEngine.m; sourceTree = "<group>"; };
-		525F8E571CC53670005EF7ED /* ReportManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReportManager.h; sourceTree = "<group>"; };
-		525F8E581CC53670005EF7ED /* ReportManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReportManager.m; sourceTree = "<group>"; };
-		525F8E5A1CC53761005EF7ED /* ReportFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReportFetcher.h; sourceTree = "<group>"; };
-		525F8E5B1CC53761005EF7ED /* ReportFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReportFetcher.m; sourceTree = "<group>"; };
-		525F8E5D1CC53E15005EF7ED /* ReportSchedule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReportSchedule.h; sourceTree = "<group>"; };
-		525F8E5E1CC53E15005EF7ED /* ReportSchedule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReportSchedule.m; sourceTree = "<group>"; };
 		525F8E601CC53E9C005EF7ED /* SSLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSLogger.h; sourceTree = "<group>"; };
 		525F8E611CC53E9C005EF7ED /* SSLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSLogger.m; sourceTree = "<group>"; };
+		5295FE5C1CC5A8FD00A95E88 /* ReportFetcherImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReportFetcherImpl.h; sourceTree = "<group>"; };
+		5295FE5D1CC5A8FD00A95E88 /* ReportFetcherImpl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReportFetcherImpl.m; sourceTree = "<group>"; };
+		5295FE5E1CC5A8FD00A95E88 /* ReportQueueImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReportQueueImpl.h; sourceTree = "<group>"; };
+		5295FE5F1CC5A8FD00A95E88 /* ReportQueueImpl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReportQueueImpl.m; sourceTree = "<group>"; };
+		5295FE601CC5A8FD00A95E88 /* ReportSchedulerImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReportSchedulerImpl.h; sourceTree = "<group>"; };
+		5295FE611CC5A8FD00A95E88 /* ReportSchedulerImpl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReportSchedulerImpl.m; sourceTree = "<group>"; };
+		5295FE621CC5A8FD00A95E88 /* Report.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Report.h; sourceTree = "<group>"; };
+		5295FE631CC5A8FD00A95E88 /* ReportEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReportEngine.h; sourceTree = "<group>"; };
+		5295FE641CC5A8FD00A95E88 /* ReportEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReportEngine.m; sourceTree = "<group>"; };
+		5295FE651CC5A8FD00A95E88 /* ReportFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReportFetcher.h; sourceTree = "<group>"; };
+		5295FE661CC5A8FD00A95E88 /* ReportItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReportItem.h; sourceTree = "<group>"; };
+		5295FE671CC5A8FD00A95E88 /* ReportQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReportQueue.h; sourceTree = "<group>"; };
+		5295FE681CC5A8FD00A95E88 /* ReportScheduler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReportScheduler.h; sourceTree = "<group>"; };
+		5295FE6D1CC5A98D00A95E88 /* ReportItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReportItem.m; sourceTree = "<group>"; };
+		52B7D76D1CC594E6006EBE9B /* SSPath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSPath.h; sourceTree = "<group>"; };
+		52B7D76E1CC594E6006EBE9B /* SSPath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSPath.m; sourceTree = "<group>"; };
+		52B7D7731CC59BE5006EBE9B /* SSStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSStorage.h; sourceTree = "<group>"; };
+		52B7D7741CC59BE5006EBE9B /* SSStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSStorage.m; sourceTree = "<group>"; };
+		8CCC7E4D56875A6E1E0BFB7E /* Pods-ReportEngine.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReportEngine.release.xcconfig"; path = "Pods/Target Support Files/Pods-ReportEngine/Pods-ReportEngine.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +90,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B6EADA1A4C9608798996C3A4 /* Pods_ReportEngine.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -93,6 +111,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0B0D40BDEC71E3CFC4ED8E88 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				428A34D7D4587FE908D2974F /* Pods-ReportEngine.debug.xcconfig */,
+				8CCC7E4D56875A6E1E0BFB7E /* Pods-ReportEngine.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		17233DE8997A6F84CA1DDAF7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				37DB6C96BCE2390FCBFA5ACA /* Pods_ReportEngine.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		525F8E151CC522CE005EF7ED = {
 			isa = PBXGroup;
 			children = (
@@ -100,6 +135,8 @@
 				525F8E3A1CC522CF005EF7ED /* ReportEngineTests */,
 				525F8E451CC522CF005EF7ED /* ReportEngineUITests */,
 				525F8E1F1CC522CE005EF7ED /* Products */,
+				0B0D40BDEC71E3CFC4ED8E88 /* Pods */,
+				17233DE8997A6F84CA1DDAF7 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -116,6 +153,7 @@
 		525F8E201CC522CF005EF7ED /* ReportEngine */ = {
 			isa = PBXGroup;
 			children = (
+				5295FE5A1CC5A8FD00A95E88 /* Report */,
 				525F8E241CC522CF005EF7ED /* AppDelegate.h */,
 				525F8E251CC522CF005EF7ED /* AppDelegate.m */,
 				525F8E271CC522CF005EF7ED /* ViewController.h */,
@@ -125,16 +163,12 @@
 				525F8E2F1CC522CF005EF7ED /* LaunchScreen.storyboard */,
 				525F8E321CC522CF005EF7ED /* Info.plist */,
 				525F8E211CC522CF005EF7ED /* Supporting Files */,
-				525F8E541CC5242D005EF7ED /* ReportEngine.h */,
-				525F8E551CC5242D005EF7ED /* ReportEngine.m */,
-				525F8E5D1CC53E15005EF7ED /* ReportSchedule.h */,
-				525F8E5E1CC53E15005EF7ED /* ReportSchedule.m */,
-				525F8E571CC53670005EF7ED /* ReportManager.h */,
-				525F8E581CC53670005EF7ED /* ReportManager.m */,
-				525F8E5A1CC53761005EF7ED /* ReportFetcher.h */,
-				525F8E5B1CC53761005EF7ED /* ReportFetcher.m */,
 				525F8E601CC53E9C005EF7ED /* SSLogger.h */,
 				525F8E611CC53E9C005EF7ED /* SSLogger.m */,
+				52B7D76D1CC594E6006EBE9B /* SSPath.h */,
+				52B7D76E1CC594E6006EBE9B /* SSPath.m */,
+				52B7D7731CC59BE5006EBE9B /* SSStorage.h */,
+				52B7D7741CC59BE5006EBE9B /* SSStorage.m */,
 			);
 			path = ReportEngine;
 			sourceTree = "<group>";
@@ -165,6 +199,35 @@
 			path = ReportEngineUITests;
 			sourceTree = "<group>";
 		};
+		5295FE5A1CC5A8FD00A95E88 /* Report */ = {
+			isa = PBXGroup;
+			children = (
+				5295FE5B1CC5A8FD00A95E88 /* Impl */,
+				5295FE621CC5A8FD00A95E88 /* Report.h */,
+				5295FE631CC5A8FD00A95E88 /* ReportEngine.h */,
+				5295FE641CC5A8FD00A95E88 /* ReportEngine.m */,
+				5295FE651CC5A8FD00A95E88 /* ReportFetcher.h */,
+				5295FE681CC5A8FD00A95E88 /* ReportScheduler.h */,
+				5295FE661CC5A8FD00A95E88 /* ReportItem.h */,
+				5295FE6D1CC5A98D00A95E88 /* ReportItem.m */,
+				5295FE671CC5A8FD00A95E88 /* ReportQueue.h */,
+			);
+			path = Report;
+			sourceTree = "<group>";
+		};
+		5295FE5B1CC5A8FD00A95E88 /* Impl */ = {
+			isa = PBXGroup;
+			children = (
+				5295FE5C1CC5A8FD00A95E88 /* ReportFetcherImpl.h */,
+				5295FE5D1CC5A8FD00A95E88 /* ReportFetcherImpl.m */,
+				5295FE5E1CC5A8FD00A95E88 /* ReportQueueImpl.h */,
+				5295FE5F1CC5A8FD00A95E88 /* ReportQueueImpl.m */,
+				5295FE601CC5A8FD00A95E88 /* ReportSchedulerImpl.h */,
+				5295FE611CC5A8FD00A95E88 /* ReportSchedulerImpl.m */,
+			);
+			path = Impl;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -172,9 +235,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 525F8E4B1CC522CF005EF7ED /* Build configuration list for PBXNativeTarget "ReportEngine" */;
 			buildPhases = (
+				365B69DC200566EB5F4CCA17 /* Check Pods Manifest.lock */,
 				525F8E1A1CC522CE005EF7ED /* Sources */,
 				525F8E1B1CC522CE005EF7ED /* Frameworks */,
 				525F8E1C1CC522CE005EF7ED /* Resources */,
+				10ED06D4BF32B744D453A9AA /* Embed Pods Frameworks */,
+				E4E325BEBB4F504F62D1E18F /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -290,19 +356,70 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		10ED06D4BF32B744D453A9AA /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ReportEngine/Pods-ReportEngine-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		365B69DC200566EB5F4CCA17 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		E4E325BEBB4F504F62D1E18F /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ReportEngine/Pods-ReportEngine-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		525F8E1A1CC522CE005EF7ED /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5295FE6C1CC5A8FD00A95E88 /* ReportEngine.m in Sources */,
 				525F8E291CC522CF005EF7ED /* ViewController.m in Sources */,
-				525F8E5F1CC53E15005EF7ED /* ReportSchedule.m in Sources */,
-				525F8E591CC53670005EF7ED /* ReportManager.m in Sources */,
 				525F8E621CC53E9C005EF7ED /* SSLogger.m in Sources */,
 				525F8E261CC522CF005EF7ED /* AppDelegate.m in Sources */,
+				52B7D76F1CC594E6006EBE9B /* SSPath.m in Sources */,
+				5295FE6E1CC5A98D00A95E88 /* ReportItem.m in Sources */,
+				5295FE6B1CC5A8FD00A95E88 /* ReportSchedulerImpl.m in Sources */,
+				5295FE691CC5A8FD00A95E88 /* ReportFetcherImpl.m in Sources */,
+				5295FE6A1CC5A8FD00A95E88 /* ReportQueueImpl.m in Sources */,
 				525F8E231CC522CF005EF7ED /* main.m in Sources */,
-				525F8E561CC5242D005EF7ED /* ReportEngine.m in Sources */,
-				525F8E5C1CC53761005EF7ED /* ReportFetcher.m in Sources */,
+				52B7D7751CC59BE5006EBE9B /* SSStorage.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -441,9 +558,11 @@
 		};
 		525F8E4C1CC522CF005EF7ED /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 428A34D7D4587FE908D2974F /* Pods-ReportEngine.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = ReportEngine/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.magicpocket.ReportEngine;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -452,9 +571,11 @@
 		};
 		525F8E4D1CC522CF005EF7ED /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8CCC7E4D56875A6E1E0BFB7E /* Pods-ReportEngine.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = ReportEngine/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.magicpocket.ReportEngine;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -526,6 +647,7 @@
 				525F8E4D1CC522CF005EF7ED /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		525F8E4E1CC522CF005EF7ED /* Build configuration list for PBXNativeTarget "ReportEngineTests" */ = {
 			isa = XCConfigurationList;
@@ -534,6 +656,7 @@
 				525F8E501CC522CF005EF7ED /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		525F8E511CC522CF005EF7ED /* Build configuration list for PBXNativeTarget "ReportEngineUITests" */ = {
 			isa = XCConfigurationList;
@@ -542,6 +665,7 @@
 				525F8E531CC522CF005EF7ED /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
