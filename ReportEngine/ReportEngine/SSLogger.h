@@ -8,4 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-#define SSLogInfo(fmt, ...) NSLog(@"<%s:%d %s>" fmt, strrchr(__FILE__, '/') + 1, __LINE__, __FUNCTION__,##__VA_ARGS__)
+#define SSLogInfo(fmt, ...) NSLog(@"Info:<%s:%d %s>" fmt, strrchr(__FILE__, '/') + 1, __LINE__, __FUNCTION__,##__VA_ARGS__)
+#define SSLogWarning(fmt, ...) NSLog(@"Warn:<%s:%d %s>" fmt, strrchr(__FILE__, '/') + 1, __LINE__, __FUNCTION__,##__VA_ARGS__)
+#define SSLogError(fmt, ...) NSLog(@"Error:<%s:%d %s>" fmt, strrchr(__FILE__, '/') + 1, __LINE__, __FUNCTION__,##__VA_ARGS__)
