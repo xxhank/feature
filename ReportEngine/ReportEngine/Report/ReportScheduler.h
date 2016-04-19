@@ -1,5 +1,5 @@
 //
-// ReportSchedule.h
+// ReportScheduler.h
 // ReportEngine
 //
 // Created by wangchaojs02 on 16/4/19.
@@ -9,8 +9,8 @@
 #import <Foundation/Foundation.h>
 
 typedef void (^Schedule)();
-@interface ReportSchedule : NSObject
-@property (nonatomic, copy) Schedule schedule;
+@protocol ReportScheduler <NSObject>
 - (void)start;
 - (void)stop;
+- (void)setSchedule:(Schedule)schedule;
 @end

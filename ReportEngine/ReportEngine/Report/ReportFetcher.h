@@ -10,6 +10,8 @@
 
 @class ReportItem;
 typedef void (^ReportCompletion)(id result, NSError *error);
-@interface ReportFetcher : NSObject
+
+@protocol ReportFetcher <NSObject>
 - (void)report:(ReportItem*)item completion:(ReportCompletion)comletion;
+- (void)cancel;
 @end

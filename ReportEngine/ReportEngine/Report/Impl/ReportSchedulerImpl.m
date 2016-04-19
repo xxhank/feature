@@ -1,20 +1,21 @@
 //
-// ReportSchedule.m
+// ReportScheduler.m
 // ReportEngine
 //
 // Created by wangchaojs02 on 16/4/19.
 // Copyright © 2016年 wangchaojs02. All rights reserved.
 //
 
-#import "ReportSchedule.h"
+#import "ReportSchedulerImpl.h"
 #import "SSLogger.h"
 
-@interface ReportSchedule ()
+@interface ReportSchedulerImpl ()
+@property (nonatomic, copy) Schedule  schedule;
 @property (nonatomic, weak) NSThread *checkThread;
 @property (nonatomic, weak) NSTimer  *checkTimer;
 @end
 
-@implementation ReportSchedule
+@implementation ReportSchedulerImpl
 
 - (void)start
 {
@@ -55,24 +56,26 @@
 #pragma mark - thread
 - (void)threadMain:(id)session
 {
-    SSLogInfo(@"");
+    SSLogInfo(@"Begin");
     NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:1
                                                       target:self
                                                     selector:@selector(check)
                                                     userInfo:nil
                                                      repeats:YES];
-
+    
     self.checkTimer = timer;
     NSString *mode = NSDefaultRunLoopMode;
     [[NSRunLoop currentRunLoop] addTimer:timer forMode:mode];
 
     while (timer.valid)
     {
-        [[NSRunLoop currentRunLoop] runMode:mode beforeDate:[NSDate dateWithTimeIntervalSinceNow:0.1]];
+        [[NSRunLoop currentRunLoop] runMode:mode beforeDate:
+         [NSDate distantFuture]];
+         //[NSDate dateWithTimeIntervalSinceNow:0.1]];
     }
 
 
-    SSLogInfo(@"");
+    SSLogInfo(@"Done");
 } /* threadMain */
 
 - (void)check
