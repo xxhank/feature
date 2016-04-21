@@ -298,6 +298,7 @@
 				TargetAttributes = {
 					525F8E1D1CC522CE005EF7ED = {
 						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = VF9RT92LNC;
 					};
 					525F8E361CC522CF005EF7ED = {
 						CreatedOnToolsVersion = 7.3;
@@ -561,11 +562,14 @@
 			baseConfigurationReference = 428A34D7D4587FE908D2974F /* Pods-ReportEngine.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer: xiehui xie (T673VPKMTZ)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: xiehui xie (T673VPKMTZ)";
 				INFOPLIST_FILE = ReportEngine/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.magicpocket.ReportEngine;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "6214a5d0-dc01-4bf8-a86d-480da817c2bf";
 			};
 			name = Debug;
 		};
@@ -574,11 +578,14 @@
 			baseConfigurationReference = 8CCC7E4D56875A6E1E0BFB7E /* Pods-ReportEngine.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = ReportEngine/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.magicpocket.ReportEngine;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
