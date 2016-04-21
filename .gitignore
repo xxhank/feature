@@ -2,3 +2,11 @@ TableViewDemo/TableViewDemo.xcodeproj/project.xcworkspace/xcuserdata/wangchaojs0
 TableViewDemo/Podfile.lock
 TableViewDemo/Pods
 TableViewDemo/TableViewDemo.xcworkspace
+*.xcuserdatad
+xcuserdata
+*.xcworkspace
+Pods
+Podfile.lock
+build.log
+*.xcarchive
+.DS_Store
