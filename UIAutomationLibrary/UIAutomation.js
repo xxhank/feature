@@ -1,1030 +1,524 @@
 /**
  * Created by wangchaojs02 on 16/4/27.
  */
-
-var Class = function() {
-    var parent,
-        methods,
-        class_template = function() {
-        this.initialize.apply(this, arguments);
-        //copy the properties so that they can be called directly from the child
-        //class without $super, i.e., this.name
-        var reg = /\(([\s\S]*?)\)/;
-        var params = reg.exec(this.initialize.toString());
-        if (params) {
-            var param_names = params[1].split(',');
-            for ( var i=0; i<param_names.length; i++ ) {
-                this[param_names[i]] = arguments[i];
-            }
-        }
-    },
-        extend = function(destination, source) {
-            for (var property in source) {
-                destination[property] = source[property];
-            }
-
-            destination.$super =  function(method) {
-                return this.$parent[method].apply(this.$parent, Array.prototype.slice.call(arguments, 1));
-            }
-            return destination;
-        };
-
-    if (typeof arguments[0] === 'function') {
-        parent  = arguments[0];
-        methods = arguments[1];
-    } else {
-        methods = arguments[0];
+var UIA_DEVICE_ORIENTATION;
+(function (UIA_DEVICE_ORIENTATION) {
+    UIA_DEVICE_ORIENTATION[UIA_DEVICE_ORIENTATION["UIA_DEVICE_ORIENTATION_UNKNOWN"] = 1] = "UIA_DEVICE_ORIENTATION_UNKNOWN";
+    UIA_DEVICE_ORIENTATION[UIA_DEVICE_ORIENTATION["UIA_DEVICE_ORIENTATION_PORTRAIT"] = 2] = "UIA_DEVICE_ORIENTATION_PORTRAIT";
+    UIA_DEVICE_ORIENTATION[UIA_DEVICE_ORIENTATION["UIA_DEVICE_ORIENTATION_PORTRAIT_UPSIDEDOWN"] = 3] = "UIA_DEVICE_ORIENTATION_PORTRAIT_UPSIDEDOWN";
+    UIA_DEVICE_ORIENTATION[UIA_DEVICE_ORIENTATION["UIA_DEVICE_ORIENTATION_LANDSCAPELEFT"] = 4] = "UIA_DEVICE_ORIENTATION_LANDSCAPELEFT";
+    UIA_DEVICE_ORIENTATION[UIA_DEVICE_ORIENTATION["UIA_DEVICE_ORIENTATION_LANDSCAPERIGHT"] = 5] = "UIA_DEVICE_ORIENTATION_LANDSCAPERIGHT";
+    UIA_DEVICE_ORIENTATION[UIA_DEVICE_ORIENTATION["UIA_DEVICE_ORIENTATION_FACEUP"] = 6] = "UIA_DEVICE_ORIENTATION_FACEUP";
+    UIA_DEVICE_ORIENTATION[UIA_DEVICE_ORIENTATION["UIA_DEVICE_ORIENTATION_FACEDOWN"] = 7] = "UIA_DEVICE_ORIENTATION_FACEDOWN";
+})(UIA_DEVICE_ORIENTATION || (UIA_DEVICE_ORIENTATION = {}));
+var UIALogger = (function () {
+    function UIALogger() {
     }
-
-    if (parent !== undefined) {
-        extend(class_template.prototype, parent.prototype);
-        class_template.prototype.$parent = parent.prototype;
+    UIALogger.prototype.logFail = function (message) { };
+    UIALogger.prototype.logIssue = function (message) { };
+    UIALogger.prototype.logPass = function (message) { };
+    UIALogger.prototype.logStart = function (message) { };
+    UIALogger.prototype.logDebug = function (message) { };
+    UIALogger.prototype.logError = function (message) { };
+    UIALogger.prototype.logMessage = function (message) { };
+    UIALogger.prototype.logWarning = function (message) { };
+    return UIALogger;
+}());
+var UIAHost = (function () {
+    function UIAHost() {
     }
-    extend(class_template.prototype, methods);
-    class_template.prototype.constructor = class_template;
-
-    if (!class_template.prototype.initialize) class_template.prototype.initialize = function(){};
-
-    return class_template;
-};
-
-var UIALogger = Class({
-    initialize: function() {},
-    /**
-     *
-     * return undefined
-     */
-    logFail : function(message) {},
-    /**
-     *
-     * return undefined
-     */
-    logIssue : function(message) {},
-    /**
-     *
-     * return undefined
-     */
-    logPass : function(message) {},
-    /**
-     *
-     * return undefined
-     */
-    logStart : function(message) {},
-    /**
-     *
-     * return undefined
-     */
-    logDebug : function(message) {},
-    /**
-     *
-     * return undefined
-     */
-    logError : function(message) {},
-    /**
-     *
-     * return undefined
-     */
-    logMessage : function(message) {},
-    /**
-     *
-     * return undefined
-     */
-    logWarning : function(message) {}
-});
-
-var UIAHost = Class({
-    initialize: function() {},
-    /**
-     *
-     * return object
-     */
-    performTaskWithPathArgumentsTimeout : function(path, args, timeout) {}
-});
-
-var UIATarget = Class({
-    initialize: function() {},
-    /**
-     *
-     * return UIAHost
-     */
-    host : function() {},
-    /**
-     *
-     * return UIATarget
-     */
-    localTarget : function() {},
-    /**
-     * duration Number
-     * return Boolean
-     */
-    deactivateApp : function(duration) {},
-    /**
-     *
-     * return UIAApplication
-     */
-    frontMostApp : function() {},
-    /**
-     *
-     * return String
-     */
-    model : function() {},
-    /**
-     *
-     * return String
-     */
-    name : function() {},
-    /**
-     *
-     * return Rect
-     */
-    rect : function() {},
-    /**
-     *
-     * return String
-     */
-    systemName : function() {},
-    /**
-     *
-     * return String
-     */
-    systemVersion : function() {},
-    /**
-     *
-     * return Number deviceOrientation
-     */
-    deviceOrientation : function() {},
-    /**
-     *
-     * return undefined
-     */
-    setDeviceOrientation : function(deviceOrientation) {},
-    /**
-     * coordinate : {latitude:,longitude:}
-     * return boolean
-     */
-    setLocation : function(coordinate) {},
-    /**
-     * coordinate : {latitude:,longitude:}
-     * options : {altitude:,course:,speed:,
-     *            horizontalAccuracy:,
-     *            verticalAccuracy:}
-     * return boolean
-     */
-    setLocationWithOptions : function(coordinate, options){},
-    /**
-     * duration Number
-     * return undefined
-     */
-    holdVolumeDown : function(duration) {},
-    /**
-     * duration Number
-     * return undefined
-     */
-    holdVolumeUp : function(duration) {},
-    /**
-     * duration Number
-     * return undefined
-     */
-    lockForDuration : function(duration) {},
-    /**
-     *
-     * return undefined
-     */
-    lock : function() {},
-    /**
-     *
-     * return undefined
-     */
-    shake : function() {},
-    /**
-     *
-     * return undefined
-     */
-    unlock : function() {},
-    /**
-     * from rect|point
-     * to   rect|point
-     * duration Number
-     * return undefined
-     */
-    dragFromToForDuration : function(from, to, duration) {},
-    /**
-     * object rect|point|UIAElement
-     * return undefined
-     */
-    doubleTap : function(object) {},
-    /**
-     * from rect|point
-     * to   rect|point
-     * return undefined
-     */
-    flickFromTo : function(from, to) {},
-    /**
-     * from rect|point
-     * to   rect|point
-     * duration Number
-     * return undefined
-     */
-    pinchCloseFromToForDuration : function(from, to, duration) {},
-    /**
-     * from rect|point
-     * to   rect|point
-     * duration Number
-     * return undefined
-     */
-    pinchOpenFromToForDuration : function(from, to, duration) {},
-    /**
-     * center {x:,y:}
-     * options {duration:,radius:,rotation:,touchCount:}
-     * return undefined
-     */
-    rotateWithOptions : function(center, options) {},
-    /**
-     * object rect | point | UIAElement
-     * return undefined
-     */
-    tap : function(object) {},
-/**
- * object rect|point|UIAElement
- * options {tapCount:,touchCount:,duration:}
- * return undefined
- */
-tapWithOptions : function(object, options) {},
-/**
- * object rect|point|UIAElement
- * duration Number
- * return undefined
- */
-touchAndHold : function(object, duration) {},
-/**
- *
- * return undefined
- */
-captureRectWithName : function(rect, imageName) {},
-/**
- *
- * return undefined
- */
-captureScreenWithName : function(imageName) {},
-/**
- *
- * return Number
- */
-popTimeout : function() {},
-/**
- *
- * return undefined
- */
-pushTimeout : function(timeoutValue) {},
-/**
- *
- * return undefined
- */
-setTimeout : function(timeout) {},
-/**
- *
- * return Number
- */
-timeout : function() {},
-/**
- *
- * return Boolean
- */
-delay : function(timeInterval) {},
-/**
- *
- * return Boolean
- */
-onAlert : function(alert) {}
-});
-
-var UIAApplication = Class({
-    initialize: function() {},
-    /**
-     *
-     * return UIAActionSheet
-     */
-    actionSheet : function() {},
-    /**
-     *
-     * return UIAAlert
-     */
-    alert : function() {},
-    /**
-     *
-     * return String
-     */
-    bundleID : function() {},
-    /**
-     *
-     * return UIAEditingMenu
-     */
-    editingMenu : function() {},
-    /**
-     *
-     * return Number
-     */
-    interfaceOrientation : function() {},
-    /**
-     *
-     * return UIAKeyboard
-     */
-    keyboard : function() {},
-    /**
-     *
-     * return UIAWindow
-     */
-    mainWindow : function() {},
-    /**
-     *
-     * return UIANavigationBar
-     */
-    navigationBar : function() {},
-    /**
-     *
-     * return NotTyped
-     */
-    preferencesValueForKey : function(key) {},
-    /**
-     *
-     * return undefined
-     */
-    setPreferencesValueForKey : function(value, key) {},
-    /**
-     *
-     * return UIAStatusBar
-     */
-    statusBar : function() {},
-    /**
-     *
-     * return UIATabBar
-     */
-    tabBar : function() {},
-    /**
-     *
-     * return UIAToolbar
-     */
-    toolbar : function() {},
-    /**
-     *
-     * return String
-     */
-    version : function() {},
-    /**
-     *
-     * return UIAElementArray
-     */
-    windows : function() {}
-});
-
-var UIAElement = Class({
-    initialize: function() {},
-    /**
-     *
-     * return Point
-     */
-    hitpoint : function() {},
-    /**
-     *
-     * return Rect
-     */
-    rect : function() {},
-    /**
-     *
-     * return UIAElementArray
-     */
-    activityIndicators : function() {},
-    /**
-     *
-     * return UIAActivityView
-     */
-    activityView : function() {},
-    /**
-     *
-     * return UIAElementArray
-     */
-    ancestry : function() {},
-    /**
-     *
-     * return UIAElementArray
-     */
-    buttons : function() {},
-    /**
-     *
-     * return UIAElementArray
-     */
-    collectionViews:function () {},
-/**
- *
- * return UIAElementArray
- */
-elements : function() {},
-/**
- *
- * return UIAElementArray
- */
-images : function() {},
-/**
- *
- * return UIAElementArray
- */
-links : function() {},
-/**
- *
- * return UIAElement
- */
-navigationBar : function() {},
-/**
- *
- * return UIAElementArray
- */
-navigationBars : function() {},
-/**
- *
- * return UIAElementArray
- */
-pageIndicators : function() {},
-/**
- *
- * return UIAElement
- */
-parent : function() {},
-/**
- *
- * return UIAElementArray
- */
-pickers : function() {},
-/**
- *
- * return UIAPopover
- */
-popover : function() {},
-/**
- *
- * return UIAElementArray
- */
-progressIndicators : function() {},
-/**
- *
- * return UIAElementArray
- */
-scrollViews : function() {},
-/**
- *
- * return UIAElementArray
- */
-searchBars : function() {},
-/**
- *
- * return UIAElementArray
- */
-secureTextFields : function() {},
-/**
- *
- * return UIAElementArray
- */
-segmentedControls : function() {},
-/**
- *
- * return UIAElementArray
- */
-sliders : function() {},
-/**
- *
- * return UIAElementArray
- */
-staticTexts : function() {},
-/**
- *
- * return UIAElementArray
- */
-switches : function() {},
-/**
- *
- * return UIAElement
- */
-tabBar : function() {},
-/**
- *
- * return UIAElementArray
- */
-tabBars : function() {},
-/**
- *
- * return UIAElementArray
- */
-tableViews : function() {},
-/**
- *
- * return UIAElementArray
- */
-textFields : function() {},
-/**
- *
- * return UIAElementArray
- */
-textViews : function() {},
-/**
- *
- * return UIAElement
- */
-toolbar : function() {},
-/**
- *
- * return UIAElementArray
- */
-toolbars : function() {},
-/**
- *
- * return UIAElementArray
- */
-webViews : function() {},
-/**
- *
- * return undefined
- */
-doubleTap : function() {},
-/**
- * options {touchCount:,duration:,startOffset:{x:, y:},endOffset:{x:, y:}}
- * return undefined
- */
-dragInsideWithOptions : function(options) {},
-/**
- * options {touchCount:,startOffset:{x:, y:},endOffset:{x:, y:}}
- * return undefined
- */
-flickInsideWithOptions : function() {},
-/**
- * options {centerOffset:,duration:,radius:,rotation:,touchCount:}
- * return undefined
- */
-rotateWithOptions : function(options) {},
-/**
- *
- * return undefined
- */
-scrollToVisible : function() {},
-/**
- *
- * return undefined
- */
-tap : function() {},
-/**
- * options {tapCount:,touchCount:,duration:,tapOffset:}
- * return undefined
- */
-tapWithOptions : function(options) {},
-/**
- * duration Number
- * return undefined
- */
-touchAndHold : function(duration) {},
-/**
- *
- * return undefined
- */
-twoFingerTap : function() {},
-/**
- *
- * return Boolean
- */
-checkIsValid : function() {},
-/**
- *
- * return Number
- */
-hasKeyboardFocus : function() {},
-/**
- *
- * return Number
- */
-isEnabled : function() {},
-/**
- *
- * return Boolean
- */
-isValid : function() {},
-/**
- *
- * return Number
- */
-isVisible : function() {},
-/**
- *
- * return Boolean
- */
-waitForInvalid : function() {},
-/**
- *
- * return String
- */
-label : function() {},
-/**
- *
- * return String
- */
-name : function() {},
-/**
- *
- * return String
- */
-value : function() {},
-/**
- *
- * return UIAElement
- */
-withName : function(name) {},
-/**
- *
- * return UIAElement
- */
-withPredicate : function(predicateString) {},
-/**
- *
- * return UIAElement
- */
-withValueForKey : function(value, key) {},
-/**
- *
- * return undefined
- */
-logElement : function() {},
-/**
- *
- * return undefined
- */
-logElementTree : function() {}
-});
-
-var UIAElementArray = Class({
-    initialize: function() {},
-    /**
-     *
-     * return Number
-     */
-    length:0,
-/**
- *
- * return UIAElement
- */
-firstWithName : function(name) {},
-/**
- *
- * return UIAElement
- */
-firstWithPredicate : function(predicateString) {},
-/**
- *
- * return UIAElement
- */
-firstWithValueForKey : function(value, key) {},
-/**
- *
- * return Array
- */
-toArray : function() {},
-/**
- *
- * return UIAElementArray
- */
-withName : function(name) {},
-/**
- *
- * return UIAElementArray
- */
-withPredicate : function(predicateString) {},
-/**
- *
- * return UIAElementArray
- */
-withValueForKey : function(value, key) {}
-});
-var UIAScrollView = Class({
-    initialize: function() {},
-    /**
-     *
-     * return undefined
-     */
-    scrollUp : function() {},
-    /**
-     *
-     * return undefined
-     */
-    scrollDown : function() {},
-    /**
-     *
-     * return undefined
-     */
-    scrollLeft : function() {},
-    /**
-     *
-     * return undefined
-     */
-    scrollRight : function() {},
-    /**
-     *
-     * return UIAElement
-     */
-    scrollToElementWithName : function(name) {},
-    /**
-     *
-     * return UIAElement
-     */
-    scrollToElementWithPredicate : function(predicateString) {},
-    /**
-     *
-     * return UIAElement
-     */
-    scrollToElementWithValueForKey : function(value, key) {}
-});
-
-var UIATableView = Class(UIAScrollView,{
-    initialize: function() {},
-/**
- *
- * return UIAElementArray
- */
-cells : function() {},
-/**
- *
- * return UIAElementArray
- */
-groups : function() {},
-/**
- *
- * return UIAElementArray
- */
-visibleCells : function() {}
-});
-
-var UIATableCell = Class({
-    initialize: function() {}
-});
-
-var UIATableGroup = Class({
-    initialize: function() {}
-});
-
-var UIACollectionView = Class({
-    initialize: function() {},
-    /**
-     *
-     * return UIAElementArray
-     */
-    cells : function() {},
-    /**
-     *
-     * return UIAElementArray
-     */
-    visibleCells : function() {}
-});
-
-var UIAButton = Class({
-    initialize: function() {}
-});
-
-var UIAActionSheet = Class({
-    initialize: function() {},
-
-    /**
-     *
-     * return UIAButton
-     */
-    cancelButton : function() {}
-});
-var UIAActivityIndicator = Class({
-    initialize: function() {}
-});
-
-var UIAActivityView = Class({
-    initialize: function() {},
-
-    /**
-     *
-     * return UIAButton
-     */
-    cancelButton : function() {}
-});
-var UIAAlert = Class({
-    initialize: function() {},
-    /**
-     *
-     * return UIAButton
-     */
-    cancelButton : function() {},
-    /**
-     *
-     * return UIAButton
-     */
-    defaultButton : function() {}
-});
-var UIAEditingMenu = Class({
-    initialize: function() {}
-});
-
-
-var UIAKey = Class({
-    initialize: function() {}
-});
-
-var UIAKeyboard = Class({
-    initialize: function() {},
-    /**
-     *
-     * return UIAElementArray
-     */
-    keys : function() {},
-    /**
-     *
-     * return undefined
-     */
-    typeString : function(string) {}
-});
-
-var UIALink = Class({
-    initialize: function() {},
-    /**
-     *
-     * return String
-     */
-    url : function() {}
-});
-
-var UIANavigationBar = Class({
-    initialize: function() {},
-    /**
-     *
-     * return UIAButton
-     */
-    leftButton : function() {},
-    /**
-     *
-     * return UIAButton
-     */
-    rightButton : function() {}
-});
-
-var UIAPageIndicator = Class({
-    initialize: function() {},
-    /**
-     *
-     * return undefined
-     */
-    goToNextPage : function() {},
-    /**
-     *
-     * return undefined
-     */
-    goToPreviousPage : function() {},
-    /**
-     *
-     * return Number
-     */
-    pageCount : function() {},
-    /**
-     *
-     * return Number
-     */
-    pageIndex : function() {},
-    /**
-     *
-     * return undefined
-     */
-    selectPage : function(index) {}
-});
-
-var UIAPicker = Class({
-    initialize: function() {},
-    /**
-     *
-     * return UIAElementArray
-     */
-    wheels : function() {}
-});
-
-var UIAPickerWheel = Class({
-    initialize: function() {},
-    /**
-     *
-     * return undefined
-     */
-    selectValue : function() {},
-    /**
-     *
-     * return Array
-     */
-    values : function() {}
-});
-
-var UIAPopover = Class({
-    initialize: function() {},
-    /**
-     *
-     * return UIAActionSheet
-     */
-    actionSheet : function() {},
-    /**
-     *
-     * return UIANavigationBar
-     */
-    navigationBar : function() {},
-    /**
-     *
-     * return UIATabBar
-     */
-    tabBar : function() {},
-    /**
-     *
-     * return UIAToolbar
-     */
-    toolbar : function() {},
-    /**
-     *
-     * return void
-     */
-    dismiss : function() {}
-});
-
-var UIAProgressIndicator = Class({
-    initialize: function() {}
-});
-
-var UIASearchBar = Class({
-    initialize: function() {}
-});
-
-var UIASegmentedControl = Class({
-    initialize: function() {},
-    /**
-     *
-     * return UIAElement
-     */
-    selectedButton : function() {}
-});
-
-var UIASlider = Class({
-    initialize: function() {},
-    /**
-     *
-     * return undefined
-     */
-    dragToValue : function(value) {}
-});
-
-var UIAStaticText = Class({
-    initialize: function() {}
-});
-
-var UIAStatusBar = Class({
-    initialize: function() {}
-});
-
-var UIASwitch = Class({
-    initialize: function() {},
-    /**
-     *
-     * return undefined
-     */
-    setValue : function(value) {}
-});
-
-var UIATabBar = Class({
-    initialize: function() {},
-    /**
-     *
-     * return UIAButton
-     */
-    selectedButton : function() {}
-});
-
-var UIATextField = Class(UIAElement, {
-    initialize: function() {},
-    /**
-     *
-     * return undefined
-     */
-    setValue : function(value) {}
-});
-
-var UIASecureTextField = Class(UIATextField, {
-    initialize: function() {}
-
-});
-
-var UIATextView = Class(UIAElement, {
-    initialize: function() {},
-    /**
-     *
-     * return undefined
-     */
-    setValue : function(value) {}
-});
-
-var UIAToolbar = Class({
-    initialize: function() {}
-});
-
-var UIAWebView = Class({
-    initialize: function() {}
-});
-
+    UIAHost.prototype.performTaskWithPathArgumentsTimeout = function (path, args, timeout) { };
+    return UIAHost;
+}());
+var Coordinate = (function () {
+    function Coordinate(latitude, longitude) {
+    }
+    return Coordinate;
+}());
+var LocationOptions = (function () {
+    function LocationOptions() {
+    }
+    return LocationOptions;
+}());
+var UIATarget = (function () {
+    function UIATarget() {
+    }
+    UIATarget.prototype.host = function () { };
+    UIATarget.prototype.localTarget = function () { };
+    UIATarget.prototype.deactivateApp = function (duration) { };
+    UIATarget.prototype.frontMostApp = function () { };
+    UIATarget.prototype.model = function () { };
+    UIATarget.prototype.name = function () { };
+    UIATarget.prototype.rect = function () { };
+    UIATarget.prototype.systemName = function () { };
+    UIATarget.prototype.systemVersion = function () { };
+    UIATarget.prototype.deviceOrientation = function () { };
+    UIATarget.prototype.setDeviceOrientation = function (deviceOrientation) { };
+    UIATarget.prototype.setLocation = function (coordinate) { };
+    UIATarget.prototype.setLocationWithOptions = function (coordinate, options) { };
+    UIATarget.prototype.holdVolumeDown = function (duration) { };
+    UIATarget.prototype.holdVolumeUp = function (duration) { };
+    UIATarget.prototype.lockForDuration = function (duration) { };
+    UIATarget.prototype.lock = function () { };
+    UIATarget.prototype.shake = function () { };
+    UIATarget.prototype.unlock = function () { };
+    UIATarget.prototype.dragFromToForDuration = function (rect, rect, duration) {
+        if (rect === void 0) { rect =  | point; }
+        if (rect === void 0) { rect =  | point; }
+    };
+    UIATarget.prototype.doubleTap = function (rect) {
+        if (rect === void 0) { rect =  | point | UIAElement; }
+    };
+    UIATarget.prototype.flickFromTo = function (rect, rect) {
+        if (rect === void 0) { rect =  | point; }
+        if (rect === void 0) { rect =  | point; }
+    };
+    UIATarget.prototype.pinchCloseFromToForDuration = function (rect, rect, duration) {
+        if (rect === void 0) { rect =  | point; }
+        if (rect === void 0) { rect =  | point; }
+    };
+    UIATarget.prototype.pinchOpenFromToForDuration = function (rect, rect, duration) {
+        if (rect === void 0) { rect =  | point; }
+        if (rect === void 0) { rect =  | point; }
+    };
+    UIATarget.prototype.rotateWithOptions = function (_a, _b) {
+        var  = _a.x,  = _a.y;
+        var  = _b.duration,  = _b.radius,  = _b.rotation,  = _b.touchCount;
+    };
+    UIATarget.prototype.tap = function (rect) {
+        if (rect === void 0) { rect =  | point | UIAElement; }
+    };
+    UIATarget.prototype.tapWithOptions = function (rect, _a) {
+        if (rect === void 0) { rect =  | point | UIAElement; }
+        var  = _a.tapCount,  = _a.touchCount,  = _a.duration;
+    };
+    UIATarget.prototype.touchAndHold = function (rect, duration) {
+        if (rect === void 0) { rect =  | point | UIAElement; }
+    };
+    UIATarget.prototype.captureRectWithName = function (rect, imageName) { };
+    UIATarget.prototype.captureScreenWithName = function (imageName) { };
+    UIATarget.prototype.popTimeout = function () { };
+    UIATarget.prototype.pushTimeout = function (timeoutValue) { };
+    UIATarget.prototype.setTimeout = function (timeout) { };
+    UIATarget.prototype.timeout = function () { };
+    UIATarget.prototype.delay = function (timeInterval) { };
+    UIATarget.prototype.onAlert = function (alert) { };
+    return UIATarget;
+}());
+var UIAApplication = (function () {
+    function UIAApplication() {
+        this.UIANavigationBar = {};
+    }
+    UIAApplication.prototype.actionSheet = function () { };
+    UIAApplication.prototype.alert = function () { };
+    UIAApplication.prototype.bundleID = function () { };
+    UIAApplication.prototype.editingMenu = function () { };
+    UIAApplication.prototype.interfaceOrientation = function () { };
+    UIAApplication.prototype.keyboard = function () { };
+    UIAApplication.prototype.mainWindow = function () { };
+    UIAApplication.prototype.navigationBar = ;
+    UIAApplication.prototype.preferencesValueForKey = function (key) { };
+    UIAApplication.prototype.setPreferencesValueForKey = function (value, key) { };
+    UIAApplication.prototype.statusBar = function () { };
+    UIAApplication.prototype.tabBar = function () { };
+    UIAApplication.prototype.toolbar = function () { };
+    UIAApplication.prototype.version = function () { };
+    UIAApplication.prototype.windows = function () { };
+    return UIAApplication;
+}());
+var UIAElement = (function () {
+    function UIAElement() {
+    }
+    UIAElement.prototype.hitpoint = function () { };
+    UIAElement.prototype.rect = function () { };
+    UIAElement.prototype.activityIndicators = function () { };
+    UIAElement.prototype.activityView = function () { };
+    UIAElement.prototype.ancestry = function () { };
+    UIAElement.prototype.buttons = function () { };
+    return UIAElement;
+}());
+(UIAElementArray);
+collectionViews();
+elements();
+UIAElementArray;
+{ }
+images();
+UIAElementArray;
+{ }
+links();
+UIAElementArray;
+{ }
+navigationBar();
+UIAElement;
+{ }
+navigationBars();
+UIAElementArray;
+{ }
+pageIndicators();
+UIAElementArray;
+{ }
+parent();
+UIAElement;
+{ }
+pickers();
+UIAElementArray;
+{ }
+popover();
+UIAPopover;
+{ }
+progressIndicators();
+UIAElementArray;
+{ }
+scrollViews();
+UIAElementArray;
+{ }
+searchBars();
+UIAElementArray;
+{ }
+secureTextFields();
+UIAElementArray;
+{ }
+segmentedControls();
+UIAElementArray;
+{ }
+sliders();
+UIAElementArray;
+{ }
+staticTexts();
+UIAElementArray;
+{ }
+switches();
+UIAElementArray;
+{ }
+tabBar();
+UIAElement;
+{ }
+tabBars();
+UIAElementArray;
+{ }
+tableViews();
+UIAElementArray;
+{ }
+textFields();
+UIAElementArray;
+{ }
+textViews();
+UIAElementArray;
+{ }
+toolbar();
+UIAElement;
+{ }
+toolbars();
+UIAElementArray;
+{ }
+webViews();
+UIAElementArray;
+{ }
+doubleTap();
+{ }
+dragInsideWithOptions({ touchCount: , duration: , startOffset: { x: , y:  }, endOffset: { x: , y:  } });
+{ }
+flickInsideWithOptions({ touchCount: , startOffset: { x: , y:  }, endOffset: { x: , y:  } });
+{ }
+rotateWithOptions({ centerOffset: , duration: , radius: , rotation: , touchCount:  });
+{ }
+scrollToVisible();
+{ }
+tap();
+{ }
+tapWithOptions({ tapCount: , touchCount: , duration: , tapOffset:  });
+{ }
+touchAndHold(duration, Number);
+{ }
+twoFingerTap();
+{ }
+checkIsValid();
+Boolean;
+{ }
+hasKeyboardFocus();
+Number;
+{ }
+isEnabled();
+Number;
+{ }
+isValid();
+Boolean;
+{ }
+isVisible();
+Number;
+{ }
+waitForInvalid();
+Boolean;
+{ }
+label();
+string;
+{ }
+name();
+string;
+{ }
+value();
+string;
+{ }
+withName(name, string);
+UIAElement;
+{ }
+withPredicate(predicateString, PredicateString);
+UIAElement;
+{ }
+withValueForKey(value, NotTyped, key, string);
+UIAElement;
+{ }
+logElement();
+{ }
+logElementTree();
+{ }
+var UIAElementArray = (function () {
+    function UIAElementArray() {
+    }
+    return UIAElementArray;
+}());
+(Number);
+length;
+firstWithName(name, string);
+UIAElement;
+{ }
+firstWithPredicate(predicateString, PredicateString);
+UIAElement;
+{ }
+firstWithValueForKey(value, NotTyped, key, string);
+UIAElement;
+{ }
+toArray();
+Array;
+{ }
+withName(name, string);
+UIAElementArray;
+{ }
+withPredicate(predicateString, PredicateString);
+UIAElementArray;
+{ }
+withValueForKey(value, NotTyped, key, string);
+UIAElementArray;
+{ }
+UIAElementNil;
+var UIAScrollView = (function () {
+    function UIAScrollView() {
+    }
+    UIAScrollView.prototype.scrollUp = function () { };
+    UIAScrollView.prototype.scrollDown = function () { };
+    UIAScrollView.prototype.scrollLeft = function () { };
+    UIAScrollView.prototype.scrollRight = function () { };
+    UIAScrollView.prototype.scrollToElementWithName = function (name) { };
+    UIAScrollView.prototype.scrollToElementWithPredicate = function (predicateString) { };
+    UIAScrollView.prototype.scrollToElementWithValueForKey = function (value, key) { };
+    return UIAScrollView;
+}());
+var UIATableView = (function () {
+    function UIATableView() {
+    }
+    return UIATableView;
+}());
+UIAScrollView;
+{
+    cells();
+    UIAElementArray;
+    { }
+    groups();
+    UIAElementArray;
+    { }
+    visibleCells();
+    UIAElementArray;
+    { }
+}
+var UIATableCell = (function () {
+    function UIATableCell() {
+    }
+    return UIATableCell;
+}());
+var UIATableGroup = (function () {
+    function UIATableGroup() {
+    }
+    return UIATableGroup;
+}());
+var UIACollectionView = (function () {
+    function UIACollectionView() {
+    }
+    UIACollectionView.prototype.cells = function () { };
+    UIACollectionView.prototype.visibleCells = function () { };
+    return UIACollectionView;
+}());
+var UIAButton = (function () {
+    function UIAButton() {
+    }
+    return UIAButton;
+}());
+var UIAActionSheet = (function () {
+    function UIAActionSheet() {
+    }
+    UIAActionSheet.prototype.cancelButton = function () { };
+    return UIAActionSheet;
+}());
+var UIAActivityIndicator = (function () {
+    function UIAActivityIndicator() {
+    }
+    return UIAActivityIndicator;
+}());
+var UIAActivityView = (function () {
+    function UIAActivityView() {
+    }
+    UIAActivityView.prototype.cancelButton = function () { };
+    return UIAActivityView;
+}());
+var UIAAlert = (function () {
+    function UIAAlert() {
+    }
+    UIAAlert.prototype.cancelButton = function () { };
+    UIAAlert.prototype.defaultButton = function () { };
+    return UIAAlert;
+}());
+var UIAEditingMenu = (function () {
+    function UIAEditingMenu() {
+    }
+    return UIAEditingMenu;
+}());
+var UIAKey = (function () {
+    function UIAKey() {
+    }
+    return UIAKey;
+}());
+var UIAKeyboard = (function () {
+    function UIAKeyboard() {
+    }
+    UIAKeyboard.prototype.keys = function () { };
+    UIAKeyboard.prototype.typeString = function (string) { };
+    return UIAKeyboard;
+}());
+var UIALink = (function () {
+    function UIALink() {
+    }
+    UIALink.prototype.url = function () { };
+    return UIALink;
+}());
+var UIANavigationBar = (function () {
+    function UIANavigationBar() {
+    }
+    UIANavigationBar.prototype.leftButton = function () { };
+    UIANavigationBar.prototype.rightButton = function () { };
+    return UIANavigationBar;
+}());
+var UIAPageIndicator = (function () {
+    function UIAPageIndicator() {
+    }
+    UIAPageIndicator.prototype.goToNextPage = function () { };
+    UIAPageIndicator.prototype.goToPreviousPage = function () { };
+    UIAPageIndicator.prototype.pageCount = function () { };
+    UIAPageIndicator.prototype.pageIndex = function () { };
+    UIAPageIndicator.prototype.selectPage = function (index) { };
+    return UIAPageIndicator;
+}());
+var UIAPicker = (function () {
+    function UIAPicker() {
+    }
+    UIAPicker.prototype.wheels = function () { };
+    return UIAPicker;
+}());
+var UIAPickerWheel = (function () {
+    function UIAPickerWheel() {
+    }
+    UIAPickerWheel.prototype.selectValue = function () { };
+    UIAPickerWheel.prototype.values = function () { };
+    return UIAPickerWheel;
+}());
+var UIAPopover = (function () {
+    function UIAPopover() {
+    }
+    UIAPopover.prototype.actionSheet = function () { };
+    UIAPopover.prototype.navigationBar = function () { };
+    UIAPopover.prototype.tabBar = function () { };
+    UIAPopover.prototype.toolbar = function () { };
+    UIAPopover.prototype.dismiss = function () { };
+    return UIAPopover;
+}());
+var UIAProgressIndicator = (function () {
+    function UIAProgressIndicator() {
+    }
+    return UIAProgressIndicator;
+}());
+var UIASearchBar = (function () {
+    function UIASearchBar() {
+    }
+    return UIASearchBar;
+}());
+var UIASegmentedControl = (function () {
+    function UIASegmentedControl() {
+    }
+    UIASegmentedControl.prototype.selectedButton = function () { };
+    return UIASegmentedControl;
+}());
+var UIASlider = (function () {
+    function UIASlider() {
+    }
+    UIASlider.prototype.dragToValue = function (value) { };
+    return UIASlider;
+}());
+var UIAStaticText = (function () {
+    function UIAStaticText() {
+    }
+    return UIAStaticText;
+}());
+var UIAStatusBar = (function () {
+    function UIAStatusBar() {
+    }
+    return UIAStatusBar;
+}());
+var UIASwitch = (function () {
+    function UIASwitch() {
+    }
+    UIASwitch.prototype.setValue = function (value) { };
+    return UIASwitch;
+}());
+var UIATabBar = (function () {
+    function UIATabBar() {
+    }
+    UIATabBar.prototype.selectedButton = function () { };
+    return UIATabBar;
+}());
+var UIATextField = (function () {
+    function UIATextField() {
+    }
+    return UIATextField;
+}());
+UIAElement;
+{
+    setValue(value, string);
+    { }
+}
+var UIASecureTextField = (function () {
+    function UIASecureTextField() {
+    }
+    return UIASecureTextField;
+}());
+UIATextField;
+{
+}
+var UIATextView = (function () {
+    function UIATextView() {
+    }
+    return UIATextView;
+}());
+UIAElement;
+{
+    setValue(value, string);
+    { }
+}
+var UIAToolbar = (function () {
+    function UIAToolbar() {
+    }
+    return UIAToolbar;
+}());
+var UIAWebView = (function () {
+    function UIAWebView() {
+    }
+    return UIAWebView;
+}());
+//# sourceMappingURL=UIAutomation.js.map
