@@ -9,52 +9,67 @@
 import UIKit
 import SQLite
 
-func SSLogInfo(message: Any, fileName: String = #file, lineNumber: Int = #line, functionName: String = #function) {
-    print("<\((fileName as NSString).lastPathComponent):\(lineNumber) \(functionName)>Info: \(message)")
-}
+class Storage2 {
+    class func connect_table(table tableName: String, fields: [Expressible], primaryKey: String, database: String) -> (Connection?, Table?, NSError?) {
+        let databasePath = SSPath.document.stringByAppendingString("/\(database)")
+        do {
+            SSLogInfo(databasePath)
+            SSLogInfo(tableName)
+            let database = try Connection(databasePath)
+            let table = Table(tableName)
+            if fields.count == 0 {
+                return (database, table, nil)
+            }
 
-func SSLogWarning(message: Any, fileName: String = #file, lineNumber: Int = #line, functionName: String = #function) {
-    print("<\((fileName as NSString).lastPathComponent):\(lineNumber) \(functionName)>Warn: \(message)")
-}
+            let tableInfo = try database.prepare("PRAGMA table_info(\(tableName))")
+            try database.run(table.create(ifNotExists: true, block: { builder in
+                for field in fields {
+                    let isPrimaryKey = field.expression.template == primaryKey.ss_quote()
+                    if let expression = field as? Expression<Int> {
+                        builder.column(expression, primaryKey: isPrimaryKey)
+                    } else if let expression = field as? Expression<Int64> {
+                        builder.column(expression, primaryKey: isPrimaryKey)
+                    } else if let expression = field as? Expression<String> {
+                        builder.column(expression, primaryKey: isPrimaryKey)
+                    } else if let expression = field as? Expression<String?> {
+                        builder.column(expression)
+                    } else if let expression = field as? Expression<Double> {
+                        builder.column(expression)
+                    } else {
+                        SSLogError("unexcept type : \(field)")
+                    }
+                } }))
 
-func SSLogError(message: Any, fileName: String = #file, lineNumber: Int = #line, functionName: String = #function) {
-    print("<\((fileName as NSString).lastPathComponent):\(lineNumber) \(functionName)>Error: \(message)")
-}
+            var missColumns = [String: Expressible]()
+            for field in fields {
+                missColumns[field.expression.template] = field
+            }
+            for column in tableInfo {
+                if let columnName = column[1] as? String {
+                    missColumns.removeValueForKey(columnName.ss_quote())
+                }
+            }
 
-enum DogColor: Int {
-    case Black = 0
-    case White
-    case Green
-}
+            for (_, value) in missColumns {
+                if let expression = value as? Expression<Int> {
+                    try database.run(table.addColumn(expression.optional()))
+                } else if let expression = value as? Expression<Int64> {
+                    try database.run(table.addColumn(expression.optional()))
+                } else if let expression = value as? Expression<String> {
+                    try database.run(table.addColumn(expression.optional()))
+                } else if let expression = value as? Expression<String?> {
+                    try database.run(table.addColumn(expression))
+                } else if let expression = value as? Expression<Double> {
+                    try database.run(table.addColumn(expression.optional()))
+                } else {
+                    SSLogError("unexcept type : \(value)")
+                }
+            }
 
-enum DogColorValue: Int {
-    case BlackValue
-    case WhiteValue
-    case GreenValue
-}
-
-struct Dog {
-    var NO: Int
-    var name: String
-    var color: DogColor
-    var owner: String?
-}
-struct Person {
-    var name: String
-    var age: Int
-    var addr: String
-    var dogs: [Dog]
-}
-
-class Soical {
-    var name: String
-    var addr: String
-    var members: [Person]
-
-    init(name: String, addr: String, members: [Person]) {
-        self.name = name
-        self.addr = addr
-        self.members = members
+            return (database, table, nil)
+        } catch(let error) {
+            return (nil, nil, error as NSError)
+        }
     }
 }
 
@@ -64,90 +79,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-
-        let dbPath = SSPath.document.stringByAppendingString("/sample.db")
-        SSLogInfo(dbPath)
-
-        let jok = Dog(NO: 12, name: "Jok", color: .Green, owner: nil)
-
-        do {
-            let db = try Connection(dbPath)
-
-            let table = Table("Dogs")
-            let NO = Expression<Int>("NO")
-            let name = Expression<String>("name")
-            let color = Expression<Int>("color")
-            let owner = Expression<String?>("owner")
-            let owner1 = Expression<String?>("owner1")
-            let owner2 = Expression<String?>("owner2")
-            let owner3 = Expression<String?>("owner3")
-
-            // let result = try db.prepare("PRAGMA user_version")
-            // let version = result.row[0] as Int64
-
-            let tableInfo = try db.prepare("PRAGMA table_info(Dogs)")
-            if tableInfo.columnCount > 0 {
-                var matches: [String: Bool] = [
-                    "NO": false,
-                    "name": false,
-                    "color": false,
-                    "owner": false,
-                    "owner1": false,
-                    "owner2": false,
-                    "owner3": false]
-
-                for x in tableInfo {
-                    let columnName = x[1] as! String
-                    matches[columnName] = true
-                }
-                // let needAltTable = matches.reduce(0, combine: { (begin, item) -> Int in
-                // return begin + (item.1 ? 1 : 0)
-                // }) != matches.count
-                let missingColumns = matches.filter { !$0.1 }
-                for missingColumn in missingColumns {
-                    switch missingColumn.0 {
-                    case "owner":
-                        try db.run(table.addColumn(owner))
-                    case "owner1":
-                        try db.run(table.addColumn(owner1))
-                    case "owner2":
-                        try db.run(table.addColumn(owner2))
-                    case "owner3":
-                        try db.run(table.addColumn(owner3))
-                    default: break
-                    }
-                }
-            }
-
-            try db.run(table.create(ifNotExists: true, block: { builder in
-                builder.column(NO, primaryKey: .Autoincrement)
-                builder.column(name)
-                builder.column(color)
-                builder.column(owner)
-                }))
-
-            try db.run(table.insert(or: .Replace,
-                NO <- jok.NO,
-                name <- jok.name,
-                color <- jok.color.rawValue,
-                owner <- jok.owner,
-                owner1 <- jok.owner,
-                owner2 <- jok.owner,
-                owner3 <- jok.owner))
-        } catch(let error) {
-            SSLogError(error)
-        }
-
-        let jokInpsect = Mirror(reflecting: jok)
-        for child in jokInpsect.children {
-            print("\(child.label!) \(child.value) \(child.value.dynamicType)")
-        }
-
-        let tom = Person(name: "tom", age: 33, addr: "American", dogs: [jok])
-        let tomInspect = Mirror(reflecting: tom)
-        for child in tomInspect.children {
-            print("\(child.label!) \(child.value) \(child.value.dynamicType)")
-        }
         return true
     }
 

@@ -16,6 +16,10 @@
 		5295FE9C1CC67AE300A95E88 /* StorageUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5295FE9B1CC67AE300A95E88 /* StorageUITests.swift */; };
 		5295FEAA1CC67B1500A95E88 /* SSPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5295FEA91CC67B1500A95E88 /* SSPath.swift */; };
 		5295FEAC1CC67B8700A95E88 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5295FEAB1CC67B8700A95E88 /* Person.swift */; };
+		61BBFDAB1CCB12D200539223 /* SSLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61BBFDAA1CCB12D200539223 /* SSLogger.swift */; };
+		61BBFDB31CCB12EF00539223 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61BBFDB21CCB12EF00539223 /* Models.swift */; };
+		61BBFDE41CCB25A500539223 /* SQLiteDatabaseTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61BBFDE31CCB25A500539223 /* SQLiteDatabaseTypes.swift */; };
+		61BBFEA01CCB5C8700539223 /* SQLiteDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61BBFE9F1CCB5C8700539223 /* SQLiteDatabase.swift */; };
 		D5396CDC7F6C68CA33B156FE /* Pods_Storage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E9253984EF29A94867E9A04 /* Pods_Storage.framework */; };
 /* End PBXBuildFile section */
 
@@ -53,6 +57,10 @@
 		5295FEA91CC67B1500A95E88 /* SSPath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SSPath.swift; sourceTree = "<group>"; };
 		5295FEAB1CC67B8700A95E88 /* Person.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		611B57A6410132BECFA19D88 /* Pods-Storage.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Storage.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Storage/Pods-Storage.debug.xcconfig"; sourceTree = "<group>"; };
+		61BBFDAA1CCB12D200539223 /* SSLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SSLogger.swift; sourceTree = "<group>"; };
+		61BBFDB21CCB12EF00539223 /* Models.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
+		61BBFDE31CCB25A500539223 /* SQLiteDatabaseTypes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SQLiteDatabaseTypes.swift; sourceTree = "<group>"; };
+		61BBFE9F1CCB5C8700539223 /* SQLiteDatabase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SQLiteDatabase.swift; sourceTree = "<group>"; };
 		8E9253984EF29A94867E9A04 /* Pods_Storage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Storage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2DB3D7A325C38D33AF80473 /* Pods-Storage.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Storage.release.xcconfig"; path = "Pods/Target Support Files/Pods-Storage/Pods-Storage.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -133,6 +141,10 @@
 				5295FE871CC67AE300A95E88 /* Info.plist */,
 				5295FEA91CC67B1500A95E88 /* SSPath.swift */,
 				5295FEAB1CC67B8700A95E88 /* Person.swift */,
+				61BBFDAA1CCB12D200539223 /* SSLogger.swift */,
+				61BBFDB21CCB12EF00539223 /* Models.swift */,
+				61BBFDE31CCB25A500539223 /* SQLiteDatabaseTypes.swift */,
+				61BBFE9F1CCB5C8700539223 /* SQLiteDatabase.swift */,
 			);
 			path = Storage;
 			sourceTree = "<group>";
@@ -338,9 +350,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				5295FE7E1CC67AE300A95E88 /* ViewController.swift in Sources */,
+				61BBFDAB1CCB12D200539223 /* SSLogger.swift in Sources */,
 				5295FE7C1CC67AE300A95E88 /* AppDelegate.swift in Sources */,
+				61BBFEA01CCB5C8700539223 /* SQLiteDatabase.swift in Sources */,
+				61BBFDB31CCB12EF00539223 /* Models.swift in Sources */,
 				5295FEAC1CC67B8700A95E88 /* Person.swift in Sources */,
 				5295FEAA1CC67B1500A95E88 /* SSPath.swift in Sources */,
+				61BBFDE41CCB25A500539223 /* SQLiteDatabaseTypes.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
