@@ -7,42 +7,57 @@
 //
 
 import UIKit
+typealias Action = (indexPath: NSIndexPath) -> Void
 
+struct RowData {
+    var title: String
+    var action: Action
+}
 class HUDTestTableViewController: UITableViewController {
+    var datas = [RowData]()
+    override func viewDidLoad() {
+
+        datas = [
+            RowData(title: "model: false, hide: nevel", action: { (indexPath) in
+                SSHUD.showHUD(model: false, hide: HUDHide.Never)
+            }),
+            RowData(title: "model: true, hide: Manual", action: { (indexPath) in
+                SSHUD.showHUD(model: true, hide: HUDHide.Manual)
+            }),
+            RowData(title: "model: false, hide: Auto", action: { (indexPath) in
+                SSHUD.showHUD(model: false, hide: HUDHide.Auto)
+            }),
+            RowData(title: "model: true, hide: Auto", action: { (indexPath) in
+                SSHUD.showHUD(model: true, hide: HUDHide.Auto)
+            }),
+            RowData(title: "keyboard model: false, hide: nevel", action: { (indexPath) in
+                self.performSegueWithIdentifier("showKeyboardDemoScene", sender: nil)
+            }),
+            RowData(title: "model: true, hide: Manual position:Top", action: { (indexPath) in
+                SSHUD.showHUD(model: true, hide: HUDHide.Manual, position: HUDPosition.Top)
+            }),
+            RowData(title: "model: true, hide: Manual position:Bottom", action: { (indexPath) in
+                SSHUD.showHUD(model: true, hide: HUDHide.Manual, position: HUDPosition.Bottom)
+            }),
+            RowData(title: "show RorateViewController", action: { (indexPath) in
+                self.performSegueWithIdentifier("showRorateViewController", sender: nil)
+            })]
+        super.viewDidLoad()
+    }
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        switch indexPath.row {
-        case 0:
-            SSHUD.hud.showHUD(model: false, hide: HUDHide.Never)
-        case 1:
-            SSHUD.hud.showHUD(model: true, hide: HUDHide.Manual)
-        case 2:
-            SSHUD.hud.showHUD(model: false, hide: HUDHide.Auto)
-        case 3:
-            SSHUD.hud.showHUD(model: true, hide: HUDHide.Auto)
-        case 4:
-            self.performSegueWithIdentifier("showKeyboardDemoScene", sender: nil)
-        case 5:
-            SSHUD.hud.showHUD(model: true, hide: HUDHide.Manual, position: HUDPosition.Top)
-        case 6:
-            SSHUD.hud.showHUD(model: true, hide: HUDHide.Manual, position: HUDPosition.Bottom)
-        default:
-            SSLogInfo(indexPath)
+        if indexPath.row < datas.count {
+            let rowData = datas[indexPath.row]
+            rowData.action(indexPath: indexPath)
         }
     }
 
     override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
         var title = "not processed"
-        switch indexPath.row {
-        case 0: title = "model: false, hide: nevel"
-        case 1: title = "model: true, hide: Manual"
-        case 2: title = "model: false, hide: Auto"
-        case 3: title = "model: true, hide: Auto"
-        case 4: title = "keyboard model: false, hide: nevel"
-        case 5: title = "model: true, hide: Manual position:Top"
-        case 6: title = "model: true, hide: Manual position:Bottom"
-
-        default: break
+        if indexPath.row < datas.count {
+            let rowData = datas[indexPath.row]
+            title = rowData.title
         }
+
         cell.textLabel?.text = title
     }
 }

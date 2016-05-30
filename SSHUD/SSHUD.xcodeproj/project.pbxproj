@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0BDD67CA4534C763CE6E7369 /* Pods_SSHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A97D7189D09D53E2EDFC91FB /* Pods_SSHUD.framework */; };
+		524433371CFC7D3B00002821 /* RorateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524433361CFC7D3B00002821 /* RorateViewController.swift */; };
+		524433391CFC8C6A00002821 /* SSNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524433381CFC8C6A00002821 /* SSNavigationController.swift */; };
+		5244333B1CFC918800002821 /* SSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5244333A1CFC918800002821 /* SSViewController.swift */; };
+		5244333D1CFC934500002821 /* ProtraitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5244333C1CFC934500002821 /* ProtraitViewController.swift */; };
 		52D736931CF49C5B009B4404 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D736921CF49C5B009B4404 /* AppDelegate.swift */; };
 		52D736951CF49C5B009B4404 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D736941CF49C5B009B4404 /* ViewController.swift */; };
 		52D736981CF49C5B009B4404 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52D736961CF49C5B009B4404 /* Main.storyboard */; };
@@ -38,6 +43,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		05E2AB8B5C3DA8BD15AC715C /* Pods-SSHUD.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SSHUD.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SSHUD/Pods-SSHUD.debug.xcconfig"; sourceTree = "<group>"; };
+		2898B953138B5469B1854AF1 /* Pods-SSHUD.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SSHUD.release.xcconfig"; path = "Pods/Target Support Files/Pods-SSHUD/Pods-SSHUD.release.xcconfig"; sourceTree = "<group>"; };
+		524433361CFC7D3B00002821 /* RorateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RorateViewController.swift; sourceTree = "<group>"; };
+		524433381CFC8C6A00002821 /* SSNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SSNavigationController.swift; sourceTree = "<group>"; };
+		5244333A1CFC918800002821 /* SSViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SSViewController.swift; sourceTree = "<group>"; };
+		5244333C1CFC934500002821 /* ProtraitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProtraitViewController.swift; path = ../ProtraitViewController.swift; sourceTree = "<group>"; };
 		52D7368F1CF49C5B009B4404 /* SSHUD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SSHUD.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		52D736921CF49C5B009B4404 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		52D736941CF49C5B009B4404 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -55,6 +66,7 @@
 		52D736C21CF49E3E009B4404 /* SSLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SSLogger.swift; sourceTree = "<group>"; };
 		52D736C71CF49FF7009B4404 /* SSHUD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SSHUD.swift; sourceTree = "<group>"; };
 		52D736C91CF51620009B4404 /* KeyboardDemoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardDemoViewController.swift; sourceTree = "<group>"; };
+		A97D7189D09D53E2EDFC91FB /* Pods_SSHUD.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SSHUD.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +74,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0BDD67CA4534C763CE6E7369 /* Pods_SSHUD.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -85,10 +98,14 @@
 		52D736861CF49C5B009B4404 = {
 			isa = PBXGroup;
 			children = (
+				5244333A1CFC918800002821 /* SSViewController.swift */,
+				524433381CFC8C6A00002821 /* SSNavigationController.swift */,
 				52D736911CF49C5B009B4404 /* SSHUD */,
 				52D736A61CF49C5C009B4404 /* SSHUDTests */,
 				52D736B11CF49C5C009B4404 /* SSHUDUITests */,
 				52D736901CF49C5B009B4404 /* Products */,
+				E906C66C24D70D9F04F44376 /* Pods */,
+				C4A6B3D4035A7364B8632F91 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -105,6 +122,7 @@
 		52D736911CF49C5B009B4404 /* SSHUD */ = {
 			isa = PBXGroup;
 			children = (
+				52D736C21CF49E3E009B4404 /* SSLogger.swift */,
 				52D736C41CF49FBF009B4404 /* HUD */,
 				52D736921CF49C5B009B4404 /* AppDelegate.swift */,
 				52D736941CF49C5B009B4404 /* ViewController.swift */,
@@ -113,8 +131,9 @@
 				52D7369B1CF49C5B009B4404 /* LaunchScreen.storyboard */,
 				52D7369E1CF49C5B009B4404 /* Info.plist */,
 				52D736C01CF49CE3009B4404 /* HUDTestTableViewController.swift */,
-				52D736C21CF49E3E009B4404 /* SSLogger.swift */,
 				52D736C91CF51620009B4404 /* KeyboardDemoViewController.swift */,
+				524433361CFC7D3B00002821 /* RorateViewController.swift */,
+				5244333C1CFC934500002821 /* ProtraitViewController.swift */,
 			);
 			path = SSHUD;
 			sourceTree = "<group>";
@@ -146,6 +165,23 @@
 			path = SSHUD;
 			sourceTree = "<group>";
 		};
+		C4A6B3D4035A7364B8632F91 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A97D7189D09D53E2EDFC91FB /* Pods_SSHUD.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E906C66C24D70D9F04F44376 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				05E2AB8B5C3DA8BD15AC715C /* Pods-SSHUD.debug.xcconfig */,
+				2898B953138B5469B1854AF1 /* Pods-SSHUD.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -153,9 +189,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 52D736B71CF49C5C009B4404 /* Build configuration list for PBXNativeTarget "SSHUD" */;
 			buildPhases = (
+				49B87B4CC4B99F0B18F4F86D /* Check Pods Manifest.lock */,
 				52D7368B1CF49C5B009B4404 /* Sources */,
 				52D7368C1CF49C5B009B4404 /* Frameworks */,
 				52D7368D1CF49C5B009B4404 /* Resources */,
+				08903ECEB57E1382930CADEF /* Embed Pods Frameworks */,
+				D531D93F3633102ADA16314E /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -272,16 +311,68 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		08903ECEB57E1382930CADEF /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SSHUD/Pods-SSHUD-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		49B87B4CC4B99F0B18F4F86D /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		D531D93F3633102ADA16314E /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SSHUD/Pods-SSHUD-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		52D7368B1CF49C5B009B4404 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				52D736C81CF49FF7009B4404 /* SSHUD.swift in Sources */,
+				524433391CFC8C6A00002821 /* SSNavigationController.swift in Sources */,
 				52D736951CF49C5B009B4404 /* ViewController.swift in Sources */,
 				52D736CA1CF51620009B4404 /* KeyboardDemoViewController.swift in Sources */,
+				524433371CFC7D3B00002821 /* RorateViewController.swift in Sources */,
+				5244333D1CFC934500002821 /* ProtraitViewController.swift in Sources */,
 				52D736931CF49C5B009B4404 /* AppDelegate.swift in Sources */,
 				52D736C11CF49CE3009B4404 /* HUDTestTableViewController.swift in Sources */,
+				5244333B1CFC918800002821 /* SSViewController.swift in Sources */,
 				52D736C31CF49E3E009B4404 /* SSLogger.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -422,9 +513,11 @@
 		};
 		52D736B81CF49C5C009B4404 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 05E2AB8B5C3DA8BD15AC715C /* Pods-SSHUD.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = SSHUD/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.magicpocket.SSHUD;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -433,9 +526,11 @@
 		};
 		52D736B91CF49C5C009B4404 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2898B953138B5469B1854AF1 /* Pods-SSHUD.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = SSHUD/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.magicpocket.SSHUD;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -507,6 +602,7 @@
 				52D736B91CF49C5C009B4404 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		52D736BA1CF49C5C009B4404 /* Build configuration list for PBXNativeTarget "SSHUDTests" */ = {
 			isa = XCConfigurationList;
@@ -515,6 +611,7 @@
 				52D736BC1CF49C5C009B4404 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		52D736BD1CF49C5C009B4404 /* Build configuration list for PBXNativeTarget "SSHUDUITests" */ = {
 			isa = XCConfigurationList;
@@ -523,6 +620,7 @@
 				52D736BF1CF49C5C009B4404 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
