@@ -19,25 +19,25 @@ class HUDTestTableViewController: UITableViewController {
 
         datas = [
             RowData(title: "model: false, hide: nevel", action: { (indexPath) in
-                SSHUD.showHUD(model: false, hide: HUDHide.Never)
+                SSHUD.showHUD(model: false, hide: .Never)
             }),
             RowData(title: "model: true, hide: Manual", action: { (indexPath) in
-                SSHUD.showHUD(model: true, hide: HUDHide.Manual)
+                SSHUD.showHUD(model: true, hide: .Manual)
             }),
             RowData(title: "model: false, hide: Auto", action: { (indexPath) in
-                SSHUD.showHUD(model: false, hide: HUDHide.Auto)
+                SSHUD.showHUD(model: false, hide: .Auto)
             }),
             RowData(title: "model: true, hide: Auto", action: { (indexPath) in
-                SSHUD.showHUD(model: true, hide: HUDHide.Auto)
+                SSHUD.showHUD(model: true, hide: .Auto)
             }),
             RowData(title: "keyboard model: false, hide: nevel", action: { (indexPath) in
                 self.performSegueWithIdentifier("showKeyboardDemoScene", sender: nil)
             }),
             RowData(title: "model: true, hide: Manual position:Top", action: { (indexPath) in
-                SSHUD.showHUD(model: true, hide: HUDHide.Manual, position: HUDPosition.Top)
+                SSHUD.showHUD(model: true, hide: .Manual, position: .Top)
             }),
             RowData(title: "model: true, hide: Manual position:Bottom", action: { (indexPath) in
-                SSHUD.showHUD(model: true, hide: HUDHide.Manual, position: HUDPosition.Bottom)
+                SSHUD.showHUD(model: true, hide: .Manual, position: .Bottom)
             }),
             RowData(title: "show RorateViewController", action: { (indexPath) in
                 self.performSegueWithIdentifier("showRorateViewController", sender: nil)

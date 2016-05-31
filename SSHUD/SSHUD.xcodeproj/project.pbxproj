@@ -12,6 +12,8 @@
 		524433391CFC8C6A00002821 /* SSNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524433381CFC8C6A00002821 /* SSNavigationController.swift */; };
 		5244333B1CFC918800002821 /* SSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5244333A1CFC918800002821 /* SSViewController.swift */; };
 		5244333D1CFC934500002821 /* ProtraitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5244333C1CFC934500002821 /* ProtraitViewController.swift */; };
+		528F11BF1CFD0210008731F9 /* HUDViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528F11BE1CFD0210008731F9 /* HUDViewController.swift */; };
+		528F11C11CFD023D008731F9 /* HUDWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528F11C01CFD023D008731F9 /* HUDWindow.swift */; };
 		52D736931CF49C5B009B4404 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D736921CF49C5B009B4404 /* AppDelegate.swift */; };
 		52D736951CF49C5B009B4404 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D736941CF49C5B009B4404 /* ViewController.swift */; };
 		52D736981CF49C5B009B4404 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52D736961CF49C5B009B4404 /* Main.storyboard */; };
@@ -49,6 +51,8 @@
 		524433381CFC8C6A00002821 /* SSNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SSNavigationController.swift; sourceTree = "<group>"; };
 		5244333A1CFC918800002821 /* SSViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SSViewController.swift; sourceTree = "<group>"; };
 		5244333C1CFC934500002821 /* ProtraitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProtraitViewController.swift; path = ../ProtraitViewController.swift; sourceTree = "<group>"; };
+		528F11BE1CFD0210008731F9 /* HUDViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HUDViewController.swift; sourceTree = "<group>"; };
+		528F11C01CFD023D008731F9 /* HUDWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HUDWindow.swift; sourceTree = "<group>"; };
 		52D7368F1CF49C5B009B4404 /* SSHUD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SSHUD.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		52D736921CF49C5B009B4404 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		52D736941CF49C5B009B4404 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -160,6 +164,8 @@
 			isa = PBXGroup;
 			children = (
 				52D736C71CF49FF7009B4404 /* SSHUD.swift */,
+				528F11BE1CFD0210008731F9 /* HUDViewController.swift */,
+				528F11C01CFD023D008731F9 /* HUDWindow.swift */,
 			);
 			name = HUD;
 			path = SSHUD;
@@ -367,10 +373,12 @@
 				52D736C81CF49FF7009B4404 /* SSHUD.swift in Sources */,
 				524433391CFC8C6A00002821 /* SSNavigationController.swift in Sources */,
 				52D736951CF49C5B009B4404 /* ViewController.swift in Sources */,
+				528F11C11CFD023D008731F9 /* HUDWindow.swift in Sources */,
 				52D736CA1CF51620009B4404 /* KeyboardDemoViewController.swift in Sources */,
 				524433371CFC7D3B00002821 /* RorateViewController.swift in Sources */,
 				5244333D1CFC934500002821 /* ProtraitViewController.swift in Sources */,
 				52D736931CF49C5B009B4404 /* AppDelegate.swift in Sources */,
+				528F11BF1CFD0210008731F9 /* HUDViewController.swift in Sources */,
 				52D736C11CF49CE3009B4404 /* HUDTestTableViewController.swift in Sources */,
 				5244333B1CFC918800002821 /* SSViewController.swift in Sources */,
 				52D736C31CF49E3E009B4404 /* SSLogger.swift in Sources */,

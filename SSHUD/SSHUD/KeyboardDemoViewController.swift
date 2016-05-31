@@ -20,7 +20,7 @@ class KeyboardDemoViewController: UIViewController {
 // MARK: -
 extension KeyboardDemoViewController: UITextFieldDelegate {
     func textFieldShouldReturn(textField: UITextField) -> Bool {
-        SSHUD.showHUD(model: true, hide: HUDHide.Auto)
+        SSHUD.showHUD(model: true, hide: .Auto)
         return false
     }
 }

@@ -51,7 +51,7 @@ extension RorateViewController {
     }
 
     @IBAction func showPortraitViewController(sender: AnyObject) {
-        SSHUD.showHUD(model: false, hide: HUDHide.After(delay: 10))
+        SSHUD.showHUD(model: false, hide: .After(delay: 10))
     }
     @IBAction func switchViewMode(sender: AnyObject) {
         let button = sender as! UIButton

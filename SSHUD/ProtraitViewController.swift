@@ -10,7 +10,7 @@ import UIKit
 
 class PortraitViewController: SSViewController {
     @IBAction func showHUD(sender: AnyObject) {
-        SSHUD.showHUD(model: true, hide: HUDHide.Manual)
+        SSHUD.showHUD(model: true, hide: .Manual)
         self.navigationController?.popViewControllerAnimated(true)
     }
 }
