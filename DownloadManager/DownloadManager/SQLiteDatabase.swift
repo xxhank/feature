@@ -92,7 +92,7 @@ public class SQLiteDatabase {
         } catch(let error) {
             if let SQLError = error as? SQLite.Result {
                 switch SQLError {
-                case .Error(let message, let code, let statement):
+                case .Error(let message, _, _):
                     if !message.hasPrefix("no such table") {
                         SSLogError("\(error)")
                     }
@@ -135,7 +135,7 @@ public class SQLiteDatabase {
         } catch(let error) {
             if let SQLError = error as? SQLite.Result {
                 switch SQLError {
-                case .Error(let message, let code, let statement):
+                case .Error(let message, _, _):
                     if !message.hasPrefix("no such table") {
                         SSLogError("\(error)")
                     }
@@ -179,7 +179,7 @@ public class SQLiteDatabase {
         } catch(let error) {
             if let SQLError = error as? SQLite.Result {
                 switch SQLError {
-                case .Error(let message, let code, let statement):
+                case .Error(let message, _, _):
                     if !message.hasPrefix("no such table") {
                         SSLogError("\(error)")
                     }
@@ -199,7 +199,7 @@ public class SQLiteDatabase {
         } catch(let error) {
             if let SQLError = error as? SQLite.Result {
                 switch SQLError {
-                case .Error(let message, let code, let statement):
+                case .Error(let message, _, _):
                     if !message.hasPrefix("no such table") {
                         SSLogError("\(error)")
                     }
@@ -222,7 +222,7 @@ public class SQLiteDatabase {
         } catch(let error) {
             if let SQLError = error as? SQLite.Result {
                 switch SQLError {
-                case .Error(let message, let code, let statement):
+                case .Error(let message, _, _):
                     if !message.hasPrefix("no such table") {
                         SSLogError("\(error)")
                     }
@@ -252,7 +252,7 @@ extension SQLiteDatabase {
         } catch(let error) {
             if let SQLError = error as? SQLite.Result {
                 switch SQLError {
-                case .Error(let message, let code, let statement):
+                case .Error(let message, _, _):
                     if !message.hasPrefix("no such table") {
                         SSLogError("\(error)")
                     }
@@ -280,7 +280,7 @@ extension SQLiteDatabase {
         } catch(let error) {
             if let SQLError = error as? SQLite.Result {
                 switch SQLError {
-                case .Error(let message, let code, let statement):
+                case .Error(let message, _, _):
                     if !message.hasPrefix("no such table") {
                         SSLogError("\(error)")
                     }
@@ -297,16 +297,24 @@ extension SQLiteDatabase {
         let (databaseResult, errorResult) = SQLiteDatabase.connect(database)
         guard errorResult == nil else { return -1 }
         guard let db = databaseResult else { return -1 }
+
+        let columnNamesText = columnNames.reduce("") { (total, _tail) -> String in
+            if total == "" {
+                return _tail.columnName
+            } else {
+                return total + ", \(_tail.columnName)"
+            }
+        }
+
+        let valuesMask = columnNames.reduce("", combine: { (total, _tail) -> String in
+            if total == "" {
+                return "?"
+            } else {
+                return total + ", ?"
+            }
+        })
+        let SQL = "INSERT INTO \(tableName) (\(columnNamesText)) VALUES (\(valuesMask))"
         do {
-            let columnNamesText = columnNames.joinWithSeparator(", ")
-            let valuesMask = columnNames.reduce("", combine: { (total, _tail) -> String in
-                if total == "" {
-                    return "?"
-                } else {
-                    return total + ", ?"
-                }
-            })
-            let SQL = "INSERT INTO \(tableName) (\(columnNamesText)) VALUES (\(valuesMask))"
             let stmt = try db.prepare(SQL)
             let bindings = values.map({ (item) -> Binding? in
                 if item is Binding {
@@ -319,9 +327,8 @@ extension SQLiteDatabase {
 
             try stmt.run(bindings)
             return db.lastInsertRowid ?? -1
-//            #endif
         } catch(let error) {
-            SSLogError("\(error)")
+            SSLogError("\(error) \(SQL)")
         }
         return -1
     }
@@ -542,8 +549,8 @@ extension SQLiteDatabase: Database {
             }
             if found {
                 if let value = object.valueForColumn(name) {
-                    if value.dynamicType as? AnyObject === String.self as? AnyObject {
-                        WHERE = "\(name)=\((value as! String).columnValue)"
+                    if let stringValue = value as? String {
+                        WHERE = "\(name)=\((stringValue).columnValue)"
                     } else {
                         WHERE = "\(name)=\(value)"
                     }

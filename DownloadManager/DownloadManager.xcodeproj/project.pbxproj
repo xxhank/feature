@@ -21,6 +21,7 @@
 		615951B61CFD9EDE00B24287 /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 615951B11CFD9EDE00B24287 /* Database.swift */; };
 		615951B71CFD9EDE00B24287 /* SQLiteDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 615951B21CFD9EDE00B24287 /* SQLiteDatabase.swift */; };
 		615951B81CFD9EDE00B24287 /* SQLiteDatabaseTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 615951B31CFD9EDE00B24287 /* SQLiteDatabaseTypes.swift */; };
+		617B4B581CFECD2900FB5DCF /* SoftwareCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 617B4B571CFECD2900FB5DCF /* SoftwareCell.swift */; };
 		B8BFF9353CF59BB655C513E4 /* Pods_DownloadManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC6CC5B949E821CA8E7D711F /* Pods_DownloadManager.framework */; };
 /* End PBXBuildFile section */
 
@@ -62,6 +63,7 @@
 		615951B11CFD9EDE00B24287 /* Database.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
 		615951B21CFD9EDE00B24287 /* SQLiteDatabase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SQLiteDatabase.swift; sourceTree = "<group>"; };
 		615951B31CFD9EDE00B24287 /* SQLiteDatabaseTypes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SQLiteDatabaseTypes.swift; sourceTree = "<group>"; };
+		617B4B571CFECD2900FB5DCF /* SoftwareCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoftwareCell.swift; sourceTree = "<group>"; };
 		D0BE0371FBCC68131D3BE084 /* Pods-DownloadManager.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DownloadManager.release.xcconfig"; path = "Pods/Target Support Files/Pods-DownloadManager/Pods-DownloadManager.release.xcconfig"; sourceTree = "<group>"; };
 		DC6CC5B949E821CA8E7D711F /* Pods_DownloadManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DownloadManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E57A50F4436FF27C64D54DD5 /* Pods-DownloadManager.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DownloadManager.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DownloadManager/Pods-DownloadManager.debug.xcconfig"; sourceTree = "<group>"; };
@@ -159,6 +161,7 @@
 			isa = PBXGroup;
 			children = (
 				615950F41CFD9BD900B24287 /* ViewController.swift */,
+				617B4B571CFECD2900FB5DCF /* SoftwareCell.swift */,
 			);
 			name = Module;
 			sourceTree = "<group>";
@@ -392,6 +395,7 @@
 				615951A61CFD9E8400B24287 /* SSLogger.swift in Sources */,
 				615951B61CFD9EDE00B24287 /* Database.swift in Sources */,
 				615951B71CFD9EDE00B24287 /* SQLiteDatabase.swift in Sources */,
+				617B4B581CFECD2900FB5DCF /* SoftwareCell.swift in Sources */,
 				615951B51CFD9EDE00B24287 /* Storage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -40,10 +40,6 @@ public class SSPath {
         return paths[0]
     }
     public class func temp() -> String {
-        let paths = NSSearchPathForDirectoriesInDomains(.LibraryDirectory, .UserDomainMask, true)
-        return paths[0]
-        // let paths = NSSearchPathForDirectoriesInDomains(.LibraryDirectory, .UserDomainMask, true)
-        // return paths[0]
         return NSTemporaryDirectory()
     }
 
@@ -193,7 +189,8 @@ extension NSFileManager {
         var size: Int64 = 0
         do {
             let files = try subpathsOfDirectoryAtPath(path)
-            for var i = 0; i < files.count; ++i {
+
+            for i in 0...files.count {
                 size += fileSizeAtPath((path as NSString).stringByAppendingPathComponent(files[i]) as String)
             }
         } catch {
