@@ -10,3 +10,4 @@ Podfile.lock
 build.log
 *.xcarchive
 .DS_Store
+UIAutomationLibrary/.idea/workspace.xml
