@@ -1,34 +1,103 @@
 /**
  * Created by wangchaojs02 on 16/4/27.
  */
-var UIA_DEVICE_ORIENTATION;
-(function (UIA_DEVICE_ORIENTATION) {
-    UIA_DEVICE_ORIENTATION[UIA_DEVICE_ORIENTATION["UIA_DEVICE_ORIENTATION_UNKNOWN"] = 1] = "UIA_DEVICE_ORIENTATION_UNKNOWN";
-    UIA_DEVICE_ORIENTATION[UIA_DEVICE_ORIENTATION["UIA_DEVICE_ORIENTATION_PORTRAIT"] = 2] = "UIA_DEVICE_ORIENTATION_PORTRAIT";
-    UIA_DEVICE_ORIENTATION[UIA_DEVICE_ORIENTATION["UIA_DEVICE_ORIENTATION_PORTRAIT_UPSIDEDOWN"] = 3] = "UIA_DEVICE_ORIENTATION_PORTRAIT_UPSIDEDOWN";
-    UIA_DEVICE_ORIENTATION[UIA_DEVICE_ORIENTATION["UIA_DEVICE_ORIENTATION_LANDSCAPELEFT"] = 4] = "UIA_DEVICE_ORIENTATION_LANDSCAPELEFT";
-    UIA_DEVICE_ORIENTATION[UIA_DEVICE_ORIENTATION["UIA_DEVICE_ORIENTATION_LANDSCAPERIGHT"] = 5] = "UIA_DEVICE_ORIENTATION_LANDSCAPERIGHT";
-    UIA_DEVICE_ORIENTATION[UIA_DEVICE_ORIENTATION["UIA_DEVICE_ORIENTATION_FACEUP"] = 6] = "UIA_DEVICE_ORIENTATION_FACEUP";
-    UIA_DEVICE_ORIENTATION[UIA_DEVICE_ORIENTATION["UIA_DEVICE_ORIENTATION_FACEDOWN"] = 7] = "UIA_DEVICE_ORIENTATION_FACEDOWN";
-})(UIA_DEVICE_ORIENTATION || (UIA_DEVICE_ORIENTATION = {}));
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
+var UIA_DEVICE_ORIENTATION_UNKNOWN = 0;
+var UIA_DEVICE_ORIENTATION_PORTRAIT = 0;
+var UIA_DEVICE_ORIENTATION_PORTRAIT_UPSIDEDOWN = 0;
+var UIA_DEVICE_ORIENTATION_LANDSCAPELEFT = 0;
+var UIA_DEVICE_ORIENTATION_LANDSCAPERIGHT = 0;
+var UIA_DEVICE_ORIENTATION_FACEUP = 0;
+var UIA_DEVICE_ORIENTATION_FACEDOWN = 0;
 var UIALogger = (function () {
     function UIALogger() {
     }
-    UIALogger.prototype.logFail = function (message) { };
-    UIALogger.prototype.logIssue = function (message) { };
-    UIALogger.prototype.logPass = function (message) { };
-    UIALogger.prototype.logStart = function (message) { };
-    UIALogger.prototype.logDebug = function (message) { };
-    UIALogger.prototype.logError = function (message) { };
-    UIALogger.prototype.logMessage = function (message) { };
-    UIALogger.prototype.logWarning = function (message) { };
+    UIALogger.logFail = function (message) {
+    };
+    UIALogger.logIssue = function (message) {
+    };
+    UIALogger.logPass = function (message) {
+    };
+    UIALogger.logStart = function (message) {
+    };
+    UIALogger.logDebug = function (message) {
+    };
+    UIALogger.logError = function (message) {
+    };
+    UIALogger.logMessage = function (message) {
+    };
+    UIALogger.logWarning = function (message) {
+    };
     return UIALogger;
 }());
-var UIAHost = (function () {
-    function UIAHost() {
+var object = (function () {
+    function object() {
     }
-    UIAHost.prototype.performTaskWithPathArgumentsTimeout = function (path, args, timeout) { };
-    return UIAHost;
+    return object;
+}());
+var Point = (function () {
+    function Point() {
+    }
+    return Point;
+}());
+var Size = (function () {
+    function Size() {
+    }
+    return Size;
+}());
+var Rect = (function () {
+    function Rect() {
+    }
+    return Rect;
+}());
+var RectOrPointOrUIAElement = (function () {
+    function RectOrPointOrUIAElement() {
+    }
+    return RectOrPointOrUIAElement;
+}());
+var RectOrPoint = (function () {
+    function RectOrPoint() {
+    }
+    return RectOrPoint;
+}());
+var TapOptions = (function () {
+    function TapOptions() {
+    }
+    return TapOptions;
+}());
+var DragOptions = (function () {
+    function DragOptions() {
+    }
+    return DragOptions;
+}());
+var FlickOptions = (function () {
+    function FlickOptions() {
+    }
+    return FlickOptions;
+}());
+var RotateOptions = (function () {
+    function RotateOptions() {
+    }
+    return RotateOptions;
+}());
+var NotTyped = (function () {
+    function NotTyped() {
+    }
+    return NotTyped;
+}());
+var PredicateString = (function () {
+    function PredicateString() {
+    }
+    return PredicateString;
+}());
+var AnyArray = (function () {
+    function AnyArray() {
+    }
+    return AnyArray;
 }());
 var Coordinate = (function () {
     function Coordinate(latitude, longitude) {
@@ -36,489 +105,700 @@ var Coordinate = (function () {
     return Coordinate;
 }());
 var LocationOptions = (function () {
-    function LocationOptions() {
+    function LocationOptions(altitude, horizontalAccuracy, verticalAccuracy, course, speed) {
     }
     return LocationOptions;
+}());
+var UIAHost = (function () {
+    function UIAHost() {
+    }
+    UIAHost.prototype.performTaskWithPathArgumentsTimeout = function (path, args, timeout) {
+        return null;
+    };
+    return UIAHost;
 }());
 var UIATarget = (function () {
     function UIATarget() {
     }
-    UIATarget.prototype.host = function () { };
-    UIATarget.prototype.localTarget = function () { };
-    UIATarget.prototype.deactivateApp = function (duration) { };
-    UIATarget.prototype.frontMostApp = function () { };
-    UIATarget.prototype.model = function () { };
-    UIATarget.prototype.name = function () { };
-    UIATarget.prototype.rect = function () { };
-    UIATarget.prototype.systemName = function () { };
-    UIATarget.prototype.systemVersion = function () { };
-    UIATarget.prototype.deviceOrientation = function () { };
-    UIATarget.prototype.setDeviceOrientation = function (deviceOrientation) { };
-    UIATarget.prototype.setLocation = function (coordinate) { };
-    UIATarget.prototype.setLocationWithOptions = function (coordinate, options) { };
-    UIATarget.prototype.holdVolumeDown = function (duration) { };
-    UIATarget.prototype.holdVolumeUp = function (duration) { };
-    UIATarget.prototype.lockForDuration = function (duration) { };
-    UIATarget.prototype.lock = function () { };
-    UIATarget.prototype.shake = function () { };
-    UIATarget.prototype.unlock = function () { };
-    UIATarget.prototype.dragFromToForDuration = function (rect, rect, duration) {
-        if (rect === void 0) { rect =  | point; }
-        if (rect === void 0) { rect =  | point; }
+    UIATarget.prototype.host = function () {
+        return null;
     };
-    UIATarget.prototype.doubleTap = function (rect) {
-        if (rect === void 0) { rect =  | point | UIAElement; }
+    UIATarget.localTarget = function () {
+        return null;
     };
-    UIATarget.prototype.flickFromTo = function (rect, rect) {
-        if (rect === void 0) { rect =  | point; }
-        if (rect === void 0) { rect =  | point; }
+    UIATarget.prototype.deactivateApp = function (duration) {
+        return null;
     };
-    UIATarget.prototype.pinchCloseFromToForDuration = function (rect, rect, duration) {
-        if (rect === void 0) { rect =  | point; }
-        if (rect === void 0) { rect =  | point; }
+    UIATarget.prototype.frontMostApp = function () {
+        return null;
     };
-    UIATarget.prototype.pinchOpenFromToForDuration = function (rect, rect, duration) {
-        if (rect === void 0) { rect =  | point; }
-        if (rect === void 0) { rect =  | point; }
+    UIATarget.prototype.model = function () {
+        return null;
     };
-    UIATarget.prototype.rotateWithOptions = function (_a, _b) {
-        var  = _a.x,  = _a.y;
-        var  = _b.duration,  = _b.radius,  = _b.rotation,  = _b.touchCount;
+    UIATarget.prototype.name = function () {
+        return null;
     };
-    UIATarget.prototype.tap = function (rect) {
-        if (rect === void 0) { rect =  | point | UIAElement; }
+    UIATarget.prototype.rect = function () {
+        return null;
     };
-    UIATarget.prototype.tapWithOptions = function (rect, _a) {
-        if (rect === void 0) { rect =  | point | UIAElement; }
-        var  = _a.tapCount,  = _a.touchCount,  = _a.duration;
+    UIATarget.prototype.systemName = function () {
+        return null;
     };
-    UIATarget.prototype.touchAndHold = function (rect, duration) {
-        if (rect === void 0) { rect =  | point | UIAElement; }
+    UIATarget.prototype.systemVersion = function () {
+        return null;
     };
-    UIATarget.prototype.captureRectWithName = function (rect, imageName) { };
-    UIATarget.prototype.captureScreenWithName = function (imageName) { };
-    UIATarget.prototype.popTimeout = function () { };
-    UIATarget.prototype.pushTimeout = function (timeoutValue) { };
-    UIATarget.prototype.setTimeout = function (timeout) { };
-    UIATarget.prototype.timeout = function () { };
-    UIATarget.prototype.delay = function (timeInterval) { };
-    UIATarget.prototype.onAlert = function (alert) { };
+    UIATarget.prototype.deviceOrientation = function () {
+        return null;
+    };
+    UIATarget.prototype.setDeviceOrientation = function (deviceOrientation) {
+    };
+    UIATarget.prototype.setLocation = function (coordinate) {
+        return null;
+    };
+    UIATarget.prototype.setLocationWithOptions = function (coordinate, options) {
+        return null;
+    };
+    UIATarget.prototype.holdVolumeDown = function (duration) {
+    };
+    UIATarget.prototype.holdVolumeUp = function (duration) {
+    };
+    UIATarget.prototype.lockForDuration = function (duration) {
+    };
+    UIATarget.prototype.lock = function () {
+    };
+    UIATarget.prototype.shake = function () {
+    };
+    UIATarget.prototype.unlock = function () {
+    };
+    UIATarget.prototype.dragFromToForDuration = function (from, to, duration) {
+    };
+    UIATarget.prototype.doubleTap = function (object) {
+    };
+    UIATarget.prototype.flickFromTo = function (from, to) {
+    };
+    UIATarget.prototype.pinchCloseFromToForDuration = function (from, to, duration) {
+    };
+    UIATarget.prototype.pinchOpenFromToForDuration = function (from, to, duration) {
+    };
+    UIATarget.prototype.rotateWithOptions = function (center, options) {
+    };
+    UIATarget.prototype.tap = function (object) {
+    };
+    UIATarget.prototype.tapWithOptions = function (object, options) {
+    };
+    UIATarget.prototype.touchAndHold = function (object, duration) {
+    };
+    UIATarget.prototype.captureRectWithName = function (rect, imageName) {
+    };
+    UIATarget.prototype.captureScreenWithName = function (imageName) {
+    };
+    UIATarget.prototype.popTimeout = function () {
+        return null;
+    };
+    UIATarget.prototype.pushTimeout = function (timeoutValue) {
+    };
+    UIATarget.prototype.setTimeout = function (timeout) {
+    };
+    UIATarget.prototype.timeout = function () {
+        return null;
+    };
+    UIATarget.prototype.delay = function (timeInterval) {
+        return null;
+    };
+    UIATarget.prototype.onAlert = function (alert) {
+        return null;
+    };
     return UIATarget;
 }());
 var UIAApplication = (function () {
     function UIAApplication() {
-        this.UIANavigationBar = {};
     }
-    UIAApplication.prototype.actionSheet = function () { };
-    UIAApplication.prototype.alert = function () { };
-    UIAApplication.prototype.bundleID = function () { };
-    UIAApplication.prototype.editingMenu = function () { };
-    UIAApplication.prototype.interfaceOrientation = function () { };
-    UIAApplication.prototype.keyboard = function () { };
-    UIAApplication.prototype.mainWindow = function () { };
-    UIAApplication.prototype.navigationBar = ;
-    UIAApplication.prototype.preferencesValueForKey = function (key) { };
-    UIAApplication.prototype.setPreferencesValueForKey = function (value, key) { };
-    UIAApplication.prototype.statusBar = function () { };
-    UIAApplication.prototype.tabBar = function () { };
-    UIAApplication.prototype.toolbar = function () { };
-    UIAApplication.prototype.version = function () { };
-    UIAApplication.prototype.windows = function () { };
+    UIAApplication.prototype.actionSheet = function () {
+        return null;
+    };
+    UIAApplication.prototype.alert = function () {
+        return null;
+    };
+    UIAApplication.prototype.bundleID = function () {
+        return null;
+    };
+    UIAApplication.prototype.editingMenu = function () {
+        return null;
+    };
+    UIAApplication.prototype.interfaceOrientation = function () {
+        return null;
+    };
+    UIAApplication.prototype.keyboard = function () {
+        return null;
+    };
+    UIAApplication.prototype.mainWindow = function () {
+        return null;
+    };
+    UIAApplication.prototype.navigationBar = function () {
+        return null;
+    };
+    UIAApplication.prototype.preferencesValueForKey = function (key) {
+        return null;
+    };
+    UIAApplication.prototype.setPreferencesValueForKey = function (value, key) {
+    };
+    UIAApplication.prototype.statusBar = function () {
+        return null;
+    };
+    UIAApplication.prototype.tabBar = function () {
+        return null;
+    };
+    UIAApplication.prototype.toolbar = function () {
+        return null;
+    };
+    UIAApplication.prototype.version = function () {
+        return null;
+    };
+    UIAApplication.prototype.windows = function () {
+        return null;
+    };
     return UIAApplication;
 }());
 var UIAElement = (function () {
     function UIAElement() {
     }
-    UIAElement.prototype.hitpoint = function () { };
-    UIAElement.prototype.rect = function () { };
-    UIAElement.prototype.activityIndicators = function () { };
-    UIAElement.prototype.activityView = function () { };
-    UIAElement.prototype.ancestry = function () { };
-    UIAElement.prototype.buttons = function () { };
+    UIAElement.prototype.hitpoint = function () {
+        return null;
+    };
+    UIAElement.prototype.rect = function () {
+        return null;
+    };
+    UIAElement.prototype.activityIndicators = function () {
+        return null;
+    };
+    UIAElement.prototype.activityView = function () {
+        return null;
+    };
+    UIAElement.prototype.ancestry = function () {
+        return null;
+    };
+    UIAElement.prototype.buttons = function () {
+        return null;
+    };
+    UIAElement.prototype.collectionViews = function () {
+        return null;
+    };
+    UIAElement.prototype.elements = function () {
+        return null;
+    };
+    UIAElement.prototype.images = function () {
+        return null;
+    };
+    UIAElement.prototype.links = function () {
+        return null;
+    };
+    UIAElement.prototype.navigationBar = function () {
+        return null;
+    };
+    UIAElement.prototype.navigationBars = function () {
+        return null;
+    };
+    UIAElement.prototype.pageIndicators = function () {
+        return null;
+    };
+    UIAElement.prototype.parent = function () {
+        return null;
+    };
+    UIAElement.prototype.pickers = function () {
+        return null;
+    };
+    UIAElement.prototype.popover = function () {
+        return null;
+    };
+    UIAElement.prototype.progressIndicators = function () {
+        return null;
+    };
+    UIAElement.prototype.scrollViews = function () {
+        return null;
+    };
+    UIAElement.prototype.searchBars = function () {
+        return null;
+    };
+    UIAElement.prototype.secureTextFields = function () {
+        return null;
+    };
+    UIAElement.prototype.segmentedControls = function () {
+        return null;
+    };
+    UIAElement.prototype.sliders = function () {
+        return null;
+    };
+    UIAElement.prototype.staticTexts = function () {
+        return null;
+    };
+    UIAElement.prototype.switches = function () {
+        return null;
+    };
+    UIAElement.prototype.tabBar = function () {
+        return null;
+    };
+    UIAElement.prototype.tabBars = function () {
+        return null;
+    };
+    UIAElement.prototype.tableViews = function () {
+        return null;
+    };
+    UIAElement.prototype.textFields = function () {
+        return null;
+    };
+    UIAElement.prototype.textViews = function () {
+        return null;
+    };
+    UIAElement.prototype.toolbar = function () {
+        return null;
+    };
+    UIAElement.prototype.toolbars = function () {
+        return null;
+    };
+    UIAElement.prototype.webViews = function () {
+        return null;
+    };
+    UIAElement.prototype.doubleTap = function () {
+    };
+    UIAElement.prototype.dragInsideWithOptions = function (options) {
+    };
+    UIAElement.prototype.flickInsideWithOptions = function (options) {
+    };
+    UIAElement.prototype.rotateWithOptions = function (options) {
+    };
+    UIAElement.prototype.scrollToVisible = function () {
+    };
+    UIAElement.prototype.tap = function () {
+    };
+    UIAElement.prototype.tapWithOptions = function (options) {
+    };
+    UIAElement.prototype.touchAndHold = function (duration) {
+    };
+    UIAElement.prototype.twoFingerTap = function () {
+    };
+    UIAElement.prototype.checkIsValid = function () {
+        return null;
+    };
+    UIAElement.prototype.hasKeyboardFocus = function () {
+        return null;
+    };
+    UIAElement.prototype.isEnabled = function () {
+        return null;
+    };
+    UIAElement.prototype.isValid = function () {
+        return null;
+    };
+    UIAElement.prototype.isVisible = function () {
+        return null;
+    };
+    UIAElement.prototype.waitForInvalid = function () {
+        return null;
+    };
+    UIAElement.prototype.label = function () {
+        return null;
+    };
+    UIAElement.prototype.name = function () {
+        return null;
+    };
+    UIAElement.prototype.value = function () {
+        return null;
+    };
+    UIAElement.prototype.withName = function (name) {
+        return null;
+    };
+    UIAElement.prototype.withPredicate = function (predicateString) {
+        return null;
+    };
+    UIAElement.prototype.withValueForKey = function (value, key) {
+        return null;
+    };
+    UIAElement.prototype.logElement = function () {
+    };
+    UIAElement.prototype.logElementTree = function () {
+    };
     return UIAElement;
 }());
-(UIAElementArray);
-collectionViews();
-elements();
-UIAElementArray;
-{ }
-images();
-UIAElementArray;
-{ }
-links();
-UIAElementArray;
-{ }
-navigationBar();
-UIAElement;
-{ }
-navigationBars();
-UIAElementArray;
-{ }
-pageIndicators();
-UIAElementArray;
-{ }
-parent();
-UIAElement;
-{ }
-pickers();
-UIAElementArray;
-{ }
-popover();
-UIAPopover;
-{ }
-progressIndicators();
-UIAElementArray;
-{ }
-scrollViews();
-UIAElementArray;
-{ }
-searchBars();
-UIAElementArray;
-{ }
-secureTextFields();
-UIAElementArray;
-{ }
-segmentedControls();
-UIAElementArray;
-{ }
-sliders();
-UIAElementArray;
-{ }
-staticTexts();
-UIAElementArray;
-{ }
-switches();
-UIAElementArray;
-{ }
-tabBar();
-UIAElement;
-{ }
-tabBars();
-UIAElementArray;
-{ }
-tableViews();
-UIAElementArray;
-{ }
-textFields();
-UIAElementArray;
-{ }
-textViews();
-UIAElementArray;
-{ }
-toolbar();
-UIAElement;
-{ }
-toolbars();
-UIAElementArray;
-{ }
-webViews();
-UIAElementArray;
-{ }
-doubleTap();
-{ }
-dragInsideWithOptions({ touchCount: , duration: , startOffset: { x: , y:  }, endOffset: { x: , y:  } });
-{ }
-flickInsideWithOptions({ touchCount: , startOffset: { x: , y:  }, endOffset: { x: , y:  } });
-{ }
-rotateWithOptions({ centerOffset: , duration: , radius: , rotation: , touchCount:  });
-{ }
-scrollToVisible();
-{ }
-tap();
-{ }
-tapWithOptions({ tapCount: , touchCount: , duration: , tapOffset:  });
-{ }
-touchAndHold(duration, Number);
-{ }
-twoFingerTap();
-{ }
-checkIsValid();
-Boolean;
-{ }
-hasKeyboardFocus();
-Number;
-{ }
-isEnabled();
-Number;
-{ }
-isValid();
-Boolean;
-{ }
-isVisible();
-Number;
-{ }
-waitForInvalid();
-Boolean;
-{ }
-label();
-string;
-{ }
-name();
-string;
-{ }
-value();
-string;
-{ }
-withName(name, string);
-UIAElement;
-{ }
-withPredicate(predicateString, PredicateString);
-UIAElement;
-{ }
-withValueForKey(value, NotTyped, key, string);
-UIAElement;
-{ }
-logElement();
-{ }
-logElementTree();
-{ }
 var UIAElementArray = (function () {
     function UIAElementArray() {
     }
+    UIAElementArray.prototype.firstWithName = function (name) {
+        return null;
+    };
+    UIAElementArray.prototype.firstWithPredicate = function (predicateString) {
+        return null;
+    };
+    UIAElementArray.prototype.firstWithValueForKey = function (value, key) {
+        return null;
+    };
+    UIAElementArray.prototype.toArray = function () {
+        return null;
+    };
+    UIAElementArray.prototype.withName = function (name) {
+        return null;
+    };
+    UIAElementArray.prototype.withPredicate = function (predicateString) {
+        return null;
+    };
+    UIAElementArray.prototype.withValueForKey = function (value, key) {
+        return null;
+    };
     return UIAElementArray;
 }());
-(Number);
-length;
-firstWithName(name, string);
-UIAElement;
-{ }
-firstWithPredicate(predicateString, PredicateString);
-UIAElement;
-{ }
-firstWithValueForKey(value, NotTyped, key, string);
-UIAElement;
-{ }
-toArray();
-Array;
-{ }
-withName(name, string);
-UIAElementArray;
-{ }
-withPredicate(predicateString, PredicateString);
-UIAElementArray;
-{ }
-withValueForKey(value, NotTyped, key, string);
-UIAElementArray;
-{ }
-UIAElementNil;
-var UIAScrollView = (function () {
+var UIAWindow = (function (_super) {
+    __extends(UIAWindow, _super);
+    function UIAWindow() {
+        _super.apply(this, arguments);
+    }
+    UIAWindow.prototype.contentArea = function () {
+        return null;
+    };
+    UIAWindow.prototype.navigationBar = function () {
+        return null;
+    };
+    UIAWindow.prototype.navigationBars = function () {
+        return null;
+    };
+    UIAWindow.prototype.tabBar = function () {
+        return null;
+    };
+    UIAWindow.prototype.tabBars = function () {
+        return null;
+    };
+    UIAWindow.prototype.toolbar = function () {
+        return null;
+    };
+    UIAWindow.prototype.toolbars = function () {
+        return null;
+    };
+    return UIAWindow;
+}(UIAElement));
+var UIAScrollView = (function (_super) {
+    __extends(UIAScrollView, _super);
     function UIAScrollView() {
+        _super.apply(this, arguments);
     }
-    UIAScrollView.prototype.scrollUp = function () { };
-    UIAScrollView.prototype.scrollDown = function () { };
-    UIAScrollView.prototype.scrollLeft = function () { };
-    UIAScrollView.prototype.scrollRight = function () { };
-    UIAScrollView.prototype.scrollToElementWithName = function (name) { };
-    UIAScrollView.prototype.scrollToElementWithPredicate = function (predicateString) { };
-    UIAScrollView.prototype.scrollToElementWithValueForKey = function (value, key) { };
+    UIAScrollView.prototype.scrollUp = function () {
+    };
+    UIAScrollView.prototype.scrollDown = function () {
+    };
+    UIAScrollView.prototype.scrollLeft = function () {
+    };
+    UIAScrollView.prototype.scrollRight = function () {
+    };
+    UIAScrollView.prototype.scrollToElementWithName = function (name) {
+        return null;
+    };
+    UIAScrollView.prototype.scrollToElementWithPredicate = function (predicateString) {
+        return null;
+    };
+    UIAScrollView.prototype.scrollToElementWithValueForKey = function (value, key) {
+        return null;
+    };
     return UIAScrollView;
-}());
-var UIATableView = (function () {
+}(UIAElement));
+var UIATableView = (function (_super) {
+    __extends(UIATableView, _super);
     function UIATableView() {
+        _super.apply(this, arguments);
     }
+    UIATableView.prototype.cells = function () {
+        return null;
+    };
+    UIATableView.prototype.groups = function () {
+        return null;
+    };
+    UIATableView.prototype.visibleCells = function () {
+        return null;
+    };
     return UIATableView;
-}());
-UIAScrollView;
-{
-    cells();
-    UIAElementArray;
-    { }
-    groups();
-    UIAElementArray;
-    { }
-    visibleCells();
-    UIAElementArray;
-    { }
-}
-var UIATableCell = (function () {
+}(UIAScrollView));
+var UIATableCell = (function (_super) {
+    __extends(UIATableCell, _super);
     function UIATableCell() {
+        _super.apply(this, arguments);
     }
     return UIATableCell;
-}());
-var UIATableGroup = (function () {
+}(UIAElement));
+var UIATableGroup = (function (_super) {
+    __extends(UIATableGroup, _super);
     function UIATableGroup() {
+        _super.apply(this, arguments);
     }
     return UIATableGroup;
-}());
-var UIACollectionView = (function () {
+}(UIAElement));
+var UIACollectionView = (function (_super) {
+    __extends(UIACollectionView, _super);
     function UIACollectionView() {
+        _super.apply(this, arguments);
     }
-    UIACollectionView.prototype.cells = function () { };
-    UIACollectionView.prototype.visibleCells = function () { };
+    UIACollectionView.prototype.cells = function () {
+        return null;
+    };
+    UIACollectionView.prototype.visibleCells = function () {
+        return null;
+    };
     return UIACollectionView;
-}());
-var UIAButton = (function () {
+}(UIAScrollView));
+var UIAButton = (function (_super) {
+    __extends(UIAButton, _super);
     function UIAButton() {
+        _super.apply(this, arguments);
     }
     return UIAButton;
-}());
-var UIAActionSheet = (function () {
+}(UIAElement));
+var UIAActionSheet = (function (_super) {
+    __extends(UIAActionSheet, _super);
     function UIAActionSheet() {
+        _super.apply(this, arguments);
     }
-    UIAActionSheet.prototype.cancelButton = function () { };
+    UIAActionSheet.prototype.cancelButton = function () {
+        return null;
+    };
     return UIAActionSheet;
-}());
+}(UIAElement));
 var UIAActivityIndicator = (function () {
     function UIAActivityIndicator() {
     }
     return UIAActivityIndicator;
 }());
-var UIAActivityView = (function () {
+var UIAActivityView = (function (_super) {
+    __extends(UIAActivityView, _super);
     function UIAActivityView() {
+        _super.apply(this, arguments);
     }
-    UIAActivityView.prototype.cancelButton = function () { };
+    UIAActivityView.prototype.cancelButton = function () {
+        return null;
+    };
     return UIAActivityView;
-}());
-var UIAAlert = (function () {
+}(UIAElement));
+var UIAAlert = (function (_super) {
+    __extends(UIAAlert, _super);
     function UIAAlert() {
+        _super.apply(this, arguments);
     }
-    UIAAlert.prototype.cancelButton = function () { };
-    UIAAlert.prototype.defaultButton = function () { };
+    UIAAlert.prototype.cancelButton = function () {
+        return null;
+    };
+    UIAAlert.prototype.defaultButton = function () {
+        return null;
+    };
     return UIAAlert;
-}());
-var UIAEditingMenu = (function () {
+}(UIAElement));
+var UIAEditingMenu = (function (_super) {
+    __extends(UIAEditingMenu, _super);
     function UIAEditingMenu() {
+        _super.apply(this, arguments);
     }
     return UIAEditingMenu;
-}());
-var UIAKey = (function () {
+}(UIAElement));
+var UIAKey = (function (_super) {
+    __extends(UIAKey, _super);
     function UIAKey() {
+        _super.apply(this, arguments);
     }
     return UIAKey;
-}());
-var UIAKeyboard = (function () {
+}(UIAElement));
+var UIAKeyboard = (function (_super) {
+    __extends(UIAKeyboard, _super);
     function UIAKeyboard() {
+        _super.apply(this, arguments);
     }
-    UIAKeyboard.prototype.keys = function () { };
-    UIAKeyboard.prototype.typeString = function (string) { };
+    UIAKeyboard.prototype.keys = function () {
+        return null;
+    };
+    UIAKeyboard.prototype.typeString = function (string) {
+    };
     return UIAKeyboard;
-}());
-var UIALink = (function () {
+}(UIAElement));
+var UIALink = (function (_super) {
+    __extends(UIALink, _super);
     function UIALink() {
+        _super.apply(this, arguments);
     }
-    UIALink.prototype.url = function () { };
+    UIALink.prototype.url = function () {
+        return null;
+    };
     return UIALink;
-}());
-var UIANavigationBar = (function () {
+}(UIAElement));
+var UIANavigationBar = (function (_super) {
+    __extends(UIANavigationBar, _super);
     function UIANavigationBar() {
+        _super.apply(this, arguments);
     }
-    UIANavigationBar.prototype.leftButton = function () { };
-    UIANavigationBar.prototype.rightButton = function () { };
+    UIANavigationBar.prototype.leftButton = function () {
+        return null;
+    };
+    UIANavigationBar.prototype.rightButton = function () {
+        return null;
+    };
     return UIANavigationBar;
-}());
-var UIAPageIndicator = (function () {
+}(UIAElement));
+var UIAPageIndicator = (function (_super) {
+    __extends(UIAPageIndicator, _super);
     function UIAPageIndicator() {
+        _super.apply(this, arguments);
     }
-    UIAPageIndicator.prototype.goToNextPage = function () { };
-    UIAPageIndicator.prototype.goToPreviousPage = function () { };
-    UIAPageIndicator.prototype.pageCount = function () { };
-    UIAPageIndicator.prototype.pageIndex = function () { };
-    UIAPageIndicator.prototype.selectPage = function (index) { };
+    UIAPageIndicator.prototype.goToNextPage = function () {
+    };
+    UIAPageIndicator.prototype.goToPreviousPage = function () {
+    };
+    UIAPageIndicator.prototype.pageCount = function () {
+        return null;
+    };
+    UIAPageIndicator.prototype.pageIndex = function () {
+        return null;
+    };
+    UIAPageIndicator.prototype.selectPage = function (index) {
+    };
     return UIAPageIndicator;
-}());
-var UIAPicker = (function () {
+}(UIAElement));
+var UIAPicker = (function (_super) {
+    __extends(UIAPicker, _super);
     function UIAPicker() {
+        _super.apply(this, arguments);
     }
-    UIAPicker.prototype.wheels = function () { };
+    UIAPicker.prototype.wheels = function () {
+        return null;
+    };
     return UIAPicker;
-}());
-var UIAPickerWheel = (function () {
+}(UIAElement));
+var UIAPickerWheel = (function (_super) {
+    __extends(UIAPickerWheel, _super);
     function UIAPickerWheel() {
+        _super.apply(this, arguments);
     }
-    UIAPickerWheel.prototype.selectValue = function () { };
-    UIAPickerWheel.prototype.values = function () { };
+    UIAPickerWheel.prototype.selectValue = function () {
+    };
+    UIAPickerWheel.prototype.values = function () {
+        return null;
+    };
     return UIAPickerWheel;
-}());
-var UIAPopover = (function () {
+}(UIAPicker));
+var UIAPopover = (function (_super) {
+    __extends(UIAPopover, _super);
     function UIAPopover() {
+        _super.apply(this, arguments);
     }
-    UIAPopover.prototype.actionSheet = function () { };
-    UIAPopover.prototype.navigationBar = function () { };
-    UIAPopover.prototype.tabBar = function () { };
-    UIAPopover.prototype.toolbar = function () { };
-    UIAPopover.prototype.dismiss = function () { };
+    UIAPopover.prototype.actionSheet = function () {
+        return null;
+    };
+    UIAPopover.prototype.navigationBar = function () {
+        return null;
+    };
+    UIAPopover.prototype.tabBar = function () {
+        return null;
+    };
+    UIAPopover.prototype.toolbar = function () {
+        return null;
+    };
+    UIAPopover.prototype.dismiss = function () {
+        return null;
+    };
     return UIAPopover;
-}());
-var UIAProgressIndicator = (function () {
+}(UIAElement));
+var UIAProgressIndicator = (function (_super) {
+    __extends(UIAProgressIndicator, _super);
     function UIAProgressIndicator() {
+        _super.apply(this, arguments);
     }
     return UIAProgressIndicator;
-}());
-var UIASearchBar = (function () {
+}(UIAElement));
+var UIASearchBar = (function (_super) {
+    __extends(UIASearchBar, _super);
     function UIASearchBar() {
+        _super.apply(this, arguments);
     }
     return UIASearchBar;
-}());
-var UIASegmentedControl = (function () {
+}(UIATextField));
+var UIASegmentedControl = (function (_super) {
+    __extends(UIASegmentedControl, _super);
     function UIASegmentedControl() {
+        _super.apply(this, arguments);
     }
-    UIASegmentedControl.prototype.selectedButton = function () { };
+    UIASegmentedControl.prototype.selectedButton = function () {
+        return null;
+    };
     return UIASegmentedControl;
-}());
-var UIASlider = (function () {
+}(UIAElement));
+var UIASlider = (function (_super) {
+    __extends(UIASlider, _super);
     function UIASlider() {
+        _super.apply(this, arguments);
     }
-    UIASlider.prototype.dragToValue = function (value) { };
+    UIASlider.prototype.dragToValue = function (value) {
+    };
     return UIASlider;
-}());
-var UIAStaticText = (function () {
+}(UIAElement));
+var UIAStaticText = (function (_super) {
+    __extends(UIAStaticText, _super);
     function UIAStaticText() {
+        _super.apply(this, arguments);
     }
     return UIAStaticText;
-}());
-var UIAStatusBar = (function () {
+}(UIAElement));
+var UIAStatusBar = (function (_super) {
+    __extends(UIAStatusBar, _super);
     function UIAStatusBar() {
+        _super.apply(this, arguments);
     }
     return UIAStatusBar;
-}());
-var UIASwitch = (function () {
+}(UIAElement));
+var UIASwitch = (function (_super) {
+    __extends(UIASwitch, _super);
     function UIASwitch() {
+        _super.apply(this, arguments);
     }
-    UIASwitch.prototype.setValue = function (value) { };
+    UIASwitch.prototype.setValue = function (value) {
+    };
     return UIASwitch;
-}());
-var UIATabBar = (function () {
+}(UIAElement));
+var UIATabBar = (function (_super) {
+    __extends(UIATabBar, _super);
     function UIATabBar() {
+        _super.apply(this, arguments);
     }
-    UIATabBar.prototype.selectedButton = function () { };
+    UIATabBar.prototype.selectedButton = function () {
+        return null;
+    };
     return UIATabBar;
-}());
-var UIATextField = (function () {
+}(UIAElement));
+var UIATextField = (function (_super) {
+    __extends(UIATextField, _super);
     function UIATextField() {
+        _super.apply(this, arguments);
     }
+    UIATextField.prototype.setValue = function (value) {
+    };
     return UIATextField;
-}());
-UIAElement;
-{
-    setValue(value, string);
-    { }
-}
-var UIASecureTextField = (function () {
+}(UIAElement));
+var UIASecureTextField = (function (_super) {
+    __extends(UIASecureTextField, _super);
     function UIASecureTextField() {
+        _super.apply(this, arguments);
     }
     return UIASecureTextField;
-}());
-UIATextField;
-{
-}
-var UIATextView = (function () {
+}(UIATextField));
+var UIATextView = (function (_super) {
+    __extends(UIATextView, _super);
     function UIATextView() {
+        _super.apply(this, arguments);
     }
+    UIATextView.prototype.setValue = function (value) {
+    };
     return UIATextView;
-}());
-UIAElement;
-{
-    setValue(value, string);
-    { }
-}
-var UIAToolbar = (function () {
+}(UIAElement));
+var UIAToolbar = (function (_super) {
+    __extends(UIAToolbar, _super);
     function UIAToolbar() {
+        _super.apply(this, arguments);
     }
     return UIAToolbar;
-}());
-var UIAWebView = (function () {
+}(UIAElement));
+var UIAWebView = (function (_super) {
+    __extends(UIAWebView, _super);
     function UIAWebView() {
+        _super.apply(this, arguments);
     }
     return UIAWebView;
-}());
+}(UIAScrollView));
 //# sourceMappingURL=UIAutomation.js.map
