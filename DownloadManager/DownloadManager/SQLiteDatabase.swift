@@ -9,6 +9,19 @@
 import Foundation
 import SQLite
 
+extension Float: Number, Value {
+
+    public static let declaredDatatype = "REAL"
+
+    public static func fromDatatypeValue(datatypeValue: Float) -> Float {
+        return datatypeValue
+    }
+
+    public var datatypeValue: Float {
+        return self
+    }
+}
+
 public extension Dictionary {
     public func ss_valueForKey<T>(key: Key, defaultValue: T) -> T {
         let valueObject = self[key]
@@ -338,6 +351,7 @@ extension SQLiteDatabase {
         let (databaseResult, errorResult) = SQLiteDatabase.connect(database)
         guard errorResult == nil else { return }
         guard let db = databaseResult else { return }
+
         let updatesText = prepareForUpdate(columns: columnNames, values: values)
         let SQL = "UPDATE \(tableName) SET \(updatesText) WHERE \(filter)"
         do {
@@ -373,8 +387,8 @@ extension SQLiteDatabase {
         let columnNamesText = columnNames.joinWithSeparator(", ")
         let valuesText = values.reduce("", combine: { (total, current) -> String in
             var value: Any = current
-            if value is String {
-                value = "\"\(value)\""
+            if let stringValue = value as? String {
+                value = "\(stringValue.columnValue)"
             }
             if total == "" {
                 return "\(value)"
@@ -390,8 +404,8 @@ extension SQLiteDatabase {
         var results = [String]()
         for (index, name) in columnNames.enumerate() {
             var value: Any = values[index]
-            if value is String {
-                value = "\"\(value)\""
+            if let stringValue = value as? String {
+                value = "\(stringValue.columnValue)"
             }
             results.append("\(name)=\(value)")
         }
@@ -442,127 +456,6 @@ enum TableStatus: Int {
     case Alerted = 1
 }
 extension SQLiteDatabase: Database {
-    public class func insert(object: SupportDatabasePersistent) -> Int64 {
-        let tableName = object.dynamicType.tableName()
-        let databaseName = object.dynamicType.databaseName()
-        var columns = [SQLiteColumn]()
-        let columnDefines = object.dynamicType.columns()
-        var names = [String]()
-        var values = [Any]()
-        for (name, type, size, constraints) in columnDefines {
-            columns.append(SQLiteColumn(name: name, type: type, size: size, constraints: constraints))
-            names.append(name)
-            if let value = object.valueForColumn(name) {
-                values.append(value)
-            }
-        }
-        if SQLiteDatabase.exists(tableName, database: databaseName) {
-            if SQLiteDatabase.needAlert(tableName) {
-                SQLiteDatabase.alter(tableName, columns: columns, database: databaseName)
-            }
-        } else {
-            SQLiteDatabase.create(tableName, columns: columns, database: databaseName)
-        }
-        return SQLiteDatabase.insert(columns: names, values: values, in: tableName, database: databaseName)
-    }
-    public class func select_first<T: SupportDatabasePersistent>() -> T? {
-        let tableName = T.tableName()
-        let databaseName = T.databaseName()
-        let result = SQLiteDatabase.select_first(in: tableName, database: databaseName)
-        return T(with: result)
-    }
-    public class func select<T: SupportDatabasePersistent>() -> [T] {
-        let tableName = T.tableName()
-        let databaseName = T.databaseName()
-        let results = SQLiteDatabase.select(in: tableName, database: databaseName)
-        var objects = [T]()
-        for result in results {
-            if let object = T(with: result) {
-                objects.append(object)
-            }
-        }
-        return objects
-    }
-
-    public class func select<T: SupportDatabasePersistent>(whereSQLStr whereSql: String) -> [T] {
-        let tableName = T.tableName()
-        let databaseName = T.databaseName()
-        let results = SQLiteDatabase.select(in: tableName, condition: whereSql, database: databaseName)
-        var objects = [T]()
-        for result in results {
-            if let object = T(with: result) {
-                objects.append(object)
-            }
-        }
-        return objects
-    }
-
-    public class func update(object: SupportDatabasePersistent, with values: [String: Any]) {
-        let tableName = object.dynamicType.tableName()
-        let databaseName = object.dynamicType.databaseName()
-        let WHERE = SQLiteDatabase.fiterClause(object)
-
-        SQLiteDatabase.update(
-            columns: Array(values.keys),
-            values: Array(values.values),
-            filter: WHERE,
-            in: tableName,
-            database: databaseName)
-    }
-
-    public class func delete(object: SupportDatabasePersistent) {
-        let tableName = object.dynamicType.tableName()
-        let databaseName = object.dynamicType.databaseName()
-        let WHERE = SQLiteDatabase.fiterClause(object)
-        SQLiteDatabase.delete(rows: WHERE, in: tableName, database: databaseName)
-    }
-
-    public class func count(type: SupportDatabasePersistent.Type) -> Int64 {
-        return SQLiteDatabase.count(in: type.tableName(), database: type.databaseName())
-    }
-
-    public class func clear(type: SupportDatabasePersistent.Type) {
-        let tableName = type.tableName()
-        let databaseName = type.databaseName()
-        return SQLiteDatabase.clear(tableName, database: databaseName)
-    }
-
-    public class func drop(type: SupportDatabasePersistent.Type) {
-        let tableName = type.tableName()
-        let databaseName = type.databaseName()
-        return SQLiteDatabase.drop(tableName, database: databaseName)
-    }
-    // MARK: helper
-    class func fiterClause(object: SupportDatabasePersistent) -> String {
-        let columnDefines = object.dynamicType.columns()
-        var WHERE = ""
-        for (name, _, _, constraints) in columnDefines {
-            var found = false
-            for constraint in constraints {
-                switch constraint {
-                case .PRIMARY_KEY:
-                    found = true
-                    break
-                default:
-                    break
-                }
-            }
-            if found {
-                if let value = object.valueForColumn(name) {
-                    if let stringValue = value as? String {
-                        WHERE = "\(name)=\((stringValue).columnValue)"
-                    } else {
-                        WHERE = "\(name)=\(value)"
-                    }
-                }
-                break
-            }
-        }
-        if WHERE.isEmpty {
-            SSLogWarning("cannot crate where form \(object.dynamicType)")
-        }
-        return WHERE
-    }
 
     static var TableStatuses = [String: TableStatus]()
     class func needAlert(tableName: String) -> Bool {
@@ -571,6 +464,22 @@ extension SQLiteDatabase: Database {
             return true
         } else {
             return false
+        }
+    }
+
+    class func alertIfNeed(columnDefines: [DatabaseTableColumnDefine], tableName: String, databaseName: String) {
+
+        if SQLiteDatabase.exists(tableName, database: databaseName) {
+            if SQLiteDatabase.needAlert(tableName) {
+                var columns = [SQLiteColumn]()
+                for (name, type, size, constraints) in columnDefines {
+                    columns.append(SQLiteColumn(name: name, type: type, size: size, constraints: constraints))
+                }
+
+                SQLiteDatabase.alter(tableName, columns: columns, database: databaseName)
+            }
+        } else {
+            SSLogWarning("\(tableName) not exist in \(databaseName)")
         }
     }
 }
