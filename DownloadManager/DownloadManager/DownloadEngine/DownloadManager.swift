@@ -31,8 +31,7 @@ public class DownloadTask {
     public var url: String = ""
     public var status = DownloadTaskStatus.Waiting {
         didSet {
-            Storage.database.update(self, with: ["status": status.rawValue])
-
+            updateDB()
             if let obsever = statusObsever {
                 obsever(status: status)
             }
@@ -47,16 +46,42 @@ public class DownloadTask {
         }
     }
 
+    public var total: Int = 0 {
+        didSet {
+            if let obsever = progressObserver {
+                obsever(progress: progress)
+            }
+        }
+    }
+
+    public var received: Int = 0 {
+        didSet {
+            if let obsever = progressObserver {
+                obsever(progress: progress)
+            }
+        }
+    }
+
+    public var statusObsever: ((status: DownloadTaskStatus) -> Void)?
+    public var progressObserver: ((progress: Float) -> Void)?
+    public var totalObserver: ((total: Int) -> Void)?
+    public var receivedObserver: ((total: Int) -> Void)?
+
+    lazy var destinationPath: String = {
+        let fileName = "downloads/\(self.key)"
+        let path = SSPath.document().joinPath(fileName)
+        SSPath.mkdir(path, isFilePath: true)
+        return path
+    }()
+
+    lazy var resumeDataPath: String = {
+        return self.destinationPath.joinExt("plist")
+    }()
+
     weak var delegate: DownloadTaskDelegate?
     var request: Request?
 
-    public typealias StatusObsever = (status: DownloadTaskStatus) -> Void
-    public typealias ProgressObserver = (progress: Float) -> Void
-
-    public var statusObsever: StatusObsever?
-    public var progressObserver: ProgressObserver?
-
-    convenience public init () {
+    convenience public init() {
         self.init(key: "", url: "")
     }
 
@@ -79,13 +104,14 @@ public class DownloadTask {
 
     func downloadFileDestination() -> Request.DownloadFileDestination {
         return { [weak self](temp, response) -> NSURL in
-            guard let wself = self else { return NSURL(fileURLWithPath: SSPath.document()) }
-            let fileName = "downloads/\(wself.key)"
-            let path = SSPath.document().joinPath(fileName)
-            SSPath.mkdir(path, backupToiCloud: false, isFilePath: true)
-            return NSURL(fileURLWithPath: path)
+            guard let wself = self else {
+                assert(false, "")
+                return NSURL(fileURLWithPath: SSPath.document())
+            }
+            return NSURL(fileURLWithPath: wself.destinationPath)
         }
     }
+
     func start(withDelegate delegate: DownloadTaskDelegate?) {
         self.delegate = delegate
         self.status = .Downloading
@@ -104,6 +130,10 @@ public class DownloadTask {
                     if (error != nil) {
                         if error?.code == NSURLErrorCancelled {
                             SSLogInfo("canceled")
+                            if let resumeData = data {
+                                resumeData.writeToFile(wself.resumeDataPath, atomically: true)
+                            }
+                            wself.updateDB()
                         } else {
                             SSLogInfo("\(error)")
                         }
@@ -120,7 +150,7 @@ public class DownloadTask {
         self.delegate = nil
         self.status = .Paused
         request?.suspend()
-
+        updateDB()
     }
 }
 
@@ -137,7 +167,9 @@ extension DownloadTask: SupportDatabasePersistent {
             ("key", SQLiteDataType.TEXT, SQLiteCapacity.None, [SQLiteConstraint.PRIMARY_KEY]),
             ("url", SQLiteDataType.TEXT, SQLiteCapacity.None, []),
             ("status", SQLiteDataType.TEXT, SQLiteCapacity.None, []),
-            ("progress", SQLiteDataType.Float, SQLiteCapacity.None, [])
+            ("progress", SQLiteDataType.Float, SQLiteCapacity.None, []),
+            ("total", SQLiteDataType.INTEGER, SQLiteCapacity.None, []),
+            ("received", SQLiteDataType.INTEGER, SQLiteCapacity.None, [])
         ]
     }
 
@@ -147,8 +179,14 @@ extension DownloadTask: SupportDatabasePersistent {
         case "url": return url
         case "status": return status.rawValue
         case "progress": return progress
+        case "total": return total
+        case "received": return received
         default: return nil
         }
+    }
+
+    public func updateDB() {
+        self.db_update(["total", "received", "progress", "status"])
     }
 }
 
@@ -176,10 +214,12 @@ public class DownloadManager: NSObject {
     public var MaxNumberOfConcurrentTasks = 3
     /// 任务列表
     var tasks: [DownloadTask] = []
+    /// 正在下载的任务
+    var runingTasks: [String: DownloadTask] = [:]
 
     init(database: String = "download.db") {
         DownloadManager.database = database
-        tasks = Storage.database.select()
+        tasks = DownloadTask.db_select()
     }
 }
 
@@ -199,6 +239,7 @@ extension DownloadManager: DownloadTaskDelegate {
             if numberOfConcurrentTasks < MaxNumberOfConcurrentTasks {
                 numberOfConcurrentTasks += 1
                 task.start(withDelegate: self)
+                runingTasks[task.key] = task
             } else {
                 SSLogInfo("too many concurrent task runing")
             }
@@ -219,6 +260,7 @@ extension DownloadManager: DownloadTaskDelegate {
         if numberOfConcurrentTasks > 0 {
             numberOfConcurrentTasks -= 1
         }
+        runingTasks.removeValueForKey(task.key)
         startAllTasks()
     }
 
@@ -232,14 +274,14 @@ extension DownloadManager {
     public func append(task: DownloadTask, allowDuplicate: Bool = false) {
         if allowDuplicate || taskWithKey(task.key) == nil {
             tasks.append(task)
-            Storage.database.insert(task)
+            task.db_insert()
         }
     }
 
     public func remove(task: DownloadTask) {
         if let index = indexOfTask(task) {
             tasks.removeAtIndex(index)
-            Storage.database.delete(task)
+            task.db_delete()
         }
     }
 
@@ -247,13 +289,13 @@ extension DownloadManager {
         if index < tasks.count {
             tasks.removeAtIndex(index)
             let task = tasks[index]
-            Storage.database.delete(task)
+            task.db_delete()
         }
     }
 
     public func removeAll() {
         tasks.removeAll()
-        Storage.database.clear(DownloadTask)
+        DownloadTask.db_clear()
     }
 
     func indexOfTask(task: DownloadTask) -> Int? {

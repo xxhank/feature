@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		52F4C4CD1D00FFFB001AE3E4 /* SupportDatabasePersistent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F4C4CC1D00FFFB001AE3E4 /* SupportDatabasePersistent.swift */; };
 		615950F31CFD9BD900B24287 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 615950F21CFD9BD900B24287 /* AppDelegate.swift */; };
 		615950F51CFD9BD900B24287 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 615950F41CFD9BD900B24287 /* ViewController.swift */; };
 		615950F81CFD9BD900B24287 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 615950F61CFD9BD900B24287 /* Main.storyboard */; };
@@ -43,6 +44,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		52F4C4CC1D00FFFB001AE3E4 /* SupportDatabasePersistent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SupportDatabasePersistent.swift; sourceTree = "<group>"; };
 		615950EF1CFD9BD900B24287 /* DownloadManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DownloadManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		615950F21CFD9BD900B24287 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		615950F41CFD9BD900B24287 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -172,6 +174,7 @@
 				615951AF1CFD9EDE00B24287 /* SSPath.swift */,
 				615951B01CFD9EDE00B24287 /* Storage.swift */,
 				615951B11CFD9EDE00B24287 /* Database.swift */,
+				52F4C4CC1D00FFFB001AE3E4 /* SupportDatabasePersistent.swift */,
 				615951B21CFD9EDE00B24287 /* SQLiteDatabase.swift */,
 				615951B31CFD9EDE00B24287 /* SQLiteDatabaseTypes.swift */,
 				615951A51CFD9E8400B24287 /* SSLogger.swift */,
@@ -391,6 +394,7 @@
 				615951B41CFD9EDE00B24287 /* SSPath.swift in Sources */,
 				6159519D1CFD9D3C00B24287 /* DownloadManager.swift in Sources */,
 				615950F31CFD9BD900B24287 /* AppDelegate.swift in Sources */,
+				52F4C4CD1D00FFFB001AE3E4 /* SupportDatabasePersistent.swift in Sources */,
 				615951B81CFD9EDE00B24287 /* SQLiteDatabaseTypes.swift in Sources */,
 				615951A61CFD9E8400B24287 /* SSLogger.swift in Sources */,
 				615951B61CFD9EDE00B24287 /* Database.swift in Sources */,
