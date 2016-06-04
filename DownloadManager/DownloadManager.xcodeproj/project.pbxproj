@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		52C7B4AB1D02B64C00717BD6 /* Fluff.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C7B4AA1D02B64C00717BD6 /* Fluff.swift */; };
+		52C7B4AD1D02B66200717BD6 /* FluffTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C7B4AC1D02B66200717BD6 /* FluffTests.swift */; };
 		52F4C4CD1D00FFFB001AE3E4 /* SupportDatabasePersistent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F4C4CC1D00FFFB001AE3E4 /* SupportDatabasePersistent.swift */; };
 		615950F31CFD9BD900B24287 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 615950F21CFD9BD900B24287 /* AppDelegate.swift */; };
 		615950F51CFD9BD900B24287 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 615950F41CFD9BD900B24287 /* ViewController.swift */; };
@@ -44,6 +46,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		52C7B4AA1D02B64C00717BD6 /* Fluff.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fluff.swift; sourceTree = "<group>"; };
+		52C7B4AC1D02B66200717BD6 /* FluffTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FluffTests.swift; sourceTree = "<group>"; };
 		52F4C4CC1D00FFFB001AE3E4 /* SupportDatabasePersistent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SupportDatabasePersistent.swift; sourceTree = "<group>"; };
 		615950EF1CFD9BD900B24287 /* DownloadManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DownloadManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		615950F21CFD9BD900B24287 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -134,6 +138,7 @@
 		615951061CFD9BD900B24287 /* DownloadManagerTests */ = {
 			isa = PBXGroup;
 			children = (
+				52C7B4AC1D02B66200717BD6 /* FluffTests.swift */,
 				615951071CFD9BD900B24287 /* DownloadManagerTests.swift */,
 				615951091CFD9BD900B24287 /* Info.plist */,
 			);
@@ -186,6 +191,7 @@
 		6159519B1CFD9D1F00B24287 /* DownloadEngine */ = {
 			isa = PBXGroup;
 			children = (
+				52C7B4AA1D02B64C00717BD6 /* Fluff.swift */,
 				6159519C1CFD9D3C00B24287 /* DownloadManager.swift */,
 			);
 			path = DownloadEngine;
@@ -399,6 +405,7 @@
 				615951A61CFD9E8400B24287 /* SSLogger.swift in Sources */,
 				615951B61CFD9EDE00B24287 /* Database.swift in Sources */,
 				615951B71CFD9EDE00B24287 /* SQLiteDatabase.swift in Sources */,
+				52C7B4AB1D02B64C00717BD6 /* Fluff.swift in Sources */,
 				617B4B581CFECD2900FB5DCF /* SoftwareCell.swift in Sources */,
 				615951B51CFD9EDE00B24287 /* Storage.swift in Sources */,
 			);
@@ -409,6 +416,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				615951081CFD9BD900B24287 /* DownloadManagerTests.swift in Sources */,
+				52C7B4AD1D02B66200717BD6 /* FluffTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
