@@ -5,10 +5,16 @@ use_frameworks!
 
 target 'MemoryLeakDemo' do
     pod 'SwiftTask'
+    pod 'XCGLogger'
+    pod 'Alamofire'
+    pod 'SDWebImage'
+    pod 'ObjectMapper'
+    pod 'UITableView+FDTemplateLayoutCell'
+    pod 'MBProgressHUD'
 end
 
 target 'MemoryLeakDemoTests' do
-
+    pod 'FBSnapshotTestCase'
 end
 
 target 'MemoryLeakDemoUITests' do

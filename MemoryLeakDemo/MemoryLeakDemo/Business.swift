@@ -8,6 +8,7 @@
 
 import Foundation
 import SwiftTask
+import XCGLogger
 
 public class BusinessTask<Progress, Value, Error>: Task<Progress, Value, Error> {
     public override init(weakified: Bool, paused: Bool, initClosure: InitClosure) {
@@ -68,7 +69,7 @@ public class BusinessTask<Progress, Value, Error>: Task<Progress, Value, Error> 
     }
 
     deinit {
-        print("\(self) died at \(NSDate())")
+        XCGLogger.info("\(self.name) died at \(NSDate())")
     }
 }
 public enum BusinessTypes<Result> {

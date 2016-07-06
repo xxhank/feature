@@ -7,9 +7,10 @@
 //
 
 import UIKit
+import XCGLogger
 
 func traceDie(identifier: AnyObject) {
-    print("\(identifier) died at \(NSDate())")
+    XCGLogger.info("\(identifier) died at \(NSDate())")
 }
 
 class Worker {
@@ -18,24 +19,24 @@ class Worker {
     var name = ""
     init(name: String) {
         self.name = name
-        print("\(name) init at \(NSDate())")
+        XCGLogger.info("\(name) init at \(NSDate())")
     }
     deinit {
-        print("\(name) died at \(NSDate())")
+        XCGLogger.info("\(name) died at \(NSDate())")
     }
 
     func run () {
         dispatch_async(dispatch_get_global_queue(QOS_CLASS_DEFAULT, 0)) { [weak self] in
             self?.percent += 1.0
             NSThread.sleepForTimeInterval(10)
-            print("\(self?.name) work finished at \(NSDate())")
+            XCGLogger.info("\(self?.name) work finished at \(NSDate())")
             NSThread.sleepForTimeInterval(5)
             self?.report()
         }
     }
 
     func report() {
-        print("\(name) report at \(NSDate())")
+        XCGLogger.info("\(name) report at \(NSDate())")
         dispatch_async(dispatch_get_main_queue(), {
             self.label?.text = "\(self.percent)"
         })
@@ -47,13 +48,13 @@ class WorkerWithDispatch: Worker {
         Dispatch.async_in_global(.DEFAULT) { [weak self] in
             self?.percent += 1.0
             NSThread.sleepForTimeInterval(10)
-            print("\(self?.name) work finished at \(NSDate())")
+            XCGLogger.info("\(self?.name) work finished at \(NSDate())")
             NSThread.sleepForTimeInterval(5)
             self?.report()
         }
     }
     override func report() {
-        print("\(name) report at \(NSDate())")
+        XCGLogger.info("\(name) report at \(NSDate())")
         Dispatch.async_on_ui {
             self.label?.text = "\(self.percent)"
         }
@@ -101,7 +102,7 @@ class WorkerBusiness: Business {
     var name = ""
     init(name: String) {
         self.name = name
-        print("\(name) init at \(NSDate())")
+        XCGLogger.info("\(name) init at \(NSDate())")
     }
 
     required internal init() {
@@ -109,7 +110,7 @@ class WorkerBusiness: Business {
     }
 
     deinit {
-        print("\(name) died at \(NSDate())")
+        XCGLogger.info("\(name) died at \(NSDate())")
     }
 
     var task: BusinessTypes<Float>.Task?
@@ -118,11 +119,11 @@ class WorkerBusiness: Business {
             let worker = TimerWorker()
             worker.run(5, completion: { [weak self](finished) in
                 guard let wself = self else { return }
-                print("\(wself.name) work finished at \(NSDate())")
+                XCGLogger.info("\(wself.name) work finished at \(NSDate())")
                 if finished {
                     NSThread.sleepForTimeInterval(2)
                     wself.report()
-                    print("\(wself.name) report finished at \(NSDate())")
+                    XCGLogger.info("\(wself.name) report finished at \(NSDate())")
 
                     fulfill(1.0)
                 } else {
@@ -141,12 +142,12 @@ class WorkerBusiness: Business {
             let worker = TimerWorker()
             worker.run(5, completion: { [weak wself](finished) in
                 guard let wself = wself else { return }
-                print("\(wself.name) work finished at \(NSDate())")
+                XCGLogger.info("\(wself.name) work finished at \(NSDate())")
 
                 if finished {
                     NSThread.sleepForTimeInterval(2)
                     wself.report()
-                    print("\(wself.name) report finished at \(NSDate())")
+                    XCGLogger.info("\(wself.name) report finished at \(NSDate())")
 
                     fulfill(1.0)
                 } else {
@@ -201,7 +202,7 @@ class WorkerBusiness: Business {
     }
 
     func report() {
-        print("\(name) report at \(NSDate()) :\(self.percent)")
+        XCGLogger.info("\(name) report at \(NSDate()) :\(self.percent)")
         Dispatch.async_on_ui {
             self.label?.text = "\(self.percent)"
         }
@@ -237,9 +238,9 @@ class ViewController: UIViewController {
             // let workerCauseFatal = WorkerBusiness()
             let worker = WorkerBusiness(name: "work3")
             worker.run().success({ (percent) in
-                print("success \(percent)")
+                XCGLogger.info("success \(percent)")
             }).failure({ (error, isCancelled) in
-                print("cancelled:\(isCancelled) error:\(error) ")
+                XCGLogger.info("cancelled:\(isCancelled) error:\(error) ")
             })
             worker.report()
             }))
@@ -248,9 +249,9 @@ class ViewController: UIViewController {
             // let workerCauseFatal = WorkerBusiness()
             let worker = WorkerBusiness(name: "work4")
             worker.runWithKeepTask().success({ (percent) in
-                print("success \(percent)")
+                XCGLogger.info("success \(percent)")
             }).failure({ (error, isCancelled) in
-                print("cancelled:\(isCancelled) error:\(error) ")
+                XCGLogger.info("cancelled:\(isCancelled) error:\(error) ")
             })
             worker.report()
             }))
@@ -258,9 +259,9 @@ class ViewController: UIViewController {
             // let workerCauseFatal = WorkerBusiness()
             let worker = WorkerBusiness(name: "work5")
             worker.runWithNestTask().success({ (percent) in
-                print("success \(percent)")
+                XCGLogger.info("success \(percent)")
             }).failure({ (error, isCancelled) in
-                print("cancelled:\(isCancelled) error:\(error) ")
+                XCGLogger.info("cancelled:\(isCancelled) error:\(error) ")
             })
             worker.report()
             }))
@@ -269,9 +270,9 @@ class ViewController: UIViewController {
             // let workerCauseFatal = WorkerBusiness()
             let worker = WorkerBusiness(name: "work6")
             worker.runWithNestTask2().success({ (percent) in
-                print("success \(percent)")
+                XCGLogger.info("success \(percent)")
             }).failure({ (error, isCancelled) in
-                print("cancelled:\(isCancelled) error:\(error) ")
+                XCGLogger.info("cancelled:\(isCancelled) error:\(error) ")
             })
             worker.report()
             }))
@@ -282,56 +283,56 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         doSomething()
         return;
-        print("viewDidLoad begin")
+        XCGLogger.info("viewDidLoad begin")
 
-        print("before dispatch_async 1")
+        XCGLogger.info("before dispatch_async 1")
         dispatch_async(dispatch_get_main_queue()) {
-            print("in dispatch_async 1")
+            XCGLogger.info("in dispatch_async 1")
             self.somethingIsDone = true
         }
 
         dispatch_async(dispatch_get_main_queue()) {
-            print("in dispatch_async 1 2")
+            XCGLogger.info("in dispatch_async 1 2")
         }
 
         dispatch_async(dispatch_get_main_queue()) {
-            print("in dispatch_async 1 3")
+            XCGLogger.info("in dispatch_async 1 3")
         }
 
-        print("after dispatch_async 1")
+        XCGLogger.info("after dispatch_async 1")
 
-        print("before dispatch_async 2")
+        XCGLogger.info("before dispatch_async 2")
         Dispatch.async_on_ui {
-            print("in dispatch_async 2")
+            XCGLogger.info("in dispatch_async 2")
         }
-        print("after dispatch_async 2")
+        XCGLogger.info("after dispatch_async 2")
 
-        print("viewDidLoad end")
+        XCGLogger.info("viewDidLoad end")
     }
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         return;
-        print("viewWillAppear begin")
+        XCGLogger.info("viewWillAppear begin")
 
-        print("before dispatch_async 3")
+        XCGLogger.info("before dispatch_async 3")
         dispatch_async(dispatch_get_main_queue()) {
-            print("in dispatch_async 3")
+            XCGLogger.info("in dispatch_async 3")
         }
-        print("after dispatch_async 3")
+        XCGLogger.info("after dispatch_async 3")
 
-        print("before dispatch_async 4")
+        XCGLogger.info("before dispatch_async 4")
         Dispatch.async_on_ui {
-            print("in dispatch_async 4")
+            XCGLogger.info("in dispatch_async 4")
         }
-        print("after dispatch_async 4")
+        XCGLogger.info("after dispatch_async 4")
 
-        print("viewWillAppear end")
+        XCGLogger.info("viewWillAppear end")
 
         if somethingIsDone {
-            print("somethingIsDone")
+            XCGLogger.info("somethingIsDone")
         } else {
-            print("do something first")
+            XCGLogger.info("do something first")
         }
     }
 
@@ -349,7 +350,7 @@ class ViewController: UIViewController {
             somethingDelegateMethod()
         #endif
         if count == 1 {
-            print("except")
+            XCGLogger.info("except")
         } else {
             print ("who change me")
         }
