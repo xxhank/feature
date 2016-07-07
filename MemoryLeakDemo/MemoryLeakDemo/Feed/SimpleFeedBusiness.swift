@@ -19,9 +19,10 @@ enum SimpleFeedError: ErrorType {
 extension Request: SSCancelable {
 
 }
+
 class SimpleFeedBusiness: Business {
     static let URL = "http://rec.chaojishipin.com/sarrs/rec?app_id=732&appfrom=appstore&appid=0&appv=1.3.0&area=rec_0703&bd=iPhone&builder_number=simple_1&cid=2&city=CN_1_5_1&clientos=iPhone%20OS9.3.2&ctime=1467747906257&device=chaojishipin&ip=-&nt=wifi&os=iOS&osv=9.3.2&p=0&pl=1000010&pl1=0&pl2=01&resolution=667_375&scale=2&width=750&xh=iPhone%206s"
-    var feeds: [FeedModel] = []
+    var feeds: [Feed] = []
 
     func loadFeeds() -> BusinessTypes< [FeedCellViewModel]>.Task {
         return runTask({ [weak self](fulfill, reject) -> SSCancelable? in

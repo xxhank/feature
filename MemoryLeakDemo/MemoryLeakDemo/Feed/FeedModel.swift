@@ -8,13 +8,14 @@
 
 import Foundation
 import ObjectMapper
-class MLDResponse {
+
+class JSONResponse {
     var statusMessage = ""
     var statusCode = ""
 }
 
-class FeedResponse: MLDResponse, Mappable {
-    var feeds = [FeedModel]()
+class FeedResponse: JSONResponse, Mappable {
+    var feeds = [Feed]()
 
     required init?(_ map: Map) {
 
@@ -26,7 +27,7 @@ class FeedResponse: MLDResponse, Mappable {
     }
 }
 
-class FeedModel: Mappable {
+class Feed: Mappable {
     var title = ""
     var subTitle = ""
     var brief = ""
@@ -56,8 +57,18 @@ class FeedModel: Mappable {
     }
 }
 
-class Video {
+class Video: Mappable {
     var title = ""
     var id = ""
-    var url = ""
+    var pageURL = ""
+
+    required init?(_ map: Map) {
+
+    }
+
+    func mapping(map: Map) -> () {
+        title <- map["title"]
+        id <- map["gvid"]
+        pageURL <- map["url"]
+    }
 }

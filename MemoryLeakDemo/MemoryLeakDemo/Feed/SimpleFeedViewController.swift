@@ -37,7 +37,7 @@ extension SimpleFeedViewController {
     }
 }
 
-// MARK: -
+// MARK: - UITableViewDataSource
 extension SimpleFeedViewController: UITableViewDataSource {
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModels.count
@@ -52,7 +52,7 @@ extension SimpleFeedViewController: UITableViewDataSource {
         }
     }
 }
-
+// MARK: - UITableViewDelegate
 extension SimpleFeedViewController: UITableViewDelegate {
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         let identifier = "FeedCell"
