@@ -68,6 +68,7 @@ extension DetailViewController: UITableViewDataSource {
         return tableView.dequeueReusableHeaderFooterViewWithIdentifier("EpisodeHeaderView")
     }
 }
+
 // MARK: - UITableViewDelegate
 extension DetailViewController: UITableViewDelegate {
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
@@ -89,8 +90,28 @@ extension DetailViewController: UITableViewDelegate {
         episodeCell.viewModel = viewModel
     }
 
+    func tableView(tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        guard let episodeHeader = view as? EpisodeHeaderView else { return }
+        episodeHeader.viewMoreEpisodesBlock = { [weak self](header, button) in
+            self?.viewMoreEpisodes()
+        }
+    }
+
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         guard let viewModel = viewModels[safe: indexPath.row] else { return }
         XCGLogger.info("\(viewModel)")
+    }
+}
+
+// MARK: - Episode
+extension DetailViewController {
+    func viewMoreEpisodes() {
+        guard let viewModel = viewModels[safe: 0] else { return }
+
+        let parameters = EpisodePickParameters(episodes: viewModel.episodeBlockCellViewModels, selected: viewModel.playingEpisodeIndex)
+
+        EpisodePickViewController.pickEpisode(parameters, hostController: self) { (index) in
+            XCGLogger.info("new selection \(index)")
+        }
     }
 }

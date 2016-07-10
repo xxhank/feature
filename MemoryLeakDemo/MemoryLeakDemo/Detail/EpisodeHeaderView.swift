@@ -8,14 +8,19 @@
 
 import UIKit
 
+// MARK: - ActionBlock
+extension UITableViewHeaderFooterView {
+    typealias ActionBlock = (view: UITableViewHeaderFooterView, sender: AnyObject) -> Void
+}
+
 class EpisodeHeaderView: UITableViewHeaderFooterView {
+    var viewMoreEpisodesBlock: ActionBlock?
 
-    /*
-    // Only override drawRect: if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func drawRect(rect: CGRect) {
-        // Drawing code
+    override var contentView: UIView {
+        return self.subviews[0]
     }
-    */
 
+    @IBAction func viewMoreEpisodes(sender: AnyObject) {
+        viewMoreEpisodesBlock?(view: self, sender: sender)
+    }
 }

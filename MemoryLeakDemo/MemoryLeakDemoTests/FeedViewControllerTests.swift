@@ -1,5 +1,5 @@
 //
-//  SimpleFeedViewControllerTests.swift
+//  FeedViewControllerTests.swift
 //  MemoryLeakDemo
 //
 //  Created by wangchao on 16/7/6.
@@ -9,7 +9,7 @@
 import XCTest
 import FBSnapshotTestCase
 
-class SimpleFeedViewControllerTests: FBSnapshotTestCase {
+class FeedViewControllerTests: FBSnapshotTestCase {
 
     override func setUp() {
         super.setUp()

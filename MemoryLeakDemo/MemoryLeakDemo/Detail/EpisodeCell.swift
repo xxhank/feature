@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import XCGLogger
 
 class EpisodeBlockCellViewModel {
     var playing = false
@@ -16,12 +17,23 @@ class EpisodeBlockCellViewModel {
 class EpisodeBlockCell: UICollectionViewCell {
     @IBOutlet weak var playingMark: UIImageView!
     @IBOutlet weak var indexLabel: UILabel!
-
+    @IBOutlet weak var backgroundImageView: UIImageView!
     var viewModel: EpisodeBlockCellViewModel? {
         didSet {
             playingMark.hidden = !(viewModel?.playing ?? false)
             indexLabel.text = viewModel?.indexText
         }
+    }
+
+    static func backgroundImage(size: CGSize) -> UIImage {
+        struct Static {
+            static var predicate: dispatch_once_t = 0
+            static var instance: UIImage? = nil
+        }
+        dispatch_once(&Static.predicate) {
+            Static.instance = UIImage.strokeImage(UIColor.whiteColor(), size: size, borderColor: UIColor.redColor(), borderWidth: 1)
+        }
+        return Static.instance!
     }
 }
 
@@ -32,20 +44,37 @@ class EpisodeCellViewModel {
 
 class EpisodeCell: UITableViewCell {
     @IBOutlet weak var episodesView: UICollectionView!
+    @IBOutlet weak var episodesViewHeightConstraint: NSLayoutConstraint!
 
     var viewModel: EpisodeCellViewModel? {
         didSet {
+            if let episodesViewHeightConstraint = episodesViewHeightConstraint {
+                let numberOfRows = ((viewModel?.episodeBlockCellViewModels.count ?? 0) + 5) / 6
+                episodesViewHeightConstraint.constant = CGFloat(numberOfRows) * 40
+            }
+
             if fd_isTemplateLayoutCell {
                 return
             }
 
             if let viewModel = viewModel {
                 episodesView.reloadData()
-                let selectIndexPath = NSIndexPath(forItem: viewModel.playingEpisodeIndex, inSection: 0)
-                episodesView.selectItemAtIndexPath(selectIndexPath, animated: false, scrollPosition: .Left)
+                if viewModel.playingEpisodeIndex > 0
+                && viewModel.playingEpisodeIndex < viewModel.episodeBlockCellViewModels.count {
+                    let selectIndexPath = NSIndexPath(forItem: viewModel.playingEpisodeIndex, inSection: 0)
+                    episodesView.selectItemAtIndexPath(selectIndexPath, animated: false, scrollPosition: .Left)
+                }
             }
         }
     }
+
+    lazy var blockCellSize: CGSize = {
+        return CGSize(width: self.bounds.width / 6.1, height: 40)
+        let scale = UIScreen.mainScreen().scale
+        let dobuleCellWidth = CGFloat(Int((self.bounds.width) * scale / 6))
+        let cellWidth = dobuleCellWidth / scale
+        return CGSize(width: cellWidth, height: 40)
+    }()
 }
 
 extension EpisodeCell {
@@ -53,6 +82,7 @@ extension EpisodeCell {
         super.awakeFromNib()
         episodesView.delegate = self
         episodesView.dataSource = self
+        episodesView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 1)
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
@@ -82,6 +112,7 @@ extension EpisodeCell: UICollectionViewDelegateFlowLayout {
         }
         blockViewModel.playing = (indexPath.row == viewModel.playingEpisodeIndex)
         cell.viewModel = blockViewModel
+        cell.backgroundImageView.image = EpisodeBlockCell.backgroundImage(CGSize(width: blockCellSize.width, height: blockCellSize.height))
     }
 
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
@@ -119,6 +150,6 @@ extension EpisodeCell: UICollectionViewDelegateFlowLayout {
     }
 
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        return CGSize(width: self.bounds.width / 6.0, height: self.bounds.height)
+        return blockCellSize
     }
 }

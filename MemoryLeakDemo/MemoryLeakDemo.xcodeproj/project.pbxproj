@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		46E0578CD2EA1943EE641C8E /* Pods_MemoryLeakDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14600B137D32298D64272E04 /* Pods_MemoryLeakDemo.framework */; };
-		7FC977291D25E51A00EE56C3 /* SimpleFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC977281D25E51A00EE56C3 /* SimpleFeedViewController.swift */; };
+		7FC977291D25E51A00EE56C3 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC977281D25E51A00EE56C3 /* FeedViewController.swift */; };
 		7FC9772B1D25E73000EE56C3 /* Array+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC9772A1D25E73000EE56C3 /* Array+Extension.swift */; };
 		7FDBEA5A1D1F544600F018A8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDBEA591D1F544600F018A8 /* AppDelegate.swift */; };
 		7FDBEA5C1D1F544600F018A8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDBEA5B1D1F544600F018A8 /* ViewController.swift */; };
@@ -19,16 +19,20 @@
 		7FDBEA7A1D1F544600F018A8 /* MemoryLeakDemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDBEA791D1F544600F018A8 /* MemoryLeakDemoUITests.swift */; };
 		7FDBEA881D1F5A1E00F018A8 /* Dispatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDBEA871D1F5A1E00F018A8 /* Dispatch.swift */; };
 		7FDBEA8A1D1F633500F018A8 /* Business.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDBEA891D1F633500F018A8 /* Business.swift */; };
-		7FDFB2DB1D2C470000D3CBBC /* SimpleFeedBusiness.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDFB2DA1D2C470000D3CBBC /* SimpleFeedBusiness.swift */; };
+		7FDFB2DB1D2C470000D3CBBC /* FeedBusiness.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDFB2DA1D2C470000D3CBBC /* FeedBusiness.swift */; };
 		7FDFB2DD1D2C472A00D3CBBC /* FeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDFB2DC1D2C472A00D3CBBC /* FeedCell.swift */; };
 		7FDFB2DF1D2C477300D3CBBC /* AsyncLoadImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDFB2DE1D2C477300D3CBBC /* AsyncLoadImageView.swift */; };
 		7FDFB2E11D2C480000D3CBBC /* FeedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDFB2E01D2C480000D3CBBC /* FeedModel.swift */; };
-		7FDFB2E31D2C535300D3CBBC /* SimpleFeedViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDFB2E21D2C535300D3CBBC /* SimpleFeedViewControllerTests.swift */; };
+		7FDFB2E31D2C535300D3CBBC /* FeedViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDFB2E21D2C535300D3CBBC /* FeedViewControllerTests.swift */; };
 		7FDFB2E81D2DC2E600D3CBBC /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDFB2E71D2DC2E600D3CBBC /* DetailViewController.swift */; };
 		7FDFB2EB1D2DCAEE00D3CBBC /* EpisodeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDFB2EA1D2DCAEE00D3CBBC /* EpisodeCell.swift */; };
 		7FDFB2ED1D2DD0F100D3CBBC /* DetailBusiness.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDFB2EC1D2DD0F100D3CBBC /* DetailBusiness.swift */; };
 		7FDFB2EF1D2DD9AC00D3CBBC /* EpisodeHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDFB2EE1D2DD9AC00D3CBBC /* EpisodeHeaderView.swift */; };
 		7FDFB2F11D2DDA1600D3CBBC /* EpisodeHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7FDFB2F01D2DDA1600D3CBBC /* EpisodeHeaderView.xib */; };
+		7FDFB2F31D2EA86800D3CBBC /* EpisodePickViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDFB2F21D2EA86800D3CBBC /* EpisodePickViewController.swift */; };
+		7FDFB2F51D2FE1FC00D3CBBC /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDFB2F41D2FE1FC00D3CBBC /* UIImage+Extension.swift */; };
+		7FDFB2F71D309CE900D3CBBC /* EpisodePickViewController+CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDFB2F61D309CE900D3CBBC /* EpisodePickViewController+CollectionView.swift */; };
+		7FE1BC9D1D30A1B20091DB3B /* SupportPick.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FE1BC9C1D30A1B20091DB3B /* SupportPick.swift */; };
 		CE3F7E0C4BEB604FB735A68F /* Pods_MemoryLeakDemoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0F039FE085F19DE2A8F826B /* Pods_MemoryLeakDemoTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -53,7 +57,7 @@
 		14600B137D32298D64272E04 /* Pods_MemoryLeakDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MemoryLeakDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B3639580B25A782A979237C /* Pods-MemoryLeakDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MemoryLeakDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MemoryLeakDemo/Pods-MemoryLeakDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		642EF6321C547E74919C1F98 /* Pods-MemoryLeakDemoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MemoryLeakDemoTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MemoryLeakDemoTests/Pods-MemoryLeakDemoTests.debug.xcconfig"; sourceTree = "<group>"; };
-		7FC977281D25E51A00EE56C3 /* SimpleFeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleFeedViewController.swift; sourceTree = "<group>"; };
+		7FC977281D25E51A00EE56C3 /* FeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		7FC9772A1D25E73000EE56C3 /* Array+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Extension.swift"; sourceTree = "<group>"; };
 		7FDBEA561D1F544600F018A8 /* MemoryLeakDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MemoryLeakDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7FDBEA591D1F544600F018A8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -70,16 +74,20 @@
 		7FDBEA7B1D1F544600F018A8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7FDBEA871D1F5A1E00F018A8 /* Dispatch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dispatch.swift; sourceTree = "<group>"; };
 		7FDBEA891D1F633500F018A8 /* Business.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Business.swift; sourceTree = "<group>"; };
-		7FDFB2DA1D2C470000D3CBBC /* SimpleFeedBusiness.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleFeedBusiness.swift; sourceTree = "<group>"; };
+		7FDFB2DA1D2C470000D3CBBC /* FeedBusiness.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedBusiness.swift; sourceTree = "<group>"; };
 		7FDFB2DC1D2C472A00D3CBBC /* FeedCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedCell.swift; sourceTree = "<group>"; };
 		7FDFB2DE1D2C477300D3CBBC /* AsyncLoadImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsyncLoadImageView.swift; sourceTree = "<group>"; };
 		7FDFB2E01D2C480000D3CBBC /* FeedModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedModel.swift; sourceTree = "<group>"; };
-		7FDFB2E21D2C535300D3CBBC /* SimpleFeedViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleFeedViewControllerTests.swift; sourceTree = "<group>"; };
+		7FDFB2E21D2C535300D3CBBC /* FeedViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedViewControllerTests.swift; sourceTree = "<group>"; };
 		7FDFB2E71D2DC2E600D3CBBC /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		7FDFB2EA1D2DCAEE00D3CBBC /* EpisodeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EpisodeCell.swift; sourceTree = "<group>"; };
 		7FDFB2EC1D2DD0F100D3CBBC /* DetailBusiness.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailBusiness.swift; sourceTree = "<group>"; };
 		7FDFB2EE1D2DD9AC00D3CBBC /* EpisodeHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EpisodeHeaderView.swift; sourceTree = "<group>"; };
 		7FDFB2F01D2DDA1600D3CBBC /* EpisodeHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EpisodeHeaderView.xib; sourceTree = "<group>"; };
+		7FDFB2F21D2EA86800D3CBBC /* EpisodePickViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EpisodePickViewController.swift; sourceTree = "<group>"; };
+		7FDFB2F41D2FE1FC00D3CBBC /* UIImage+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
+		7FDFB2F61D309CE900D3CBBC /* EpisodePickViewController+CollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "EpisodePickViewController+CollectionView.swift"; sourceTree = "<group>"; };
+		7FE1BC9C1D30A1B20091DB3B /* SupportPick.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SupportPick.swift; sourceTree = "<group>"; };
 		BAD4799541F250128E7E589A /* Pods-MemoryLeakDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MemoryLeakDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-MemoryLeakDemo/Pods-MemoryLeakDemo.release.xcconfig"; sourceTree = "<group>"; };
 		DFF6D004491069352F6033C6 /* Pods-MemoryLeakDemoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MemoryLeakDemoTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MemoryLeakDemoTests/Pods-MemoryLeakDemoTests.release.xcconfig"; sourceTree = "<group>"; };
 		F0F039FE085F19DE2A8F826B /* Pods_MemoryLeakDemoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MemoryLeakDemoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -161,7 +169,7 @@
 		7FDBEA6D1D1F544600F018A8 /* MemoryLeakDemoTests */ = {
 			isa = PBXGroup;
 			children = (
-				7FDFB2E21D2C535300D3CBBC /* SimpleFeedViewControllerTests.swift */,
+				7FDFB2E21D2C535300D3CBBC /* FeedViewControllerTests.swift */,
 				7FDBEA6E1D1F544600F018A8 /* MemoryLeakDemoTests.swift */,
 				7FDBEA701D1F544600F018A8 /* Info.plist */,
 			);
@@ -180,8 +188,8 @@
 		7FDFB2D61D2C46A800D3CBBC /* Feed */ = {
 			isa = PBXGroup;
 			children = (
-				7FC977281D25E51A00EE56C3 /* SimpleFeedViewController.swift */,
-				7FDFB2DA1D2C470000D3CBBC /* SimpleFeedBusiness.swift */,
+				7FC977281D25E51A00EE56C3 /* FeedViewController.swift */,
+				7FDFB2DA1D2C470000D3CBBC /* FeedBusiness.swift */,
 				7FDFB2DC1D2C472A00D3CBBC /* FeedCell.swift */,
 				7FDFB2E01D2C480000D3CBBC /* FeedModel.swift */,
 			);
@@ -195,6 +203,7 @@
 				7FDBEA891D1F633500F018A8 /* Business.swift */,
 				7FDBEA871D1F5A1E00F018A8 /* Dispatch.swift */,
 				7FDFB2DE1D2C477300D3CBBC /* AsyncLoadImageView.swift */,
+				7FDFB2F41D2FE1FC00D3CBBC /* UIImage+Extension.swift */,
 			);
 			path = Framework;
 			sourceTree = "<group>";
@@ -220,11 +229,14 @@
 		7FDFB2E61D2DC2E600D3CBBC /* Detail */ = {
 			isa = PBXGroup;
 			children = (
+				7FDFB2F61D309CE900D3CBBC /* EpisodePickViewController+CollectionView.swift */,
 				7FDFB2E71D2DC2E600D3CBBC /* DetailViewController.swift */,
 				7FDFB2EA1D2DCAEE00D3CBBC /* EpisodeCell.swift */,
 				7FDFB2EC1D2DD0F100D3CBBC /* DetailBusiness.swift */,
 				7FDFB2EE1D2DD9AC00D3CBBC /* EpisodeHeaderView.swift */,
 				7FDFB2F01D2DDA1600D3CBBC /* EpisodeHeaderView.xib */,
+				7FDFB2F21D2EA86800D3CBBC /* EpisodePickViewController.swift */,
+				7FE1BC9C1D30A1B20091DB3B /* SupportPick.swift */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -479,19 +491,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				7FDFB2E81D2DC2E600D3CBBC /* DetailViewController.swift in Sources */,
-				7FDFB2DB1D2C470000D3CBBC /* SimpleFeedBusiness.swift in Sources */,
+				7FDFB2DB1D2C470000D3CBBC /* FeedBusiness.swift in Sources */,
+				7FE1BC9D1D30A1B20091DB3B /* SupportPick.swift in Sources */,
 				7FDBEA881D1F5A1E00F018A8 /* Dispatch.swift in Sources */,
 				7FDFB2EF1D2DD9AC00D3CBBC /* EpisodeHeaderView.swift in Sources */,
-				7FC977291D25E51A00EE56C3 /* SimpleFeedViewController.swift in Sources */,
+				7FC977291D25E51A00EE56C3 /* FeedViewController.swift in Sources */,
 				7FDBEA8A1D1F633500F018A8 /* Business.swift in Sources */,
 				7FDFB2EB1D2DCAEE00D3CBBC /* EpisodeCell.swift in Sources */,
 				7FC9772B1D25E73000EE56C3 /* Array+Extension.swift in Sources */,
 				7FDFB2DD1D2C472A00D3CBBC /* FeedCell.swift in Sources */,
 				7FDFB2ED1D2DD0F100D3CBBC /* DetailBusiness.swift in Sources */,
 				7FDFB2DF1D2C477300D3CBBC /* AsyncLoadImageView.swift in Sources */,
+				7FDFB2F51D2FE1FC00D3CBBC /* UIImage+Extension.swift in Sources */,
 				7FDFB2E11D2C480000D3CBBC /* FeedModel.swift in Sources */,
 				7FDBEA5C1D1F544600F018A8 /* ViewController.swift in Sources */,
 				7FDBEA5A1D1F544600F018A8 /* AppDelegate.swift in Sources */,
+				7FDFB2F71D309CE900D3CBBC /* EpisodePickViewController+CollectionView.swift in Sources */,
+				7FDFB2F31D2EA86800D3CBBC /* EpisodePickViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -499,7 +515,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7FDFB2E31D2C535300D3CBBC /* SimpleFeedViewControllerTests.swift in Sources */,
+				7FDFB2E31D2C535300D3CBBC /* FeedViewControllerTests.swift in Sources */,
 				7FDBEA6F1D1F544600F018A8 /* MemoryLeakDemoTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -641,6 +657,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = xxhank.MemoryLeakDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "7ce1c523-18a3-4dcf-bcf2-9c5ecad98704";
 			};
 			name = Debug;
 		};
@@ -653,6 +670,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = xxhank.MemoryLeakDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "7ce1c523-18a3-4dcf-bcf2-9c5ecad98704";
 			};
 			name = Release;
 		};
