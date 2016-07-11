@@ -22,9 +22,11 @@ class EpisodePickSectionViewModel {
 class EpisodePickViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var episodeTopConstraint: NSLayoutConstraint!
+    @IBOutlet var dismissGesture: UITapGestureRecognizer!
 
     var completion: PickCompletion?
     var sectionViewModels = [EpisodePickSectionViewModel]()
+    var playingIndex: Int = 0
 
     static let numberOfRowsInSection = 10
     static let numberOfCellsInRow = 6
@@ -32,12 +34,23 @@ class EpisodePickViewController: UIViewController {
     static let heightOfTableViewTop: CGFloat = 200
 
     // MARK: Object Cycle
+    deinit {
+        XCGLogger.info("")
+    }
 }
 
 // MARK: - Interface
 struct EpisodePickParameters: PickParameters {
     var episodes: [EpisodeBlockCellViewModel]
     var selected: Int
+}
+
+extension Int {
+    func modulo(base: Int) -> (division: Int, remainder: Int) {
+        let division = self / base
+        let remainder = self % base
+        return (division, remainder)
+    }
 }
 
 // MARK: - Interface
@@ -55,6 +68,7 @@ extension EpisodePickViewController: SupportPick {
         }
 
         let episodes = episodePickParameters.episodes
+        let playingIndex = episodePickParameters.selected
 
         var episodePickSectionViewModels = [EpisodePickSectionViewModel]()
         var episodePickSectionViewModel: EpisodePickSectionViewModel!
@@ -79,10 +93,15 @@ extension EpisodePickViewController: SupportPick {
         }
 
         if episodePickSectionViewModel != nil {
-            episodePickSectionViewModels.append(episodePickSectionViewModel!)
+            episodePickSectionViewModels.append(episodePickSectionViewModel)
         }
 
-        sectionViewModels = episodePickSectionViewModels
+        let (playingSection, indexInSection) = playingIndex.modulo(EpisodePickViewController.numberOfCellsInSection)
+        let (playingRow, playingCell) = indexInSection.modulo(EpisodePickViewController.numberOfCellsInRow)
+        episodePickSectionViewModels[safe: playingSection]?.rows[safe: playingRow]?.playingEpisodeIndex = playingCell
+
+        self.playingIndex = playingIndex
+        self.sectionViewModels = episodePickSectionViewModels
     }
 }
 
@@ -91,15 +110,21 @@ extension EpisodePickViewController {
     // MARK: Controller Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        let episodeHeaderNib = UINib(nibName: "EpisodeHeaderView", bundle: nil)
-        tableView.registerNib(episodeHeaderNib, forHeaderFooterViewReuseIdentifier: "EpisodeHeaderView")
-        tableView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        dismissGesture.delegate = self
+        dismissGesture.delaysTouchesBegan = true
+
+        let episodeHeaderNib = UINib(nibName: "EpisodeHeaderView", bundle: nil)
+        tableView.registerNib(episodeHeaderNib, forHeaderFooterViewReuseIdentifier: "EpisodeHeaderView")
+        tableView.reloadData()
     }
 }
 
@@ -110,9 +135,17 @@ extension EpisodePickViewController {
     }
 }
 
+extension EpisodePickViewController: UIGestureRecognizerDelegate {
+    func gestureRecognizerShouldBegin(gestureRecognizer: UIGestureRecognizer) -> Bool {
+        let location = gestureRecognizer.locationInView(self.tableView)
+        if self.tableView.bounds.contains(location) {
+            return false
+        }
+        return true
+    }
+}
 // MARK: - UITableViewDataSource
 extension EpisodePickViewController: UITableViewDataSource {
-
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return sectionViewModels.count
     }
@@ -155,6 +188,15 @@ extension EpisodePickViewController: UITableViewDelegate {
         guard let sectionViewModels = sectionViewModels[safe: indexPath.section] else { return }
         guard let episodeCell = cell as? EpisodeCell else { return }
         episodeCell.viewModel = sectionViewModels.rows[safe: indexPath.row]
+        episodeCell.selectEpisodesBlock = { [weak self](cell, sender) in
+            guard let wself = self,
+                let index = sender as? Int,
+                let indexPath = wself.tableView.indexPathForCell(cell) else { return }
+            let playingIndex = EpisodePickViewController.numberOfCellsInSection * indexPath.section
+                + EpisodePickViewController.numberOfCellsInRow * indexPath.row
+                + index
+            wself.episodeSelected(playingIndex)
+        }
     }
 
     func tableView(tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
@@ -166,6 +208,36 @@ extension EpisodePickViewController: UITableViewDelegate {
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         guard let sectionViewModels = sectionViewModels[safe: indexPath.section] else { return }
         XCGLogger.info("\(sectionViewModels)")
-        // let index = indexPath.section * 60 + indexPath.row * 6
+    }
+}
+
+// MARK: -
+extension EpisodePickViewController {
+    func episodeSelected(index: Int) {
+        if completion != nil {
+            completion?(result: index)
+            return
+        }
+
+        let (newPlayingSection, newIndexInSection) = index.modulo(EpisodePickViewController.numberOfCellsInSection)
+        let (newPlayingRow, _) = newIndexInSection.modulo(EpisodePickViewController.numberOfCellsInRow)
+
+        let (playingSection, indexInSection) = playingIndex.modulo(EpisodePickViewController.numberOfCellsInSection)
+        let (playingRow, _) = indexInSection.modulo(EpisodePickViewController.numberOfCellsInRow)
+
+        if (newPlayingSection != playingSection) || (newPlayingRow != playingRow) {
+            diselectEpisolde(playingIndex)
+        }
+        playingIndex = index
+    }
+
+    func diselectEpisolde(index: Int) {
+        let (playingSection, indexInSection) = index.modulo(EpisodePickViewController.numberOfCellsInSection)
+        let (playingRow, _) = indexInSection.modulo(EpisodePickViewController.numberOfCellsInRow)
+        sectionViewModels[safe: playingSection]?.rows[safe: playingRow]?.playingEpisodeIndex = -1
+        tableView.beginUpdates()
+        let updateIndexPath = NSIndexPath(forRow: playingRow, inSection: playingSection)
+        tableView.reloadRowsAtIndexPaths([updateIndexPath], withRowAnimation: .None)
+        tableView.endUpdates()
     }
 }

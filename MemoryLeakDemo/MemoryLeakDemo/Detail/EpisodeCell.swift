@@ -14,6 +14,11 @@ class EpisodeBlockCellViewModel {
     var indexText = "1"
 }
 
+// MARK: - ActionBlock
+extension UITableViewCell {
+    typealias ActionBlock = (cell: UITableViewCell, sender: AnyObject) -> Void
+}
+
 class EpisodeBlockCell: UICollectionViewCell {
     @IBOutlet weak var playingMark: UIImageView!
     @IBOutlet weak var indexLabel: UILabel!
@@ -46,11 +51,19 @@ class EpisodeCell: UITableViewCell {
     @IBOutlet weak var episodesView: UICollectionView!
     @IBOutlet weak var episodesViewHeightConstraint: NSLayoutConstraint!
 
+    var selectEpisodesBlock: ActionBlock?
+    let numberOfBlockCells = 6
+    let heightOfBlockCells = CGFloat(40.0)
+
+    deinit {
+        XCGLogger.info("\(fd_isTemplateLayoutCell ? "template" : "")")
+    }
+
     var viewModel: EpisodeCellViewModel? {
         didSet {
             if let episodesViewHeightConstraint = episodesViewHeightConstraint {
-                let numberOfRows = ((viewModel?.episodeBlockCellViewModels.count ?? 0) + 5) / 6
-                episodesViewHeightConstraint.constant = CGFloat(numberOfRows) * 40
+                let numberOfRows = ((viewModel?.episodeBlockCellViewModels.count ?? 0) + numberOfBlockCells - 1) / numberOfBlockCells
+                episodesViewHeightConstraint.constant = CGFloat(numberOfRows) * heightOfBlockCells
             }
 
             if fd_isTemplateLayoutCell {
@@ -59,7 +72,7 @@ class EpisodeCell: UITableViewCell {
 
             if let viewModel = viewModel {
                 episodesView.reloadData()
-                if viewModel.playingEpisodeIndex > 0
+                if viewModel.playingEpisodeIndex >= 0
                 && viewModel.playingEpisodeIndex < viewModel.episodeBlockCellViewModels.count {
                     let selectIndexPath = NSIndexPath(forItem: viewModel.playingEpisodeIndex, inSection: 0)
                     episodesView.selectItemAtIndexPath(selectIndexPath, animated: false, scrollPosition: .Left)
@@ -68,12 +81,17 @@ class EpisodeCell: UITableViewCell {
         }
     }
 
+    func viewModelUpdated() {
+        guard let viewModel = viewModel else { return }
+        if viewModel.playingEpisodeIndex >= 0
+        && viewModel.playingEpisodeIndex < viewModel.episodeBlockCellViewModels.count {
+            let selectIndexPath = NSIndexPath(forItem: viewModel.playingEpisodeIndex, inSection: 0)
+            // episodesView.scrollToItemAtIndexPath(selectIndexPath, atScrollPosition: .Left, animated: true)
+            episodesView.selectItemAtIndexPath(selectIndexPath, animated: true, scrollPosition: .Left)
+        }
+    }
     lazy var blockCellSize: CGSize = {
-        return CGSize(width: self.bounds.width / 6.1, height: 40)
-        let scale = UIScreen.mainScreen().scale
-        let dobuleCellWidth = CGFloat(Int((self.bounds.width) * scale / 6))
-        let cellWidth = dobuleCellWidth / scale
-        return CGSize(width: cellWidth, height: 40)
+        return CGSize(width: self.bounds.width / CGFloat(self.numberOfBlockCells), height: self.heightOfBlockCells)
     }()
 }
 
@@ -82,7 +100,7 @@ extension EpisodeCell {
         super.awakeFromNib()
         episodesView.delegate = self
         episodesView.dataSource = self
-        episodesView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 1)
+        // episodesView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 1)
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
@@ -135,6 +153,10 @@ extension EpisodeCell: UICollectionViewDelegateFlowLayout {
         if indexPath.item < viewModel.episodeBlockCellViewModels.count - 1 {
             let after = cellFrame.offsetBy(dx: cellFrame.width, dy: 0)
             collectionView.scrollRectToVisible(after, animated: true)
+        }
+
+        if let selectEpisodesBlock = selectEpisodesBlock {
+            selectEpisodesBlock(cell: self, sender: indexPath.row)
         }
     }
 

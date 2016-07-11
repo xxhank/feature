@@ -15,7 +15,7 @@ extension UITableViewHeaderFooterView {
 
 class EpisodeHeaderView: UITableViewHeaderFooterView {
     var viewMoreEpisodesBlock: ActionBlock?
-
+    var section: Int = 0
     override var contentView: UIView {
         return self.subviews[0]
     }

@@ -81,7 +81,7 @@ extension UIViewController: UINavigationControllerDelegate {
             }
 
             if state == .Possible && self.appearReason == .Reveal {
-                return DisappearReason.interactivePopGestureCanceled
+               // return DisappearReason.interactivePopGestureCanceled
             }
         }
         return DisappearReason.StepDown
