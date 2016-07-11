@@ -68,6 +68,7 @@ extension DetailViewController: UITableViewDataSource {
         return tableView.dequeueReusableHeaderFooterViewWithIdentifier("EpisodeHeaderView")
     }
 }
+
 // MARK: - UITableViewDelegate
 extension DetailViewController: UITableViewDelegate {
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
@@ -89,8 +90,39 @@ extension DetailViewController: UITableViewDelegate {
         episodeCell.viewModel = viewModel
     }
 
+    func tableView(tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        guard let episodeHeader = view as? EpisodeHeaderView else { return }
+        episodeHeader.section = section
+        episodeHeader.viewMoreEpisodesBlock = { [weak self](header, button) in
+            guard let wself = self,
+                let episodeHeader = header as? EpisodeHeaderView else { return }
+            wself.viewMoreEpisodes(NSIndexPath(forItem: 0, inSection: episodeHeader.section))
+        }
+    }
+
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         guard let viewModel = viewModels[safe: indexPath.row] else { return }
         XCGLogger.info("\(viewModel)")
+    }
+}
+
+// MARK: - Episode
+extension DetailViewController {
+    func viewMoreEpisodes(indexPath: NSIndexPath) {
+        guard let viewModel = viewModels[safe: 0] else { return }
+
+        let parameters = EpisodePickParameters(episodes: viewModel.episodeBlockCellViewModels, selected: viewModel.playingEpisodeIndex)
+
+        EpisodePickViewController.pickEpisode(parameters, hostController: self) { [weak self](index) in
+            XCGLogger.info("new selection \(index)")
+            guard let wself = self,
+                let index = index as? Int,
+                let episodeCell = wself.tableView.cellForRowAtIndexPath(indexPath) as? EpisodeCell else { return }
+            wself.viewModels.first?.playingEpisodeIndex = index
+            episodeCell.viewModelUpdated()
+            // wself.tableView.beginUpdates()
+            // wself.tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .None)
+            // wself.tableView.endUpdates()
+        }
     }
 }

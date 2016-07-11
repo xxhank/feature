@@ -7,21 +7,38 @@
 //
 
 import UIKit
+import XCGLogger
 
 class EpisodeBlockCellViewModel {
     var playing = false
     var indexText = "1"
 }
 
+// MARK: - ActionBlock
+extension UITableViewCell {
+    typealias ActionBlock = (cell: UITableViewCell, sender: AnyObject) -> Void
+}
+
 class EpisodeBlockCell: UICollectionViewCell {
     @IBOutlet weak var playingMark: UIImageView!
     @IBOutlet weak var indexLabel: UILabel!
-
+    @IBOutlet weak var backgroundImageView: UIImageView!
     var viewModel: EpisodeBlockCellViewModel? {
         didSet {
             playingMark.hidden = !(viewModel?.playing ?? false)
             indexLabel.text = viewModel?.indexText
         }
+    }
+
+    static func backgroundImage(size: CGSize) -> UIImage {
+        struct Static {
+            static var predicate: dispatch_once_t = 0
+            static var instance: UIImage? = nil
+        }
+        dispatch_once(&Static.predicate) {
+            Static.instance = UIImage.strokeImage(UIColor.whiteColor(), size: size, borderColor: UIColor.redColor(), borderWidth: 1)
+        }
+        return Static.instance!
     }
 }
 
@@ -32,20 +49,50 @@ class EpisodeCellViewModel {
 
 class EpisodeCell: UITableViewCell {
     @IBOutlet weak var episodesView: UICollectionView!
+    @IBOutlet weak var episodesViewHeightConstraint: NSLayoutConstraint!
+
+    var selectEpisodesBlock: ActionBlock?
+    let numberOfBlockCells = 6
+    let heightOfBlockCells = CGFloat(40.0)
+
+    deinit {
+        XCGLogger.info("\(fd_isTemplateLayoutCell ? "template" : "")")
+    }
 
     var viewModel: EpisodeCellViewModel? {
         didSet {
+            if let episodesViewHeightConstraint = episodesViewHeightConstraint {
+                let numberOfRows = ((viewModel?.episodeBlockCellViewModels.count ?? 0) + numberOfBlockCells - 1) / numberOfBlockCells
+                episodesViewHeightConstraint.constant = CGFloat(numberOfRows) * heightOfBlockCells
+            }
+
             if fd_isTemplateLayoutCell {
                 return
             }
 
             if let viewModel = viewModel {
                 episodesView.reloadData()
-                let selectIndexPath = NSIndexPath(forItem: viewModel.playingEpisodeIndex, inSection: 0)
-                episodesView.selectItemAtIndexPath(selectIndexPath, animated: false, scrollPosition: .Left)
+                if viewModel.playingEpisodeIndex >= 0
+                && viewModel.playingEpisodeIndex < viewModel.episodeBlockCellViewModels.count {
+                    let selectIndexPath = NSIndexPath(forItem: viewModel.playingEpisodeIndex, inSection: 0)
+                    episodesView.selectItemAtIndexPath(selectIndexPath, animated: false, scrollPosition: .Left)
+                }
             }
         }
     }
+
+    func viewModelUpdated() {
+        guard let viewModel = viewModel else { return }
+        if viewModel.playingEpisodeIndex >= 0
+        && viewModel.playingEpisodeIndex < viewModel.episodeBlockCellViewModels.count {
+            let selectIndexPath = NSIndexPath(forItem: viewModel.playingEpisodeIndex, inSection: 0)
+            // episodesView.scrollToItemAtIndexPath(selectIndexPath, atScrollPosition: .Left, animated: true)
+            episodesView.selectItemAtIndexPath(selectIndexPath, animated: true, scrollPosition: .Left)
+        }
+    }
+    lazy var blockCellSize: CGSize = {
+        return CGSize(width: self.bounds.width / CGFloat(self.numberOfBlockCells), height: self.heightOfBlockCells)
+    }()
 }
 
 extension EpisodeCell {
@@ -53,6 +100,7 @@ extension EpisodeCell {
         super.awakeFromNib()
         episodesView.delegate = self
         episodesView.dataSource = self
+        // episodesView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 1)
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
@@ -82,6 +130,7 @@ extension EpisodeCell: UICollectionViewDelegateFlowLayout {
         }
         blockViewModel.playing = (indexPath.row == viewModel.playingEpisodeIndex)
         cell.viewModel = blockViewModel
+        cell.backgroundImageView.image = EpisodeBlockCell.backgroundImage(CGSize(width: blockCellSize.width, height: blockCellSize.height))
     }
 
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
@@ -105,6 +154,10 @@ extension EpisodeCell: UICollectionViewDelegateFlowLayout {
             let after = cellFrame.offsetBy(dx: cellFrame.width, dy: 0)
             collectionView.scrollRectToVisible(after, animated: true)
         }
+
+        if let selectEpisodesBlock = selectEpisodesBlock {
+            selectEpisodesBlock(cell: self, sender: indexPath.row)
+        }
     }
 
     func collectionView(collectionView: UICollectionView, didDeselectItemAtIndexPath indexPath: NSIndexPath) {
@@ -119,6 +172,6 @@ extension EpisodeCell: UICollectionViewDelegateFlowLayout {
     }
 
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        return CGSize(width: self.bounds.width / 6.0, height: self.bounds.height)
+        return blockCellSize
     }
 }

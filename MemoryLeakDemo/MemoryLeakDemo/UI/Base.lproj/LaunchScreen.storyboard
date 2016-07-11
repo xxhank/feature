@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8150" systemVersion="15A204g" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" initialViewController="01J-lp-oVM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" initialViewController="01J-lp-oVM">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8122"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -13,15 +15,87 @@
                         <viewControllerLayoutGuide type="bottom" id="xb3-aO-Qok"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <animations/>
+                        <subviews>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" image="launch_bg" translatesAutoresizingMaskIntoConstraints="NO" id="S25-8h-ofQ">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                            </imageView>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="launch_icon" translatesAutoresizingMaskIntoConstraints="NO" id="9ug-XV-xrr">
+                                <rect key="frame" x="163" y="80" width="89" height="89"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lG5-yf-Znm">
+                                <rect key="frame" x="135" y="204" width="144" height="43"/>
+                                <string key="text">超级视频
+
+</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="36"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="heightClass=regular-widthClass=regular">
+                                    <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                                </variation>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Frc-ic-Ynq">
+                                <rect key="frame" x="111" y="618" width="192" height="29"/>
+                                <string key="text">和懂你的人一起看
+
+</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="heightClass=regular-widthClass=regular">
+                                    <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                </variation>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tFK-nP-Ezq">
+                                <rect key="frame" x="126" y="652" width="163" height="24"/>
+                                <string key="text">Explore,with yours
+
+</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="heightClass=regular-widthClass=regular">
+                                    <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                </variation>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="bottomMargin" secondItem="S25-8h-ofQ" secondAttribute="bottom" id="01S-rN-OcE"/>
+                            <constraint firstItem="lG5-yf-Znm" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="0bH-IL-Vyo"/>
+                            <constraint firstItem="Frc-ic-Ynq" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="49R-by-w9g"/>
+                            <constraint firstItem="9ug-XV-xrr" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="AgX-EE-WAK"/>
+                            <constraint firstItem="9ug-XV-xrr" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" constant="80" id="HN6-Pe-vKi">
+                                <variation key="heightClass=compact-widthClass=compact" constant="40"/>
+                                <variation key="heightClass=compact-widthClass=regular" constant="60"/>
+                                <variation key="heightClass=regular-widthClass=regular" constant="280"/>
+                            </constraint>
+                            <constraint firstItem="tFK-nP-Ezq" firstAttribute="top" secondItem="Frc-ic-Ynq" secondAttribute="bottom" constant="5" id="QNj-Mq-djW"/>
+                            <constraint firstItem="S25-8h-ofQ" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="QbV-n8-8JW"/>
+                            <constraint firstAttribute="trailing" secondItem="S25-8h-ofQ" secondAttribute="trailing" id="b4B-YH-emc"/>
+                            <constraint firstItem="lG5-yf-Znm" firstAttribute="top" secondItem="9ug-XV-xrr" secondAttribute="bottom" constant="35" id="fEF-WY-vMM">
+                                <variation key="heightClass=compact-widthClass=compact" constant="20"/>
+                                <variation key="heightClass=regular-widthClass=regular" constant="40"/>
+                            </constraint>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="tFK-nP-Ezq" secondAttribute="bottom" constant="60" id="mLk-D7-k74">
+                                <variation key="heightClass=compact-widthClass=compact" constant="20"/>
+                                <variation key="heightClass=regular-widthClass=regular" constant="100"/>
+                            </constraint>
+                            <constraint firstItem="tFK-nP-Ezq" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="nis-3s-XCW"/>
+                            <constraint firstItem="S25-8h-ofQ" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="topMargin" id="sUM-1n-65m"/>
+                        </constraints>
                     </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="53" y="375"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="launch_bg" width="768" height="1024"/>
+        <image name="launch_icon" width="89" height="89"/>
+    </resources>
 </document>
